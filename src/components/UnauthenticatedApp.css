@@ -1,0 +1,9 @@
+.UnauthenticatedApp {
+  width:500px;
+  margin:0 auto;
+  padding:10px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}

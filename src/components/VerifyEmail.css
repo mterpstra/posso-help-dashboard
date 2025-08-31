@@ -1,0 +1,5 @@
+.VerifyEmailForm {
+  background:purple;
+  display:flex;
+  flex-direction:column;
+}

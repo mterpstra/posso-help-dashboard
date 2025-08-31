@@ -1,0 +1,4 @@
+.RegisterForm {
+  display:flex;
+  flex-direction:column;
+}

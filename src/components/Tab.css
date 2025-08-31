@@ -1,0 +1,28 @@
+.Tab {
+  padding: 12px 24px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 500;
+  color: #666;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.Tab:hover {
+  background: #e0e0e0;
+}
+
+.Tab.active {
+  background: linear-gradient(135deg, #3f7f00 0%, #2d5016 100%);
+  color: white;
+}
+
+.TabList {
+  overflow:hidden;
+  display:flex;
+  flex-direction:row;
+  gap:10px;
+}

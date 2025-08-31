@@ -1,0 +1,24 @@
+.Header {
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
+  align-items:center;
+  padding:10px 20px;
+}
+
+.Header .logo {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+
+.Header .logo p {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2d5016;
+  margin-right:10px;
+}
+
+.Header .logo span {
+  color: #666;
+}
