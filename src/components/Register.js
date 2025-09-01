@@ -1,13 +1,14 @@
+import React, { useState, useEffect } from 'react';
+import ErrorMessage from './ErrorMessage';
 import './Register.css';
 const Register = (props) => {
-
+  const [errorMessage, setErrorMessage] = useState("");
   const submit = (formData) => {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log("in submit", email, password);
 
-    fetch('http://localhost:8080/api/auth/register', {
+    fetch('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify({username, email, password})
     })
@@ -18,9 +19,11 @@ const Register = (props) => {
       return response.json();
     })
     .then(data => {
-      console.log('Data fetched successfully:', data);
-      console.log('props, probably null', props);
-      props.onRegisterSuccessfull(data);
+      if (data.success) {
+        props.onRegisterSuccessfull(data);
+      } else {
+        setErrorMessage(data.message);
+      }
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -29,6 +32,7 @@ const Register = (props) => {
 
   return (
     <form className="RegisterForm" action={submit}>
+      <h2>Register</h2>
       <input name="username" type="text" placeholder="Username"/>
       <input name="email" type="text" placeholder="Email"/>
       <input name="phonenumber" 
@@ -36,9 +40,11 @@ const Register = (props) => {
       <input name="password" type="password" placeholder="Password"/>
       <input type="password" placeholder="Confirm Password"/>
       <button type="submit">Register</button>
-      <div className="error-message">Error</div>
+      <ErrorMessage message={errorMessage}/>
       <div className="success-message">Success</div>
-      <a href="#" onClick={props.onLoginClick}>Login</a>
+      <div className="links">
+        <a href="#" onClick={props.onLoginClick}>Login</a>
+      </div>
     </form>
   );
 }

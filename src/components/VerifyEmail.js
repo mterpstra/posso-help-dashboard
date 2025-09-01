@@ -1,6 +1,8 @@
+import React, { useState, useEffect } from 'react';
+import ErrorMessage from './ErrorMessage.js';
 import './VerifyEmail.css';
 const VerifyEmail = (props) => {
-
+  const [errorMessage, setErrorMessage] = useState("");
   const submit = (formData) => {
     const code = formData.get("code");
     const email = formData.get("email");
@@ -17,10 +19,13 @@ const VerifyEmail = (props) => {
       return response.json();
     })
     .then(data => {
-      console.log('Login after code success:', data);
-      localStorage.setItem('zapmanejo_token', data.token);
-      localStorage.setItem('zapmanejo_user', JSON.stringify(data.user));
-      window.location.reload();
+      if (data.success) {
+        localStorage.setItem('zapmanejo_token', data.token);
+        localStorage.setItem('zapmanejo_user', JSON.stringify(data.user));
+        window.location.reload();
+      } else {
+        setErrorMessage(data.message);
+      }
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -34,8 +39,10 @@ const VerifyEmail = (props) => {
       <input type="text" name="code" placeholder="Enter Code" maxLength="6"/>
       <input type="text" name="email" hidden value={props.email}/>
       <button type="submit">Submit</button>
-      <div className="error-message">Error</div>
-      <a href="#">Login</a>
+      <ErrorMessage message={errorMessage}/>
+      <div className="links">
+        <a href="#" onClick={props.onLoginClick}>Login</a>
+      </div>
     </form>
   );
 }

@@ -1,12 +1,15 @@
+import React, { useState, useEffect } from 'react';
+import ErrorMessage from './ErrorMessage.js';
 import './Login.css';
 const Login = (props) => {
 
+  const [errorMessage, setErrorMessage] = useState("");
   const submit = (formData) => {
     const email = formData.get("email");
     const password = formData.get("password");
     console.log("in submit", email, password);
 
-    fetch('http://localhost:8080/api/auth/login', {
+    fetch('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({email, password})
     })
@@ -18,9 +21,13 @@ const Login = (props) => {
     })
     .then(data => {
       console.log('Login success:', data);
-      localStorage.setItem('zapmanejo_token', data.token);
-      localStorage.setItem('zapmanejo_user', JSON.stringify(data.user));
-      window.location.reload();
+      if (data.success) {
+        localStorage.setItem('zapmanejo_token', data.token);
+        localStorage.setItem('zapmanejo_user', JSON.stringify(data.user));
+        window.location.reload();
+      } else {
+        setErrorMessage(data.message);
+      }
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -29,12 +36,15 @@ const Login = (props) => {
 
   return (
     <form className="LoginForm" action={submit}>
+      <h2>Login</h2>
       <input type="email"    name="email" placeholder="Email" required/>
       <input type="password" name="password" placeholder="Password" required/>
       <button type="submit">Login</button>
-      <div className="error-message">Error</div>
-      <a href="#" onClick={props.onRegisterClick}>Register</a>
-      <a href="#" onClick={props.onForgotPasswordClick}>Forgot Password</a>
+      <ErrorMessage message={errorMessage}/>
+      <div className="links">
+        <a href="#" onClick={props.onRegisterClick}>Register</a>
+        <a href="#" onClick={props.onForgotPasswordClick}>Forgot Password</a>
+      </div>
     </form>
   );
 }

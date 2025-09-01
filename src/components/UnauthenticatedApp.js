@@ -38,6 +38,7 @@ const UnauthenticatedApp = () => {
 
       {screen == "verify" && 
         <VerifyEmail email={user.email}
+          onLoginClick={() => setScreen("login")}
         />
       }
 

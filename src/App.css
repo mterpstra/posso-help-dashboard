@@ -17,8 +17,21 @@ input, button[type="submit"] {
   border:1px solid gray;
 }
 
+button[type="submit"] {
+  background-color: #2d5016;
+  color:white;
+  font-weight:bold;
+}
+
 form {
   display:flex;
   flex-direction:column;
   gap:10px;
+}
+
+h2 {
+  color: #2d5016;
+  font-weight: bold;
+  text-align:center;
+  margin:10px;
 }
