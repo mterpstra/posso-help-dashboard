@@ -1,18 +1,2 @@
 .Births {
-  width:80%;
-  border:2px solid black;
-}
-
-.Births thead tr {
-  background-color: black;
-  color:white;
-}
-
-
-.Births tbody tr:nth-child(odd) {
-  background-color: #d8d8d8;
-}
-
-.Births tbody tr:nth-child(even) {
-  background-color: #ffffff;
 }

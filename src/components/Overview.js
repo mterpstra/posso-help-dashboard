@@ -1,7 +1,7 @@
 export const Overview = (props) => {
   return (
     <div>
-      Overview Component
+      <h2>Overview</h2>
     </div>
   );
 }

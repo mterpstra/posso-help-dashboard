@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
 
-export const Rainfall = (props) => {
-  const [rainfall, setRainfall] = useState([]);
+export const Temperatures = (props) => {
+  const [temperatures, setTemperatures] = useState([]);
   const token = localStorage.getItem('zapmanejo_token');
-  const url = '/api/data/rain/16166100305';
+  const url = '/api/data/temperature/16166100305';
 
   const columns = [
-    {name:"Amount", selector: row => `${row.amount}mm`, sortable:true},
+    {name:"Temperature", selector: row => `${row.temperature} celcius`, sortable:true},
     {name:"Date", selector: row => row.date, sortable:true},
     {name:"Who", selector: row => row.name, sortable:true},
     {name:"From", selector: row => row.phone, sortable:true},
@@ -27,7 +27,7 @@ export const Rainfall = (props) => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const result = await response.json();
-        setRainfall(result);
+        setTemperatures(result);
       } catch (err) {
         console.log("error", err);
       } finally {
@@ -39,13 +39,13 @@ export const Rainfall = (props) => {
 
 
   return (
-    <div className="Rainfall">
-      <h2>Rainfall</h2>
+    <div className="Temperature">
+      <h2>Temperatures</h2>
       <DataTable
         columns={columns}
-        data={rainfall}
+        data={temperatures}
       />
     </div>
   );
 }
-export default Rainfall;
+export default Temperatures;

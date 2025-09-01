@@ -6,7 +6,7 @@ import Overview from './Overview.js';
 import Births from './Births.js';
 import Deaths from './Deaths.js';
 import Rainfall from './Rainfall.js';
-import Temperature from './Temperature.js';
+import Temperatures from './Temperatures.js';
 import Areas from './Areas.js';
 import Teams from './Teams.js';
 
@@ -18,7 +18,7 @@ const Dashboard = (props) => {
     "Births",
     "Deaths",
     "Rainfall",
-    "Temperature",
+    "Temperatures",
     "Areas",
     "Team"
   ];
@@ -36,12 +36,11 @@ const Dashboard = (props) => {
         onTabClicked={onTabClicked}
       />
       <div className='white-container'>
-        <h2>Content</h2>
         {(activeTab === 0) && <Overview/>}
         {(activeTab === 1) && <Births/>}
         {(activeTab === 2) && <Deaths/>}
         {(activeTab === 3) && <Rainfall/>}
-        {(activeTab === 4) && <Temperature/>}
+        {(activeTab === 4) && <Temperatures/>}
         {(activeTab === 5) && <Areas/>}
         {(activeTab === 6) && <Teams/>}
       </div>
