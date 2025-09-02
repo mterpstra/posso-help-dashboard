@@ -35,3 +35,8 @@ h2 {
   text-align:center;
   margin:10px;
 }
+
+.Chart {
+  height:300px;
+  width:300px;
+}

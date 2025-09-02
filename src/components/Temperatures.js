@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
+import './Temperatures.css';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
 export const Temperatures = (props) => {
   const [temperatures, setTemperatures] = useState([]);
@@ -30,16 +33,47 @@ export const Temperatures = (props) => {
         setTemperatures(result);
       } catch (err) {
         console.log("error", err);
-      } finally {
-        console.log("Finally...");
       }
     };
     fetchData();
   }, []);
 
+  const aggregateData = (rawData, field) => {
+    var xValues = [];
+    var yValues = [];
+    for(let i=0; i < rawData.length; i++) {
+      const yearMonth = rawData[i].date.slice(0, 7);
+      let index = xValues.indexOf(yearMonth);
+      if (index < 0) {
+        xValues.push(yearMonth);
+        yValues.push(rawData[i][field]);
+      } else {
+        yValues[index] += rawData[i][field];
+      }
+    }
+    return {xValues:xValues, yValues:yValues}
+  }
+
+  if (props.graph) {
+    const graphData = aggregateData(temperatures, "temperature");
+    const data = {
+      labels: graphData.xValues,
+      datasets: [{
+        label: 'Temperature',
+        data: graphData.yValues,
+        backgroundColor: ["#7F3500", "#0B7F00", "#004A7F", "#74007F"],
+        borderWidth: 1,
+      }],
+    };
+    return (
+      <div className="Temperatures Chart">
+        <Pie data={data}/>
+      </div>
+    );
+  }
 
   return (
-    <div className="Temperature">
+    <div className="Temperatures">
       <h2>Temperatures</h2>
       <DataTable
         columns={columns}

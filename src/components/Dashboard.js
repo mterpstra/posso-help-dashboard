@@ -12,7 +12,6 @@ import Teams from './Teams.js';
 
 import { TabList } from './Tab.js';
 const Dashboard = (props) => {
-  console.log("Dashboard props", props);
   const tabs = [
     "Overview", 
     "Births",
@@ -24,7 +23,6 @@ const Dashboard = (props) => {
   ];
   const [activeTab, setActiveTab] = useState(0);
   const onTabClicked= (id) => {
-    console.log("Tab Clicked:", id);
     setActiveTab(id);
   }
   return (

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from 'react-data-table-component';
+import './Deaths.css';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import { Pie } from 'react-chartjs-2';
 
 export const Deaths = (props) => {
   const [deaths, setDeaths] = useState([]);
@@ -33,13 +36,46 @@ export const Deaths = (props) => {
         setDeaths(result);
       } catch (err) {
         console.log("error", err);
-      } finally {
-        console.log("Finally...");
-      }
+      } 
     };
     fetchData();
   }, []);
 
+
+  // Aggregate data by cause of death.
+  const aggregateData = (rawData) => {
+    var xValues = [];
+    var yValues = [];
+    for(let i=0; i < rawData.length; i++) {
+      let index = xValues.indexOf(rawData[i].cause);
+      if (index < 0) {
+        xValues.push(rawData[i].cause);
+        yValues.push(1);
+      } else {
+        yValues[index]++;
+      }
+    }
+    return {xValues:xValues, yValues:yValues}
+  }
+
+
+  if (props.graph) {
+    const graphData = aggregateData(deaths);
+    const data = {
+      labels: graphData.xValues,
+      datasets: [{
+        label: 'Deaths by Cause',
+        data: graphData.yValues,
+        backgroundColor: ["#37007F", "#7F0008", "#487F00", "#007F77"],
+        borderWidth: 1,
+      }],
+    };
+    return (
+      <div className="Deaths Chart">
+        <Pie data={data}/>
+      </div>
+    );
+  }
 
   return (
     <div className="Deaths">
