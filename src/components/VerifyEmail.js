@@ -8,7 +8,7 @@ const VerifyEmail = (props) => {
     const email = formData.get("email");
     console.log("in submit", code, email);
 
-    fetch('http://localhost:8080/api/auth/verify-email', {
+    fetch('/api/auth/verify-email', {
       method: 'POST',
       body: JSON.stringify({code, email})
     })
