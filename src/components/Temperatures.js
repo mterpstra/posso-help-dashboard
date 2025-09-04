@@ -7,7 +7,7 @@ import { Pie } from 'react-chartjs-2';
 export const Temperatures = (props) => {
   const [temperatures, setTemperatures] = useState([]);
   const token = localStorage.getItem('zapmanejo_token');
-  const url = '/api/data/temperature/16166100305';
+  const url = '/api/data/temperature';
 
   const columns = [
     {name:"Temperature", selector: row => `${row.temperature} celcius`, sortable:true},

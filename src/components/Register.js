@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ErrorMessage from './ErrorMessage';
 import './Register.css';
 const Register = (props) => {
@@ -7,10 +7,11 @@ const Register = (props) => {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
+    const phone_number = formData.get("phone_number");
 
     fetch('/api/auth/register', {
       method: 'POST',
-      body: JSON.stringify({username, email, password})
+      body: JSON.stringify({username, email, phone_number, password})
     })
     .then(response => {
       if (!response.ok) {
@@ -35,7 +36,7 @@ const Register = (props) => {
       <h2>Register</h2>
       <input name="username" type="text" placeholder="Username"/>
       <input name="email" type="text" placeholder="Email"/>
-      <input name="phonenumber" 
+      <input name="phone_number" 
              type="tel" placeholder="WhatsApp (opcional): +5511999999999"/>
       <input name="password" type="password" placeholder="Password"/>
       <input type="password" placeholder="Confirm Password"/>

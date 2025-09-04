@@ -7,7 +7,7 @@ import { Pie } from 'react-chartjs-2';
 export const Deaths = (props) => {
   const [deaths, setDeaths] = useState([]);
   const token = localStorage.getItem('zapmanejo_token');
-  const url = '/api/data/deaths/16166100305';
+  const url = '/api/data/deaths';
 
   const columns = [
     {name:"Tag", selector: row => row.tag, sortable:true},

@@ -13,14 +13,14 @@ const UnauthenticatedApp = () => {
   return (
     <div className="UnauthenticatedApp">
     <div className="white-container">
-      {screen == "login" && 
+      {screen === "login" && 
         <Login 
           onRegisterClick={() => setScreen("register")}
           onForgotPasswordClick={() => setScreen("forgot")}
         />
       }
 
-      {screen == "register" && 
+      {screen === "register" && 
         <Register
           onLoginClick={() => setScreen("login")}
           onRegisterSuccessfull={(response) => {
@@ -36,13 +36,13 @@ const UnauthenticatedApp = () => {
         />
       }
 
-      {screen == "verify" && 
+      {screen === "verify" && 
         <VerifyEmail email={user.email}
           onLoginClick={() => setScreen("login")}
         />
       }
 
-      {screen == "forgot" && 
+      {screen === "forgot" && 
         <ForgotPassword
           onLoginClick={() => setScreen("login")}
         />

@@ -24,7 +24,7 @@ const Births = (props) => {
   useEffect(() => {
     console.log("Birth: useEffect()");
     const token = localStorage.getItem('zapmanejo_token');
-    const url = '/api/data/births/16166100305';
+    const url = '/api/data/births';
     const fetchData = () => {
       fetch(url, {
         method: 'GET',

@@ -22,3 +22,9 @@
 .Header .logo span {
   color: #666;
 }
+
+.Header .profile {
+  display:flex;
+  flex-direction:column;
+  align-items: flex-end;
+}

@@ -7,7 +7,7 @@ import { Pie } from 'react-chartjs-2';
 export const Rainfall = (props) => {
   const [rainfall, setRainfall] = useState([]);
   const token = localStorage.getItem('zapmanejo_token');
-  const url = '/api/data/rain/16166100305';
+  const url = '/api/data/rain';
 
   const columns = [
     {name:"Amount", selector: row => `${row.amount}mm`, sortable:true},

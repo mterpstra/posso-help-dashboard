@@ -1,4 +1,11 @@
 import './Header.css';
+
+const onClickLogout = () => {
+  localStorage.removeItem('zapmanejo_token');
+  localStorage.removeItem('zapmanejo_user');
+  window.location.reload();
+}
+
 const Header = (props) => {
   return (
     <div className="Header white-container">
@@ -6,8 +13,9 @@ const Header = (props) => {
         <p>ZapManejo</p>
         <span>Dashboard</span>
       </div>
-      <div>
-        {props.user.username}
+      <div className="profile">
+        <div>{props.user.username}</div>
+        <div onClick={onClickLogout}><a href="#">Log out</a></div>
       </div>
     </div>
   );
