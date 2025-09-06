@@ -22,7 +22,6 @@ const Births = (props) => {
   const [births, setBirthData] = useState([]);
 
   useEffect(() => {
-    console.log("Birth: useEffect()");
     const token = localStorage.getItem('zapmanejo_token');
     const url = '/api/data/births';
     const fetchData = () => {
