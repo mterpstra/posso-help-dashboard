@@ -11,7 +11,7 @@ body {
   padding:10px;
 }
 
-input, button[type="submit"] {
+input, select, button[type="submit"] {
   height:30px;
   border-radius:5px;
   border:1px solid gray;

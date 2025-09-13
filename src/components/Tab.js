@@ -12,6 +12,14 @@ export const Tab = (props) => {
   );
 }
 
+export const AddButton = (props) => {
+  return ( 
+    <button 
+      className="AddButton"
+      onClick={props.onAddClicked}>+</button>
+  );
+}
+
 export const TabList = (props) => {
   const tabListItems = props.tabs.map((item, index) => (
     <Tab key={index} id={index} text={item} 
@@ -19,9 +27,15 @@ export const TabList = (props) => {
       isActive={(index===props.activeTab) ? true : false}
     />
   ));
+
   return (
     <div className="TabList white-container">
-      {tabListItems}
+      <div className="left">
+        {tabListItems}
+      </div>
+      <div className="right">
+        {props.showAddButton && <AddButton {...props}/>}
+      </div>
     </div>
   );
 }

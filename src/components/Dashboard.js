@@ -9,6 +9,7 @@ import Rainfall from './Rainfall.js';
 import Temperatures from './Temperatures.js';
 import Areas from './Areas.js';
 import Teams from './Teams.js';
+import AddBirth from './AddBirth.js';
 
 import { TabList } from './Tab.js';
 const Dashboard = (props) => {
@@ -21,10 +22,32 @@ const Dashboard = (props) => {
     "Areas",
     "Team"
   ];
+
+  const getComponent = () => {
+    if ((activeTab === 1) && addActive) return "add-birth";
+    if (activeTab === 1) return "births";
+    if (activeTab === 2) return "deaths";
+    if (activeTab === 3) return "rainfall";
+    if (activeTab === 4) return "temperatures";
+    if (activeTab === 5) return "areas";
+    if (activeTab === 6) return "teams";
+    return "overview";
+  };
+  
   const [activeTab, setActiveTab] = useState(0);
-  const onTabClicked= (id) => {
+  const [addActive, setAddActive] = useState(false);
+
+  const onTabClicked = (id) => {
     setActiveTab(id);
+    setAddActive(false);
   }
+
+  const onAddClicked = () => {
+    setAddActive(!addActive);
+  }
+
+  const screen = getComponent(); 
+  console.log("showing screen", screen);
   return (
     <div className='Dashboard'>
       <Header user={props.user}/>
@@ -32,15 +55,18 @@ const Dashboard = (props) => {
         tabs={tabs} 
         activeTab={activeTab}
         onTabClicked={onTabClicked}
+        showAddButton={screen==="births"}
+        onAddClicked={onAddClicked}
       />
       <div className='white-container'>
-        {(activeTab === 0) && <Overview/>}
-        {(activeTab === 1) && <Births/>}
-        {(activeTab === 2) && <Deaths/>}
-        {(activeTab === 3) && <Rainfall/>}
-        {(activeTab === 4) && <Temperatures/>}
-        {(activeTab === 5) && <Areas/>}
-        {(activeTab === 6) && <Teams/>}
+        {(screen === "overview")     && <Overview/>}
+        {(screen === "births")       && <Births/>}
+        {(screen === "deaths")       && <Deaths/>}
+        {(screen === "rainfall")     && <Rainfall/>}
+        {(screen === "temperatures") && <Temperatures/>}
+        {(screen === "areas")        && <Areas/>}
+        {(screen === "teams")        && <Teams/>}
+        {(screen === "add-birth")    && <AddBirth onSuccess={onAddClicked}/>}
       </div>
     </div>
   );
