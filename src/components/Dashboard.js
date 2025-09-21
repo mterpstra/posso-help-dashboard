@@ -12,6 +12,8 @@ import AddBirth from './AddBirth.js';
 import AddDeath from './AddDeath.js';
 import AddTemperature from './AddTemperature.js';
 import AddRain from './AddRain.js';
+import AddArea from './AddArea.js';
+import AddTeam from './AddTeam.js';
 import { TabList } from './Tab.js';
 
 const Dashboard = (props) => {
@@ -30,6 +32,8 @@ const Dashboard = (props) => {
     if ((activeTab === 2) && addActive) return "add-death";
     if ((activeTab === 3) && addActive) return "add-rainfall";
     if ((activeTab === 4) && addActive) return "add-temperature";
+    if ((activeTab === 5) && addActive) return "add-area";
+    if ((activeTab === 6) && addActive) return "add-team";
 
     if (activeTab === 1) return "births";
     if (activeTab === 2) return "deaths";
@@ -55,7 +59,7 @@ const Dashboard = (props) => {
   const screen = getComponent(); 
   console.log("showing screen", screen);
 
-  const addScreens = ["births", "deaths", "rainfall", "temperatures"];
+  const addScreens = ["births", "deaths", "rainfall", "temperatures", "areas", "teams"];
   return (
     <div className='Dashboard'>
       <Header user={props.user}/>
@@ -78,6 +82,8 @@ const Dashboard = (props) => {
         {(screen === "add-death")       && <AddDeath onSuccess={onAddClicked}/>}
         {(screen === "add-rainfall")    && <AddRain onSuccess={onAddClicked}/>}
         {(screen === "add-temperature") && <AddTemperature onSuccess={onAddClicked}/>}
+        {(screen === "add-area")        && <AddArea onSuccess={onAddClicked}/>}
+        {(screen === "add-team")        && <AddTeam onSuccess={onAddClicked}/>}
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import AreaDropdown from './AreaDropdown.js';
 import './AddBirth.css';
 export const AddBirth = (props) => {
   const token = localStorage.getItem('zapmanejo_token');
@@ -43,8 +44,8 @@ export const AddBirth = (props) => {
         <option value="f">Female</option>
       </select>
 
-      {/* @todo: Load Areas from Server and provide dropdown */}
-      <input type="text" name="area" placeholder="area" required/>
+      <AreaDropdown/>
+
       <input type="date" name="date" required/>
       <button type="submit">Add</button>
     </form>

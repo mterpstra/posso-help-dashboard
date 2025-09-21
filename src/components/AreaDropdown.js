@@ -1,7 +1,6 @@
-import DataTable from 'react-data-table-component';
 import React, { useState, useEffect } from 'react';
-
-export const Areas = (props) => {
+export const AreaDropdown = (props) => {
+  const token = localStorage.getItem('zapmanejo_token');
   const [areas, setAreaData] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem('zapmanejo_token');
@@ -30,22 +29,14 @@ export const Areas = (props) => {
     fetchData();
   }, []);
 
-  const columns = [
-    { name: 'Area',     selector: row => row.area_name },
-    { name: 'Matches',  selector: row => row.matches },
-  ];
-
-  if (areas === null) return;
-  if (areas.length === 0) return;
-
   return (
-    <div>
-    <h2>Areas</h2>
-    <DataTable
-      data={areas}
-      columns={columns}
-    />
-    </div>
+    <select name="area">
+      {areas.map((area) => (
+        <option key={area.area_name} value={area.area_name}>
+          {area.area_name}
+        </option>
+      ))}
+    </select>
   );
 }
-export default Areas;
+export default AreaDropdown;
