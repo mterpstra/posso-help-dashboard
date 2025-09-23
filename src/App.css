@@ -36,9 +36,15 @@ h2 {
   margin:10px;
 }
 
+h3 {
+  text-align:center;
+}
+
 .Chart {
+  /*
   height:300px;
   width:300px;
+  */
 }
 
 input::-webkit-outer-spin-button,
@@ -50,3 +56,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance:textfield; 
 }
+

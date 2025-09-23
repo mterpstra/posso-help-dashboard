@@ -1,34 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import './AddArea.css';
-export const AddArea = (props) => {
-  const token = localStorage.getItem('zapmanejo_token');
-  const url = '/api/data/areas';
-  const submit = (formData) => {
-    const name = formData.get("name");
-    const matches = `${name},${formData.get("matches")}`
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        "Authorization":`Bearer ${token}`,
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify({ name, matches })
-    })
-    .then(response => {
-      props.onSuccess();
-    })
-    .catch(error => {
-      console.error('Error updating form data:', error);
-    });
-  }
+import AreaDropdown from './AreaDropdown.js';
+import DataCollectionAdd from './DataCollectionAdd.js';
 
+const AddAreaForm = (props) => {
   return (
-    <form className="AddArea" action={submit}>
+    <>
       <h3>Add Area</h3>
-      <input type="text" name="name" placeholder="Area" required/>
-      <input type="text" name="matches" placeholder="Matches" required/>
-      <button type="submit">Add</button>
-    </form>
+      <input type="text" name="name" 
+        placeholder="Area" required/>
+      <input type="text" name="matches" 
+        placeholder="Matches" required/>
+    </>
   );
 }
+
+const getBodyFromForm = (formData) => {
+  const name = formData.get("name");
+  const matches = `${name},${formData.get("matches")}`
+  return JSON.stringify({ name, matches });
+}
+
+export const AddArea = (props) => {
+  return (
+    <DataCollectionAdd
+      collection="areas"
+      getBodyFromForm={getBodyFromForm}
+      formElements={AddAreaForm}
+      onSuccess={props.onSuccess}
+    />
+  );
+}
+
 export default AddArea;
