@@ -32,8 +32,8 @@ export const AreaDropdown = (props) => {
   return (
     <select name="area">
       {areas.map((area) => (
-        <option key={area.area_name} value={area.area_name}>
-          {area.area_name}
+        <option key={area.name} value={area.name}>
+          {area.name}
         </option>
       ))}
     </select>

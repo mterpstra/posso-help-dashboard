@@ -31,7 +31,7 @@ export const Areas = (props) => {
   }, []);
 
   const columns = [
-    { name: 'Area',     selector: row => row.area_name },
+    { name: 'Area',     selector: row => row.name },
     { name: 'Matches',  selector: row => row.matches },
   ];
 

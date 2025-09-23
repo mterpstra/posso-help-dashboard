@@ -5,6 +5,7 @@ export const Teams = (props) => {
   const [teams, setTeamData] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem('zapmanejo_token');
+    const user  = localStorage.getItem('zapmanejo_user');
     const url = '/api/data/teams';
     const fetchData = () => {
       fetch(url, {
@@ -31,10 +32,8 @@ export const Teams = (props) => {
   }, []);
 
   const columns = [
-    { name: 'Owner Phone',              selector: row => row.phone},
-    { name: 'Owner Name',               selector: row => row.name },
-    { name: 'Team Member Name',         selector: row => row.team_member_name},
-    { name: 'Team Member Phone Number', selector: row => row.team_member_phone_number},
+    { name: 'Name',         selector: row => row.name},
+    { name: 'Phone Number', selector: row => row.phone_number},
   ];
 
   return (

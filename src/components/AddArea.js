@@ -4,15 +4,15 @@ export const AddArea = (props) => {
   const token = localStorage.getItem('zapmanejo_token');
   const url = '/api/data/areas';
   const submit = (formData) => {
-    const area_name = formData.get("area_name");
-    const matches = `${area_name},${formData.get("matches")}`
+    const name = formData.get("name");
+    const matches = `${name},${formData.get("matches")}`
     fetch(url, {
       method: 'POST',
       headers: {
         "Authorization":`Bearer ${token}`,
         "Content-Type":"application/json"
       },
-      body: JSON.stringify({ area_name, matches })
+      body: JSON.stringify({ name, matches })
     })
     .then(response => {
       props.onSuccess();
@@ -25,7 +25,7 @@ export const AddArea = (props) => {
   return (
     <form className="AddArea" action={submit}>
       <h3>Add Area</h3>
-      <input type="text" name="area_name" placeholder="Area" required/>
+      <input type="text" name="name" placeholder="Area" required/>
       <input type="text" name="matches" placeholder="Matches" required/>
       <button type="submit">Add</button>
     </form>
