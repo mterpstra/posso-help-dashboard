@@ -14,8 +14,16 @@ export const AddDataCollection = (props) => {
       body: body,
     })
     .then(response => {
-      // @todo:  Check for error and token expiration
-      props.onSuccess();
+      if (!response.ok) {
+        if (response.status == 401) {
+          localStorage.removeItem('zapmanejo_token');
+          localStorage.removeItem('zapmanejo_user');
+          window.location.reload();
+        }
+        throw new Error(`HTTP error! status: ${response.status}`);
+      } else {
+        props.onSuccess();
+      }
     })
     .catch(error => {
       console.error('Error updating form data:', error);

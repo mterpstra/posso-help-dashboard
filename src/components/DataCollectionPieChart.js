@@ -18,8 +18,12 @@ const DataCollectionPieChart = (props) => {
         }
       })
       .then(response => {
-        // @todo: Handle token expired, go back to login screen
         if (!response.ok) {
+          if (response.status == 401) {
+            localStorage.removeItem('zapmanejo_token');
+            localStorage.removeItem('zapmanejo_user');
+            window.location.reload();
+          }
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         return response.json();
