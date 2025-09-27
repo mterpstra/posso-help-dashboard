@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import ErrorMessage from './ErrorMessage.js';
 import './DataCollectionAdd.css';
 export const AddDataCollection = (props) => {
+  const [errorMessage, setErrorMessage] = useState("");
   const token = localStorage.getItem('zapmanejo_token');
   const url = `/api/data/${props.collection}`;
   const submit = (formData) => {
@@ -20,7 +22,12 @@ export const AddDataCollection = (props) => {
           localStorage.removeItem('zapmanejo_user');
           window.location.reload();
         }
-        throw new Error(`HTTP error! status: ${response.status}`);
+        let errorBody = response.text();
+        if (errorBody == "") {
+          errorBody = `Error adding to ${props.collection}`; 
+        }
+        setErrorMessage(errorBody);
+        throw new Error(`HTTP error! Status: ${response.status}`);
       } else {
         props.onSuccess();
       }
@@ -33,6 +40,7 @@ export const AddDataCollection = (props) => {
     <form class="DataCollectionAdd" action={submit}>
       <props.formElements/>
       <button type="submit">Add</button>
+      <ErrorMessage message={errorMessage}/>
     </form>
   );
 }

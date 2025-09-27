@@ -14,7 +14,7 @@ const Header = (props) => {
         <span>Dashboard</span>
       </div>
       <div className="profile">
-        <div>{props.user.username}</div>
+        <div>{props.user.name}</div>
         <div onClick={onClickLogout}><a href="#">Log out</a></div>
       </div>
     </div>
