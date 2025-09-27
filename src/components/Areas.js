@@ -3,8 +3,8 @@ export const Areas = (props) => {
   const title = 'Areas'
   const collection = 'areas'
   const columns = [
-    {name: 'Area',     selector: row => row.name},
-    {name: 'Matches',  selector: row => row.matches},
+    {name: 'Area',      selector: row => row.name},
+    {name: 'Nicknames', selector: row => row.matches},
   ];
   return (
     <DataCollection 

@@ -8,10 +8,12 @@ const AddAreaForm = (props) => {
       <input type="text" name="name" 
         placeholder="Area" required/>
       <input type="text" name="matches" 
-        placeholder="Matches" required/>
+        placeholder="Nicknames" required/>
     </>
   );
 }
+
+// Apelido - this is Portuguese for Nickname
 
 const getBodyFromForm = (formData) => {
   const name = formData.get("name");
