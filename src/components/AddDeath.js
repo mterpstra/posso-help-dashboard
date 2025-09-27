@@ -1,27 +1,18 @@
 import AreaDropdown from './AreaDropdown.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
-
+import TagNumberInput from './TagNumberInput.js';
+import DeathCauseDropdown from './DeathCauseDropdown.js';
+import SexDropdown from './SexDropdown.js';
+import DateInput from './DateInput';
 const AddDeathForm = (props) => {
   return (
     <>
       <h3>Add Death</h3>
-      <input type="number" name="tag" 
-             placeholder="Tag Number" required/>
-      <select name="sex">
-        <option value="m">Male</option>
-        <option value="f">Female</option>
-      </select>
-      <select name="cause">
-        <option value="aborto">Aborto</option>
-        <option value="morreu">Morreu</option>
-        <option value="morto">Morto</option>
-        <option value="nasceu-morto">Nasceu Morto</option>
-        <option value="natimorto">Natimorto</option>
-        <option value="Natimortos">Natimortos</option>
-        <option value="other">Other</option>
-      </select>
+      <TagNumberInput/>
+      <DeathCauseDropdown/>
+      <SexDropdown/>
       <AreaDropdown/>
-      <input type="date" name="date" required/>
+      <DateInput/>
     </>
   );
 }

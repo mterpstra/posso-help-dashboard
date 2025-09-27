@@ -1,25 +1,18 @@
 import AreaDropdown from './AreaDropdown.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
-
+import TagNumberInput from './TagNumberInput.js';
+import SexDropdown from './SexDropdown.js';
+import BreedDropdown from './BreedDropdown.js';
+import DateInput from './DateInput.js';
 const AddBirthForm = (props) => {
   return (
     <>
       <h3>Add Birth</h3>
-      <input type="number" name="tag" 
-             placeholder="Tag Number" required/>
-      <select name="breed">
-        <option value="angus">Angus</option>
-        <option value="nelore">Nelore</option>
-        <option value="brangus">Brangus</option>
-        <option value="sta_zelia">Sta Zelia</option>
-        <option value="cruzado">Cruzado</option>
-      </select>
-      <select name="sex">
-        <option value="m">Male</option>
-        <option value="f">Female</option>
-      </select>
+      <TagNumberInput/>
+      <BreedDropdown/>
+      <SexDropdown/>
       <AreaDropdown/>
-      <input type="date" name="date" required/>
+      <DateInput/>
     </>
   );
 }

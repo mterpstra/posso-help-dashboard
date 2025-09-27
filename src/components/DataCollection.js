@@ -1,8 +1,23 @@
 import DataTable from 'react-data-table-component';
 import React, { useState, useEffect } from 'react';
+import DeleteButton from './DeleteButton.js';
 
 export const DataCollection = (props) => {
+  const [refresh, setRefresh] = useState(false);
   const [data, setData] = useState([]);
+  const [selectedRows, setSelectedRows] = useState(false);
+  const [toggledClearRows, setToggleClearRows] = useState(false);
+
+  const handleChange = ({ selectedRows }) => {
+    setSelectedRows(selectedRows);
+  };
+
+  const handleDeleteComplete = () => {
+    setSelectedRows([]);
+    setToggleClearRows(false);
+    setRefresh(!refresh);
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('zapmanejo_token');
     const url = `/api/data/${props.collection}`;
@@ -16,7 +31,7 @@ export const DataCollection = (props) => {
       })
       .then(response => {
         if (!response.ok) {
-          if (response.status == 401) {
+          if (response.status === 401) {
             localStorage.removeItem('zapmanejo_token');
             localStorage.removeItem('zapmanejo_user');
             window.location.reload();
@@ -33,7 +48,7 @@ export const DataCollection = (props) => {
       });
     }
     fetchData();
-  }, []);
+  }, [refresh,props.collection]);
 
   return (
     <div>
@@ -41,7 +56,14 @@ export const DataCollection = (props) => {
       <DataTable
         data={data}
         columns={props.columns}
+        selectableRows
+        onSelectedRowsChange={handleChange}
+        clearSelectedRows={toggledClearRows}
       />
+      <DeleteButton 
+        onComplete={handleDeleteComplete}
+        collection={props.collection} 
+        data={selectedRows}/> 
     </div>
   );
 }
