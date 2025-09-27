@@ -16,20 +16,22 @@ export const AddDataCollection = (props) => {
       body: body,
     })
     .then(response => {
-      if (!response.ok) {
-        if (response.status == 401) {
-          localStorage.removeItem('zapmanejo_token');
-          localStorage.removeItem('zapmanejo_user');
-          window.location.reload();
-        }
-        let errorBody = response.text();
-        if (errorBody == "") {
-          errorBody = `Error adding to ${props.collection}`; 
-        }
-        setErrorMessage(errorBody);
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      } else {
+      if (response.ok) {
         props.onSuccess();
+        return response.json();
+      }
+      if (response.status === 401) {
+        localStorage.removeItem('zapmanejo_token');
+        localStorage.removeItem('zapmanejo_user');
+        window.location.reload();
+      }
+      return response.text();
+    })
+    .then(data => {
+      if (data.trim() === "duplicate_key_error") {
+        setErrorMessage(`Duplicate: ${props.collection}`);
+      } else {
+        setErrorMessage(`Error: ${props.collection}`);
       }
     })
     .catch(error => {
