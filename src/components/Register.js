@@ -75,15 +75,15 @@ const Register = (props) => {
     <form className="RegisterForm" action={submit}>
       <h2>Register</h2>
 
-      <input name="username" type="text" 
+      <input name="username" type="text" required
              placeholder="Username" value={username}
              onChange={(e) => setUsername(e.target.value)}/>
 
-      <input name="name" type="text" 
+      <input name="name" type="text" required
              placeholder="Name" value={name}
              onChange={(e) => setName(e.target.value)}/>
 
-      <input name="email" type="text" 
+      <input name="email" type="text" required 
              placeholder="Email" value={email}
              onChange={(e) => setEmail(e.target.value)}/>
 
@@ -91,7 +91,7 @@ const Register = (props) => {
         onChange={setPhoneNumber}
         phoneNumber={phone_number}/>
 
-      <input name="password" type="password" placeholder="Password"/>
+      <input name="password" type="password" placeholder="Password" required/>
       <input name="confirm"  type="password" placeholder="Confirm Password"/>
       <button type="submit">Register</button>
       <ErrorMessage message={errorMessage}/>
