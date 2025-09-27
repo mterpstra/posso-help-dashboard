@@ -1,14 +1,16 @@
-import AreaDropdown from './AreaDropdown.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
+import AreaDropdown from './AreaDropdown.js';
 import TagNumberInput from './TagNumberInput.js';
 import SexDropdown from './SexDropdown.js';
 import BreedDropdown from './BreedDropdown.js';
+
 import DateInput from './DateInput.js';
 const AddBirthForm = (props) => {
   return (
     <>
       <h3>Add Birth</h3>
       <TagNumberInput/>
+
       <BreedDropdown/>
       <SexDropdown/>
       <AreaDropdown/>

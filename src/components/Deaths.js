@@ -4,8 +4,9 @@ export const Deaths = (props) => {
   const collection = 'deaths'
   const columns = [
     {name:"Tag", selector: row => row.tag, sortable:true},
-    {name:"Cause", selector: row => row.cause, sortable:true},
+    {name: 'Breed',selector: row => row.breed, sortable: true},
     {name:"Sex", selector: row => row.sex, sortable:true},
+    {name:"Cause", selector: row => row.cause, sortable:true},
     {name:"Area", selector: row => row.area, sortable:true},
     {name:"Date", selector: row => row.date, sortable:true},
     {name:"Who", selector: row => row.name, sortable:true},
