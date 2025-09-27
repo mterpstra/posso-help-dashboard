@@ -29,7 +29,7 @@ export const AddDataCollection = (props) => {
     })
     .then(data => {
       if (data.trim() === "duplicate_key_error") {
-        setErrorMessage(`Duplicate: ${props.collection}`);
+        setErrorMessage(props.duplicateMsg);
       } else {
         setErrorMessage(`Error: ${props.collection}`);
       }

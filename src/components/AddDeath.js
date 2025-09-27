@@ -36,6 +36,7 @@ export const AddDeath = (props) => {
       getBodyFromForm={getBodyFromForm}
       formElements={AddDeathForm}
       onSuccess={props.onSuccess}
+      duplicateMsg="Death with that tag already exists."
     />
   );
 }

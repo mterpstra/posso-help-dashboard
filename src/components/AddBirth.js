@@ -35,6 +35,7 @@ export const AddBirth = (props) => {
       getBodyFromForm={getBodyFromForm}
       formElements={AddBirthForm}
       onSuccess={props.onSuccess}
+      duplicateMsg="Birth with that tag already exists."
     />
   );
 }
