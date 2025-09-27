@@ -8,6 +8,7 @@ const Register = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
+  const [fetching, setFetching] = useState(false);
 
   const passwordRequirements = "Password is too weak.  It must be contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character";
   const isValidPassword = (password) => {
@@ -49,6 +50,8 @@ const Register = (props) => {
       return;
     }
 
+    setFetching(true);
+
     fetch('/api/auth/register', {
       method: 'POST',
       body: JSON.stringify({username, name, email, phone_number, password})
@@ -68,11 +71,24 @@ const Register = (props) => {
     })
     .catch(error => {
       console.error('Error fetching data:', error);
+    })
+    .finally(() => {
+      setFetching(false);
     });
+  }
+
+  const Overlay = () => {
+    return (
+      <div class="form-overlay">
+        <div class="loader"></div>
+      </div>
+    );
   }
 
   const language = navigator.language;
   return (
+    <div class="form-container">
+    {fetching ? <Overlay/>:""}
     <form className="RegisterForm" action={submit}>
       <h2>Register</h2>
 
@@ -102,6 +118,7 @@ const Register = (props) => {
         <a href="#" onClick={props.onLoginClick}>Login</a>
       </div>
     </form>
+    </div>
   );
 }
 export default Register;
