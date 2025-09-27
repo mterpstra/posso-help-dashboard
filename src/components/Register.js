@@ -71,6 +71,7 @@ const Register = (props) => {
     });
   }
 
+  const language = navigator.language;
   return (
     <form className="RegisterForm" action={submit}>
       <h2>Register</h2>
@@ -88,6 +89,7 @@ const Register = (props) => {
              onChange={(e) => setEmail(e.target.value)}/>
 
       <PhoneNumberInput
+        language={language}
         onChange={setPhoneNumber}
         phoneNumber={phone_number}/>
 
