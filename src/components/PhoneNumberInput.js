@@ -3,15 +3,25 @@ export const PhoneNumberInput = (props) => {
 
   const handleAsUS= (e) => {
     let value = e.target.value.replace(/\D/g, ''); 
+
+    const first = value.substring(0,1);
+    if (value.length===1 && value.substring(0,1) != "1" ) {
+      value = `1${value}`;
+      console.log("setting value", value);
+    }
+
     let formattedValue = '';
     if (value.length > 0) {
-      formattedValue += value.substring(0, 3);
+      formattedValue += value.substring(0, 1);
     }
-    if (value.length > 3) {
-      formattedValue += '-' + value.substring(3, 6);
+    if (value.length > 1) {
+      formattedValue += '-' + value.substring(1, 4);
     }
-    if (value.length > 6) {
-      formattedValue += '-' + value.substring(6, 10);
+    if (value.length > 4) {
+      formattedValue += '-' + value.substring(4, 7);
+    }
+    if (value.length > 7) {
+      formattedValue += '-' + value.substring(7, 11);
     }
     props.onChange(formattedValue);
   }
@@ -23,10 +33,13 @@ export const PhoneNumberInput = (props) => {
       formattedValue += value.substring(0, 2);
     }
     if (value.length > 2) {
-      formattedValue += '-' + value.substring(2, 7);
+      formattedValue += '-' + value.substring(2, 4);
     }
-    if (value.length > 7) {
-      formattedValue += '-' + value.substring(7, 11);
+    if (value.length > 4) {
+      formattedValue += '-' + value.substring(4, 9);
+    }
+    if (value.length > 9) {
+      formattedValue += '-' + value.substring(9, 13);
     }
     props.onChange(formattedValue);
   }
@@ -35,10 +48,10 @@ export const PhoneNumberInput = (props) => {
   let handler=null;
   if (props.language === "en-US") {
     handler = handleAsUS;
-    placeholder="xxx-xxx-xxxx";
+    placeholder="1-xxx-xxx-xxxx";
   } else {
     handler = handleAsBrasil;
-    placeholder="xx-xxxxx-xxxx";
+    placeholder="xx-xx-xxxxx-xxxx";
   }
 
   return (
