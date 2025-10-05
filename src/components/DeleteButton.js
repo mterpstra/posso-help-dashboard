@@ -34,6 +34,9 @@ export const DeleteButton = (props) => {
     });
   }
 
+  if (props.data === null) return;
+  if (props.data === undefined) return;
+  if (!Array.isArray(props.data)) return;
   const count = props.data.length;
   if (count === 0) return;
 
