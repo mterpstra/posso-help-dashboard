@@ -19,7 +19,7 @@ const DataCollectionPieChart = (props) => {
       })
       .then(response => {
         if (!response.ok) {
-          if (response.status == 401) {
+          if (response.status === 401) {
             localStorage.removeItem('zapmanejo_token');
             localStorage.removeItem('zapmanejo_user');
             window.location.reload();

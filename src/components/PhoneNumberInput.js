@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 export const PhoneNumberInput = (props) => {
 
   const handleAsUS= (e) => {
     let value = e.target.value.replace(/\D/g, ''); 
-
-    const first = value.substring(0,1);
-    if (value.length===1 && value.substring(0,1) != "1" ) {
+    if (value.length===1 && value.substring(0,1) !== "1" ) {
       value = `1${value}`;
-      console.log("setting value", value);
     }
-
     let formattedValue = '';
     if (value.length > 0) {
       formattedValue += value.substring(0, 1);

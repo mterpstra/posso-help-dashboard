@@ -15,6 +15,7 @@ import AddRain from './AddRain.js';
 import AddArea from './AddArea.js';
 import AddTeam from './AddTeam.js';
 import { TabList } from './Tab.js';
+import Profile from './Profile.js';
 
 const Dashboard = (props) => {
   const tabs = [
@@ -28,6 +29,8 @@ const Dashboard = (props) => {
   ];
 
   const getComponent = () => {
+    if (activeTab === 9) return "profile";
+
     if ((activeTab === 1) && addActive) return "add-birth";
     if ((activeTab === 2) && addActive) return "add-death";
     if ((activeTab === 3) && addActive) return "add-rainfall";
@@ -41,6 +44,7 @@ const Dashboard = (props) => {
     if (activeTab === 4) return "temperatures";
     if (activeTab === 5) return "areas";
     if (activeTab === 6) return "teams";
+
     return "overview";
   };
   
@@ -56,13 +60,20 @@ const Dashboard = (props) => {
     setAddActive(!addActive);
   }
 
+  const onClickProfile = () => {
+    setActiveTab(9);
+    console.log("in dashboard, and user clicked profile");
+  }
+
   const screen = getComponent(); 
   console.log("showing screen", screen);
 
   const addScreens = ["births", "deaths", "rainfall", "temperatures", "areas", "teams"];
   return (
     <div className='Dashboard'>
-      <Header user={props.user}/>
+      <Header user={props.user}
+        onClickProfile={onClickProfile}
+      />
       <TabList 
         tabs={tabs} 
         activeTab={activeTab}
@@ -84,6 +95,8 @@ const Dashboard = (props) => {
         {(screen === "add-temperature") && <AddTemperature onSuccess={onAddClicked}/>}
         {(screen === "add-area")        && <AddArea onSuccess={onAddClicked}/>}
         {(screen === "add-team")        && <AddTeam onSuccess={onAddClicked}/>}
+
+        {(screen === "profile")         && <Profile/>}
       </div>
     </div>
   );

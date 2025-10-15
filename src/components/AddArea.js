@@ -1,4 +1,3 @@
-import AreaDropdown from './AreaDropdown.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
 
 const AddAreaForm = (props) => {

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 export const AreaDropdown = (props) => {
-  const token = localStorage.getItem('zapmanejo_token');
   const [areas, setAreaData] = useState([]);
   useEffect(() => {
     const token = localStorage.getItem('zapmanejo_token');

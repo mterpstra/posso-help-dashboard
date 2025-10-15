@@ -1,4 +1,5 @@
 import './Header.css';
+import { useTranslation } from 'react-i18next';
 
 const onClickLogout = () => {
   localStorage.removeItem('zapmanejo_token');
@@ -7,15 +8,28 @@ const onClickLogout = () => {
 }
 
 const Header = (props) => {
+
+  const onClickProfile = () => {
+    props.onClickProfile();
+  }
+
+  const { t } = useTranslation();
   return (
     <div className="Header white-container">
       <div className="logo">
         <p>ZapManejo</p>
-        <span>Dashboard</span>
+        <span>{t('dashboard')}</span>
       </div>
       <div className="profile">
-        <div>{props.user.name}</div>
-        <div onClick={onClickLogout}><a href="#">Log out</a></div>
+
+        <div onClick={onClickProfile}>
+          <a href="#">{props.user.name}</a>
+        </div>
+
+        <div onClick={onClickLogout}>
+          <a href="#">Log out</a>
+        </div>
+
       </div>
     </div>
   );
