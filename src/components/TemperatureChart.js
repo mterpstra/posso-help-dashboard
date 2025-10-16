@@ -1,5 +1,7 @@
 import DataCollectionPieChart from './DataCollectionPieChart.js';
+import { useTranslation } from 'react-i18next';
 export const TemperatureChart = (props) => {
+  const { t } = useTranslation();
   const aggregateData = (rawData) => {
     var xValues = [];
     var yValues = [];
@@ -19,7 +21,7 @@ export const TemperatureChart = (props) => {
     <DataCollectionPieChart
       collection="temperature"
       aggregateData={aggregateData}
-      title="Temperature by Month" 
+      title={t("temperature_by_month")}
       colors={["#7F3500", "#0B7F00", "#004A7F", "#74007F"]}
     />
   );

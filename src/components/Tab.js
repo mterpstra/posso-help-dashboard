@@ -1,4 +1,5 @@
 import './Tab.css';
+import { useTranslation } from 'react-i18next';
 export const Tab = (props) => {
   const handleClick = () => {
     props.onTabClicked(props.id);
@@ -21,8 +22,9 @@ export const AddButton = (props) => {
 }
 
 export const TabList = (props) => {
+  const { t } = useTranslation();
   const tabListItems = props.tabs.map((item, index) => (
-    <Tab key={index} id={index} text={item} 
+    <Tab key={index} id={index} text={t(item.toLowerCase())} 
       onTabClicked={props.onTabClicked}
       isActive={(index===props.activeTab) ? true : false}
     />

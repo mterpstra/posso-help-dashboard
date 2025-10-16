@@ -1,20 +1,21 @@
 import DataCollection from './DataCollection';
+import { useTranslation } from 'react-i18next';
 export const Deaths = (props) => {
-  const title = 'Deaths'
+  const { t } = useTranslation();
   const collection = 'deaths'
   const columns = [
-    {name:"Tag", selector: row => row.tag, sortable:true},
-    {name: 'Breed',selector: row => row.breed, sortable: true},
-    {name:"Sex", selector: row => row.sex, sortable:true},
-    {name:"Cause", selector: row => row.cause, sortable:true},
-    {name:"Area", selector: row => row.area, sortable:true},
-    {name:"Date", selector: row => row.date, sortable:true},
-    {name:"Who", selector: row => row.name, sortable:true},
-    {name:"From", selector: row => row.phone, sortable:true},
+    {name: t("tag"),   selector: row => row.tag, sortable:true},
+    {name: t("breed"), selector: row => row.breed, sortable: true},
+    {name: t("sex"),   selector: row => row.sex, sortable:true},
+    {name: t("cause"), selector: row => row.cause, sortable:true},
+    {name: t("area"),  selector: row => row.area, sortable:true},
+    {name: t("date"),  selector: row => row.date, sortable:true},
+    {name: t("who"),   selector: row => row.name, sortable:true},
+    {name: t("from"),  selector: row => row.phone, sortable:true},
   ];
   return (
     <DataCollection 
-      title={title} 
+      title={t("deaths_title")} 
       collection={collection} 
       columns={columns}/>
   );

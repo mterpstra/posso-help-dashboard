@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ErrorMessage from './ErrorMessage.js';
 import './DataCollectionAdd.css';
 export const AddDataCollection = (props) => {
+  const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState("");
   const token = localStorage.getItem('zapmanejo_token');
   const url = `/api/data/${props.collection}`;
@@ -41,7 +43,7 @@ export const AddDataCollection = (props) => {
   return (
     <form class="DataCollectionAdd" action={submit}>
       <props.formElements/>
-      <button type="submit">Add</button>
+      <button type="submit">{t("add_button")}</button>
       <ErrorMessage message={errorMessage}/>
     </form>
   );

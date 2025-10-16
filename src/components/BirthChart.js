@@ -1,5 +1,7 @@
 import DataCollectionPieChart from './DataCollectionPieChart.js';
+import { useTranslation } from 'react-i18next';
 const BirthChart = (props) => {
+  const { t } = useTranslation();
   const aggregateData = (rawData) => {
     var xValues = [];
     var yValues = [];
@@ -18,7 +20,7 @@ const BirthChart = (props) => {
     <DataCollectionPieChart
       collection="births"
       aggregateData={aggregateData}
-      title="Births by Breed" 
+      title={t("births_by_breed")}
       colors={["#3F7F00", "#007F7F", "#3F007F", "#7F0000"]}
     />
   );

@@ -1,5 +1,7 @@
 import DataCollectionPieChart from './DataCollectionPieChart.js';
+import { useTranslation } from 'react-i18next';
 export const DeathChart = (props) => {
+  const { t } = useTranslation();
   const aggregateData = (rawData) => {
     var xValues = [];
     var yValues = [];
@@ -18,7 +20,7 @@ export const DeathChart = (props) => {
     <DataCollectionPieChart
       collection="deaths"
       aggregateData={aggregateData}
-      title="Deaths by Cause" 
+      title={t("deaths_by_cause")}
       colors={["#37007F", "#7F0008", "#487F00", "#007F77"]}
     />
   );

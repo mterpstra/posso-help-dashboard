@@ -1,14 +1,15 @@
 import DataCollection from './DataCollection';
+import { useTranslation } from 'react-i18next';
 export const Areas = (props) => {
-  const title = 'Areas'
+  const { t } = useTranslation();
   const collection = 'areas'
   const columns = [
-    {name: 'Area',      selector: row => row.name},
-    {name: 'Nicknames', selector: row => row.matches},
+    {name: t("area"),      selector: row => row.name},
+    {name: t("nicknames"), selector: row => row.matches},
   ];
   return (
     <DataCollection 
-      title={title} 
+      title={t("areas_title")} 
       collection={collection} 
       columns={columns}/>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import PhoneNumberInput from './PhoneNumberInput.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
 
 const AddTeamForm = (props) => {
+  const { t } = useTranslation();
   const [phone_number, setPhoneNumber] = useState("");
 
   // @todo: consider using user override for language 
@@ -11,7 +13,7 @@ const AddTeamForm = (props) => {
 
   return (
     <>
-      <h3>Add Team Member</h3>
+      <h3>{t("team_add")}</h3>
       <input type="text" name="name" 
              placeholder="Name" required/>
       <PhoneNumberInput
