@@ -2,7 +2,6 @@ import DataCollection from './DataCollection.js';
 import { useTranslation } from 'react-i18next';
 export const Temperatures = (props) => {
   const { t } = useTranslation();
-  const title = 'Temperatures';
   const collection = 'temperature';
   const columns = [
     {name: t("temperature"), selector: row => `${row.temperature} celcius`, sortable:true},
