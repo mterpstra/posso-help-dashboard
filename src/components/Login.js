@@ -7,8 +7,6 @@ const Login = (props) => {
   const submit = (formData) => {
     const email = formData.get("email");
     const password = formData.get("password");
-    console.log("in submit", email, password);
-
     fetch('/api/auth/login', {
       method: 'POST',
       body: JSON.stringify({email, password})
@@ -20,7 +18,6 @@ const Login = (props) => {
       return response.json();
     })
     .then(data => {
-      console.log('Login success:', data);
       if (data.success) {
         localStorage.setItem('zapmanejo_token', data.token);
         localStorage.setItem('zapmanejo_user', JSON.stringify(data.user));
@@ -30,6 +27,7 @@ const Login = (props) => {
       }
     })
     .catch(error => {
+      setErrorMessage(error.message);
       console.error('Error fetching data:', error);
     });
   }
