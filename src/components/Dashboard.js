@@ -62,12 +62,9 @@ const Dashboard = (props) => {
 
   const onClickProfile = () => {
     setActiveTab(9);
-    console.log("in dashboard, and user clicked profile");
   }
 
   const screen = getComponent(); 
-  console.log("showing screen", screen);
-
   const addScreens = ["births", "deaths", "rainfall", "temperatures", "areas", "teams"];
   return (
     <div className='Dashboard'>
