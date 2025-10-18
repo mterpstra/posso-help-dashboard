@@ -15,7 +15,6 @@ export const Profile = (props) => {
     const lang = formData.get("lang");
     const _id  = profile._id;
     const body = JSON.stringify({_id, lang});
-    console.log("body", body);
     const url = `/api/data/users`;
     fetch(url, {
       method: 'PUT',
@@ -34,9 +33,6 @@ export const Profile = (props) => {
         localStorage.removeItem('zapmanejo_user');
         window.location.reload();
       }
-    })
-    .then(data => {
-      console.log("ERROR", data);
     })
     .catch(error => {
       console.error('Error updating form data:', error);
