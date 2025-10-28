@@ -7,6 +7,16 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
+
+      // Login/Registration
+      "login":            "Login",
+      "register":         "Register",
+      "forgot_password":  "Forgot Password",
+      "email":            "Email",
+      "password":         "Password",
+      "username":         "Username",
+      "confirm_password": "Confirm Password",
+
       // Header Values
       "dashboard":     "Dashboard",
 
@@ -62,6 +72,16 @@ const resources = {
   },
   pt: {
     translation: {
+
+      // Login/Registration
+      "login":            "Conecte-se",
+      "register":         "Cadastre-se",
+      "forgot_password":  "Esqueceu sua senha",
+      "email":            "E-mail",
+      "password":         "Senha",
+      "username":         "Nome de usuário",
+      "confirm_password": "Confirme sua senha",
+
       // Header Values
       "dashboard":     "Painel Da Web",
 

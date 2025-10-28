@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ErrorMessage from './ErrorMessage.js';
 import './Login.css';
 const Login = (props) => {
-
+  const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState("");
   const submit = (formData) => {
     const email = formData.get("email");
@@ -34,14 +35,14 @@ const Login = (props) => {
 
   return (
     <form className="LoginForm" action={submit}>
-      <h2>Login</h2>
-      <input type="email"    name="email" placeholder="Email" required/>
-      <input type="password" name="password" placeholder="Password" required/>
-      <button type="submit">Login</button>
+      <h2>{t("login")}</h2>
+      <input type="email"    name="email" placeholder={t("email")} required/>
+      <input type="password" name="password" placeholder={t("password")} required/>
+      <button type="submit">{t("login")}</button>
       <ErrorMessage message={errorMessage}/>
       <div className="links">
-        <a href="#" onClick={props.onRegisterClick}>Register</a>
-        <a href="#" onClick={props.onForgotPasswordClick}>Forgot Password</a>
+        <a href="#" onClick={props.onRegisterClick}>{t("register")}</a>
+        <a href="#" onClick={props.onForgotPasswordClick}>{t("forgot_password")}</a>
       </div>
     </form>
   );

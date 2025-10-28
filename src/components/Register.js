@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import ErrorMessage from './ErrorMessage';
 import PhoneNumberInput from './PhoneNumberInput.js';
 import './Register.css';
 const Register = (props) => {
+  const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
@@ -90,18 +92,18 @@ const Register = (props) => {
     <div class="form-container">
     {fetching ? <Overlay/>:""}
     <form className="RegisterForm" action={submit}>
-      <h2>Register</h2>
+      <h2>{t("register")}</h2>
 
       <input name="username" type="text" required
-             placeholder="Username" value={username}
+             placeholder={t("username")} value={username}
              onChange={(e) => setUsername(e.target.value)}/>
 
       <input name="name" type="text" required
-             placeholder="Name" value={name}
+             placeholder={t("name")} value={name}
              onChange={(e) => setName(e.target.value)}/>
 
       <input name="email" type="text" required 
-             placeholder="Email" value={email}
+             placeholder={t("email")} value={email}
              onChange={(e) => setEmail(e.target.value)}/>
 
       <PhoneNumberInput
@@ -109,13 +111,19 @@ const Register = (props) => {
         onChange={setPhoneNumber}
         phoneNumber={phone_number}/>
 
-      <input name="password" type="password" placeholder="Password" required/>
-      <input name="confirm"  type="password" placeholder="Confirm Password"/>
-      <button type="submit">Register</button>
+      <input name="password" type="password" 
+             placeholder={t("password")} required/>
+
+      <input name="confirm"  type="password" 
+             placeholder={t("confirm_password")} required/>
+
+      <button type="submit">{t("register")}</button>
+
       <ErrorMessage message={errorMessage}/>
+
       <div className="success-message">Success</div>
       <div className="links">
-        <a href="#" onClick={props.onLoginClick}>Login</a>
+        <a href="#" onClick={props.onLoginClick}>{t("login")}</a>
       </div>
     </form>
     </div>
