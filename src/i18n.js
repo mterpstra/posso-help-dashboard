@@ -65,6 +65,7 @@ const resources = {
       "nicknames":    "Nicknames",
       "name":         "Name",
       "phone_number": "Phone Number",
+      "language":     "Language",
 
       // Buttons 
       "add_button":   "Add",
@@ -130,6 +131,7 @@ const resources = {
       "nicknames":    "Apelidos",
       "name":         "Nome",
       "phone_number": "Número de Telefone",
+      "language":     "Language",
 
       // Buttons 
       "add_button":   "Adicionar",

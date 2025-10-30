@@ -6,6 +6,7 @@ export const Teams = (props) => {
   const columns = [
     { name: t("name"),         selector: row => row.name},
     { name: t("phone_number"), selector: row => row.phone_number},
+    { name: t("language"),     selector: row => row.lang},
   ];
   return (
     <DataCollection 

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import PhoneNumberInput from './PhoneNumberInput.js';
+import LanguageInput from './LanguageInput.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
 
 const AddTeamForm = (props) => {
   const { t } = useTranslation();
   const [phone_number, setPhoneNumber] = useState("");
 
-  // @todo: consider using user override for language 
-  // const user = JSON.parse(localStorage.getItem('zapmanejo_user'));
-  const language = navigator.language;
+  var language = navigator.language;
+  const user = JSON.parse(localStorage.getItem('zapmanejo_user'));
+  if (user.lang === "en-US") {
+    language = user.lang;
+  }
 
   return (
     <>
@@ -20,6 +23,7 @@ const AddTeamForm = (props) => {
         language={language}
         onChange={setPhoneNumber}
         phoneNumber={phone_number}/>
+      <LanguageInput/>
     </>
   );
 }
@@ -27,7 +31,8 @@ const AddTeamForm = (props) => {
 const getBodyFromForm = (formData) => {
   const name = formData.get("name");
   const phone_number = formData.get("phone_number");
-  return JSON.stringify({ name, phone_number});
+  const lang = formData.get("lang");
+  return JSON.stringify({ name, phone_number, lang});
 }
 
 export const AddTeam = (props) => {
