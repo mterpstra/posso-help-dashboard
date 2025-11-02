@@ -10,7 +10,7 @@ export const Births = (props) => {
     {name: t("pure"),  selector: (row) => (row.pure_breed) ? "true" : "false", sortable: true},
     {name: t("area"),  selector: row => row.area, sortable: true},
     {name: t("date"),  selector: row => row.date, sortable: true},
-    {name: t("who"),   selector: row => row.name, sortable: true},
+    {name: t("who"),   selector: row => row.created_by, sortable: true},
     {name: t("from"),  selector: row => row.phone, sortable: true},
   ];
   return (

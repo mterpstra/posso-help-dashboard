@@ -9,7 +9,7 @@ const AddAreaForm = (props) => {
       <input type="text" name="name" 
         placeholder="Area" required/>
       <input type="text" name="matches" 
-        placeholder="Nicknames" required/>
+        placeholder="Nicknames" />
     </>
   );
 }
