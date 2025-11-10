@@ -6,7 +6,7 @@ export const Tab = (props) => {
   }
   return (
     <button 
-      className={`Tab ${props.isActive?'active':''}`}
+      className={`Tab ${props.class_name} ${props.isActive?'active':''}`}
       onClick={handleClick}>
       {props.text}
     </button>
@@ -25,6 +25,7 @@ export const TabList = (props) => {
   const { t } = useTranslation();
   const tabListItems = props.tabs.map((item, index) => (
     <Tab key={index} id={index} text={t(item.toLowerCase())} 
+      class_name={item.toLowerCase()}
       onTabClicked={props.onTabClicked}
       isActive={(index===props.activeTab) ? true : false}
     />

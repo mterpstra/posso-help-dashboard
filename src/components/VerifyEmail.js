@@ -36,7 +36,8 @@ const VerifyEmail = (props) => {
     <form className="VerifyEmailForm" action={submit}>
       <h2>Enter verification code</h2>
       <p>We sent an email to: {props.email}</p>
-      <input type="text" name="code" placeholder="Enter Code" maxLength="6"/>
+      <input type="text" name="code" value={props.code} 
+              placeholder="Enter Code" maxLength="6"/>
       <input type="text" name="email" hidden value={props.email}/>
       <button type="submit">Submit</button>
       <ErrorMessage message={errorMessage}/>

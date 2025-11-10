@@ -41,8 +41,10 @@ const Login = (props) => {
       <button type="submit">{t("login")}</button>
       <ErrorMessage message={errorMessage}/>
       <div className="links">
-        <a href="#" onClick={props.onRegisterClick}>{t("register")}</a>
-        <a href="#" onClick={props.onForgotPasswordClick}>{t("forgot_password")}</a>
+        <a href="#" id="register-link" 
+           onClick={props.onRegisterClick}>{t("register")}</a>
+        <a href="#" id="forgot-password-link" 
+           onClick={props.onForgotPasswordClick}>{t("forgot_password")}</a>
       </div>
     </form>
   );

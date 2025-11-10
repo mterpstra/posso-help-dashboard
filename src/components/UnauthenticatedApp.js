@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 const UnauthenticatedApp = () => {
   const [screen, setScreen] = useState("login");
   const [user, setUser] = useState({});
+  const [code, setCode] = useState("");
 
   return (
     <div className="UnauthenticatedApp">
@@ -27,6 +28,7 @@ const UnauthenticatedApp = () => {
             if (response.success) {
               setScreen("verify");
               setUser(response.user);
+              setCode(response.verification_code);
               console.log("Good so far", response);
             } else {
               // @todo: Put the message on the page
@@ -38,6 +40,7 @@ const UnauthenticatedApp = () => {
 
       {screen === "verify" && 
         <VerifyEmail email={user.email}
+          code={code}
           onLoginClick={() => setScreen("login")}
         />
       }
