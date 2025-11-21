@@ -31,38 +31,46 @@ const Card = styled.div`
   flex: 1;
   min-width: 180px;
   text-align: center;
-  strong { display: block; font-size: 2.4em; color: #2d5016; }
+  strong {
+    display: block;
+    font-size: 2.4em;
+    color: #2d5016;
+  }
 `;
 
 const RebanhoTab = () => {
   const { t } = useTranslation();
   const [animals, setAnimals] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(false);
 
-  // TODO: replace with real API calls to Mark's Go backend
+  // Demo data (will be replaced by real API later)
   useEffect(() => {
-    // fetch('/api/animals').then(r => r.json()).then(setAnimals);
-    // For now we keep demo data
     setAnimals([
       { id: 1, ear_tag: "2235", sex: "Fêmea", breed: "Nelore", birth_date: "2022-03-12", mother_tag: "1124", status: "Prenhe", area: "Piquete 5", last_calving: "2025-01-15", notes: "IATF" },
       { id: 2, ear_tag: "8888", sex: "Macho", breed: "Angus", birth_date: "2024-12-25", mother_tag: "4456", status: "Bezerro", area: "Cercado Bezerros", last_calving: null, notes: "" },
-      { id: 3, ear_tag: "5430", sex: "Fêmea", breed: "Girolando", birth_date: "2023-06-05", mother_tag: "3210", status: "Vacia", area: "Piquete 3", last_calving: "2025-02-10", notes: "Seca" },
+      { id: 3, ear_tag: "5430", sex: "Fêmea", breed: "Girolando", birth_date: "2023-06-05", mother_tag: "3210", status: "Morto", area: "Piquete 3", last_calving: "2025-02-10", notes: "Doença" },
+      { id: 4, ear_tag: "9876", sex: "Fêmea", breed: "Nelore", birth_date: "2021-08-20", mother_tag: "5544", status: "Vendido", area: "", last_calving: "2024-11-01", notes: "Venda 15/11/2025" },
     ]);
   }, []);
 
   const filtered = useMemo(() => {
     if (!searchTerm) return animals;
     const term = searchTerm.toLowerCase();
-    return animals.filter(a => 
+    return animals.filter(a =>
       Object.values(a).join(' ').toLowerCase().includes(term)
     );
   }, [animals, searchTerm]);
 
   const summary = useMemo(() => {
-    const females = animals.filter(a => a.sex?.toLowerCase().includes('fêmea')).length;
-    const pregnant = animals.filter(a => a.status?.toLowerCase().includes('prenhe')).length;
-    return { total: animals.length, females, males: animals.length - females, pregnant };
+    const totalRegistered = animals.length;
+    const alive = animals.filter(a => !['Morto', 'Abortado', 'Vendido', 'Dead', 'Aborted', 'Sold']
+      .includes(a.status || '')).length;
+    const dead = animals.filter(a => ['Morto', 'Dead'].includes(a.status || '')).length;
+    const aborted = animals.filter(a => ['Abortado', 'Aborted'].includes(a.status || '')).length;
+    const sold = animals.filter(a => ['Vendido', 'Sold'].includes(a.status || '')).length;
+    const pregnant = animals.filter(a => ['Prenhe', 'Pregnant'].includes(a.status || '')).length;
+
+    return { totalRegistered, alive, dead, aborted, sold, pregnant };
   }, [animals]);
 
   const handleImport = (e) => {
@@ -75,7 +83,7 @@ const RebanhoTab = () => {
         header: true,
         complete: (res) => {
           const newAnimals = res.data.map((row, i) => ({ id: Date.now() + i, ...row }));
-          setAnimals([...animals, ...newAnimals]);
+          setAnimals(prev => [...prev, ...newAnimals]);
         }
       });
     } else if (ext === 'xlsx') {
@@ -85,7 +93,7 @@ const RebanhoTab = () => {
         const ws = wb.Sheets[wb.SheetNames[0]];
         const data = XLSX.utils.sheet_to_json(ws, { defval: '' });
         const newAnimals = data.map((row, i) => ({ id: Date.now() + i, ...row }));
-        setAnimals([...animals, ...newAnimals]);
+        setAnimals(prev => [...prev, ...newAnimals]);
       };
       reader.readAsBinaryString(file);
     }
@@ -104,23 +112,27 @@ const RebanhoTab = () => {
     { name: t('tag'), selector: row => row.ear_tag, sortable: true },
     { name: t('sex'), selector: row => row.sex, sortable: true },
     { name: t('breed'), selector: row => row.breed, sortable: true },
-    { name: t('date'), selector: row => row.birth_date, sortable: true },
+    { name: t('birth_date') || 'Nascimento', selector: row => row.birth_date, sortable: true },
     { name: 'Mãe', selector: row => row.mother_tag, sortable: true },
-    { name: t('status'), selector: row => row.status, sortable: true },
+    { name: t('status') || 'Status', selector: row => row.status, sortable: true },
     { name: t('area'), selector: row => row.area, sortable: true },
-    { name: 'Último Parto', selector: row => row.last_calving, sortable: true },
-    { name: t('notes'), selector: row => row.notes },
+    { name: 'Último Parto', selector: row => row.last_calving },
+    { name: t('notes') || 'Obs', selector: row => row.notes },
   ];
 
   return (
     <>
-      <h2 style={{ textAlign: 'center', color: '#2d5016' }}>{t('rebanho_title', 'Inventário de Rebanho')}</h2>
+      <h2 style={{ textAlign: 'center', color: '#2d5016', margin: '20px 0' }}>
+        {t('herd_title')}
+      </h2>
 
       <SummaryCards>
-        <Card><strong>{summary.total}</strong> Total de Animais</Card>
-        <Card><strong>{summary.females}</strong> Fêmeas</Card>
-        <Card><strong>{summary.males}</strong> Machos</Card>
-        <Card><strong>{summary.pregnant}</strong> Prenhes</Card>
+        <Card><strong>{summary.totalRegistered}</strong> {t('total_animals')}</Card>
+        <Card><strong>{summary.alive}</strong> {t('current_herd')}</Card>
+        <Card><strong>{summary.dead}</strong> {t('dead')}</Card>
+        <Card><strong>{summary.aborted}</strong> {t('aborted')}</Card>
+        <Card><strong>{summary.sold}</strong> {t('sold')}</Card>
+        <Card><strong>{summary.pregnant}</strong> {t('pregnant')}</Card>
       </SummaryCards>
 
       <SearchInput
@@ -131,9 +143,9 @@ const RebanhoTab = () => {
       />
 
       <div style={{ textAlign: 'center', margin: '20px 0' }}>
-        <input type="file" accept=".csv,.xlsx" onChange={handleImport} style={{ margin: '0 10px' }} />
+        <input type="file" accept=".csv,.xlsx" onChange={handleImport} style={{ marginRight: '10px' }} />
         <button onClick={handleExport} style={{ padding: '10px 20px', background: '#2d5016', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
-          Exportar para Excel
+          Exportar Excel
         </button>
       </div>
 
@@ -143,7 +155,7 @@ const RebanhoTab = () => {
         pagination
         highlightOnHover
         responsive
-        noDataComponent="Nenhum animal encontrado"
+        noDataComponent={t('no_data') || "Nenhum animal encontrado"}
       />
     </>
   );
