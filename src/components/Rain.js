@@ -3,10 +3,8 @@ import ListRain from './ListRain.js';
 import AddRain from './AddRain.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
-import { useTranslation } from 'react-i18next';
 
 export const Rain = () => {
-  const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
   return (
@@ -21,16 +19,16 @@ export const Rain = () => {
         {screen} Rain
       </h2>
 
-      {(screen == "list") && <ListRain/>}
+      {(screen === "list") && <ListRain/>}
 
-      {(screen == "add") && 
+      {(screen === "add") && 
         <AddRain
           onSuccess={() => setScreen("list")}
         />
       }
 
 
-      {(screen == "upload") && 
+      {(screen === "upload") && 
         <Upload collection="rain"
           onSuccess={() => setScreen("list")}
         />

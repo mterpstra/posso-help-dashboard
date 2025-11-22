@@ -3,10 +3,8 @@ import ListDeaths from './ListDeaths.js';
 import AddDeath from './AddDeath.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
-import { useTranslation } from 'react-i18next';
 
 export const Death = () => {
-  const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
   return (
@@ -21,16 +19,16 @@ export const Death = () => {
         {screen} Deaths 
       </h2>
 
-      {(screen == "list") && <ListDeaths/>}
+      {(screen === "list") && <ListDeaths/>}
 
-      {(screen == "add") && 
+      {(screen === "add") && 
         <AddDeath 
           onSuccess={() => setScreen("list")}
         />
       }
 
 
-      {(screen == "upload") && 
+      {(screen === "upload") && 
         <Upload collection="deaths"
           onSuccess={() => setScreen("list")}
         />

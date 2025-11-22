@@ -1,8 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import './Upload.css';
 
 export const Upload = (props) => {
-  const { t } = useTranslation();
   const url = `/api/upload/${props.collection}`;
   const token = localStorage.getItem('zapmanejo_token');
   const submit = (formData) => {

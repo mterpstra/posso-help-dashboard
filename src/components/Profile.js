@@ -1,4 +1,3 @@
-import DataCollection from './DataCollection';
 import SuccessMessage from './SuccessMessage';
 import React, { useState, useEffect } from 'react';
 

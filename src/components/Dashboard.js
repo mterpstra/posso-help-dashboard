@@ -10,7 +10,6 @@ import Areas from './Areas.js';
 import Teams from './Teams.js';
 import { TabList } from './Tab.js';
 import Profile from './Profile.js';
-import Upload from './Upload.js';
 
 const Dashboard = (props) => {
   const tabs = [

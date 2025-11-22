@@ -3,10 +3,8 @@ import ListTeams from './ListTeams.js';
 import AddTeam from './AddTeam.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
-import { useTranslation } from 'react-i18next';
 
 export const Team = () => {
-  const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
   return (
@@ -21,16 +19,16 @@ export const Team = () => {
         Team 
       </h2>
 
-      {(screen == "list") && <ListTeams/>}
+      {(screen === "list") && <ListTeams/>}
 
-      {(screen == "add") && 
+      {(screen === "add") && 
         <AddTeam 
           onSuccess={() => setScreen("list")}
         />
       }
 
 
-      {(screen == "upload") && 
+      {(screen === "upload") && 
         <Upload collection="teams"
           onSuccess={() => setScreen("list")}
         />

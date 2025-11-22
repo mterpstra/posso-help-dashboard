@@ -3,10 +3,8 @@ import ListBirths from './ListBirths.js';
 import AddBirth from './AddBirth.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
-import { useTranslation } from 'react-i18next';
 
 export const Birth = () => {
-  const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
   return (
@@ -21,16 +19,16 @@ export const Birth = () => {
         {screen} Births
       </h2>
 
-      {(screen == "list") && <ListBirths/>}
+      {(screen === "list") && <ListBirths/>}
 
-      {(screen == "add") && 
+      {(screen === "add") && 
         <AddBirth 
           onSuccess={() => setScreen("list")}
         />
       }
 
 
-      {(screen == "upload") && 
+      {(screen === "upload") && 
         <Upload collection="births"
           onSuccess={() => setScreen("list")}
         />

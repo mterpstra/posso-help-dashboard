@@ -3,10 +3,8 @@ import ListTemperatures from './ListTemperatures.js';
 import AddTemperature from './AddTemperature.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
-import { useTranslation } from 'react-i18next';
 
 export const Temperature = () => {
-  const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
   return (
@@ -21,16 +19,16 @@ export const Temperature = () => {
         {screen} Temperatures
       </h2>
 
-      {(screen == "list") && <ListTemperatures/>}
+      {(screen === "list") && <ListTemperatures/>}
 
-      {(screen == "add") && 
+      {(screen === "add") && 
         <AddTemperature
           onSuccess={() => setScreen("list")}
         />
       }
 
 
-      {(screen == "upload") && 
+      {(screen === "upload") && 
         <Upload collection="temperatures"
           onSuccess={() => setScreen("list")}
         />

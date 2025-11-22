@@ -1,8 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import DataCollectionAdd from './DataCollectionAdd.js';
 
 const AddAreaForm = (props) => {
-  const { t } = useTranslation();
   return (
     <>
       <input type="text" name="name" 

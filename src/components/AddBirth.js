@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import DataCollectionAdd from './DataCollectionAdd.js';
 import AreaDropdown from './AreaDropdown.js';
 import TagNumberInput from './TagNumberInput.js';
@@ -7,7 +6,6 @@ import BreedDropdown from './BreedDropdown.js';
 import DateInput from './DateInput.js';
 
 const AddBirthForm = (props) => {
-  const { t } = useTranslation();
   return (
     <>
       <TagNumberInput/>
