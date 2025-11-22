@@ -57,3 +57,14 @@ input[type=number] {
   -moz-appearance:textfield; 
 }
 
+.action-buttons {
+  float:right;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  gap:15px;
+}
+
+.action-buttons a {
+  text-decoration:none;
+}

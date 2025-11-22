@@ -1,0 +1,13 @@
+.ContentHeader {
+  background:yellow;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ContentHeader .action-buttons {
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-end;
+  gap:15px;
+}

@@ -14,10 +14,12 @@ export const Deaths = (props) => {
     {name: t("from"),  selector: row => row.phone, sortable:true},
   ];
   return (
-    <DataCollection 
-      title={t("deaths_title")} 
-      collection={collection} 
-      columns={columns}/>
+    <>
+      <DataCollection 
+        title={t("deaths_title")} 
+        collection={collection} 
+        columns={columns}/>
+    </>
   );
 }
 export default Deaths;
