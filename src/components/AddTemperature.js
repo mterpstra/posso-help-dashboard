@@ -25,7 +25,7 @@ const getBodyFromForm = (formData) => {
 export const AddTemperature = (props) => {
   return (
     <DataCollectionAdd
-      collection="temperature"
+      collection="temperatures"
       getBodyFromForm={getBodyFromForm}
       formElements={AddTemperatureForm}
       onSuccess={props.onSuccess}

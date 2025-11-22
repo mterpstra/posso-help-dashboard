@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import ListTemperatures from './ListTemperatures.js';
-import AddTemperature from './AddTemperature.js';
+import ListRain from './ListRain.js';
+import AddRain from './AddRain.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
 import { useTranslation } from 'react-i18next';
 
-export const Temperature = () => {
+export const Rain = () => {
   const { t } = useTranslation();
   const [screen, setScreen] = useState("list");
 
@@ -15,23 +15,23 @@ export const Temperature = () => {
         <ListButton onClick={() => setScreen("list")}/>
         <AddButton onClick={() => setScreen("add")}/>
         <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="temperatures"/>
+        <DownloadButton collection="rain"/>
       </div>
       <h2>
-        Temperatures
+        Rain
       </h2>
 
-      {(screen == "list") && <ListTemperatures/>}
+      {(screen == "list") && <ListRain/>}
 
       {(screen == "add") && 
-        <AddTemperature
+        <AddRain
           onSuccess={() => setScreen("list")}
         />
       }
 
 
       {(screen == "upload") && 
-        <Upload collection="temperatures"
+        <Upload collection="rain"
           onSuccess={() => setScreen("list")}
         />
       }
@@ -39,4 +39,4 @@ export const Temperature = () => {
   );
 }
 
-export default Temperature;
+export default Rain;
