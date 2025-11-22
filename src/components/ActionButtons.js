@@ -1,7 +1,10 @@
 import './ActionButtons.css';
 
 const ActionButton = (props) => {
-  const classes = `ActionButton ${props.className}`;
+  let classes = `ActionButton ${props.className}`;
+  if (props.isActive) {
+    classes += " active";
+  }
   return ( 
     <button 
       className={classes}
@@ -14,8 +17,9 @@ const ActionButton = (props) => {
 export const ListButton = (props) => {
   return ( 
     <ActionButton 
-      className="ListButton" 
+      className="ListButton"
       label="&#9776;"
+      isActive={props.isActive}
       onClick={props.onClick}
     />
   );
@@ -26,6 +30,7 @@ export const AddButton = (props) => {
     <ActionButton 
       className="AddButton" 
       label="+"
+      isActive={props.isActive}
       onClick={props.onClick}
     />
   );
@@ -36,6 +41,7 @@ export const UploadButton = (props) => {
     <ActionButton 
       className="UploadButton" 
       label="&#8682;"
+      isActive={props.isActive}
       onClick={props.onClick}
     />
   );
@@ -49,6 +55,7 @@ export const DownloadButton = (props) => {
       <ActionButton 
         className="DownloadButton" 
         label="&#8679;"
+        isActive={props.isActive}
         onClick={props.onClick}
       />
     </a>
