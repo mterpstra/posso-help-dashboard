@@ -18,7 +18,7 @@ export const Death = () => {
         <DownloadButton collection="deaths"/>
       </div>
       <h2>
-        Deaths 
+        {screen} Deaths 
       </h2>
 
       {(screen == "list") && <ListDeaths/>}

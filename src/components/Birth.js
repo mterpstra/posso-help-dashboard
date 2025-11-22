@@ -18,7 +18,7 @@ export const Birth = () => {
         <DownloadButton collection="births"/>
       </div>
       <h2>
-        Births
+        {screen} Births
       </h2>
 
       {(screen == "list") && <ListBirths/>}

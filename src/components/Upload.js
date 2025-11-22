@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import './Upload.css';
 
 export const Upload = (props) => {
   const { t } = useTranslation();
@@ -31,20 +32,15 @@ export const Upload = (props) => {
   }
 
   return (
-    <>
-      <h3>
-        {t("upload")}
-        {t(props.collection)}
-      </h3>
-
+    <div className="UploadForm">
       <form action={submit}
             method="post" enctype="multipart/form-data">
         <label for="csvFile">Choose a CSV file:</label>
         <input type="file" id="csvFile" 
                name="csvFile" accept=".csv, text/csv" required/>
-        <input type="submit" value="Upload File"/>
+        <button type="submit" value="Upload File">Upload</button>
       </form>
-    </>
+    </div>
   );
 }
 

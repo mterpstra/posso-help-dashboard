@@ -10,7 +10,6 @@ const AddDeathForm = (props) => {
   const { t } = useTranslation();
   return (
     <>
-      <h3>{t("deaths_add")}</h3>
       <TagNumberInput/>
       <DeathCauseDropdown/>
       <BreedDropdown/>

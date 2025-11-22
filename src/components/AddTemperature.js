@@ -6,7 +6,6 @@ const AddTemperatureForm = (props) => {
   const { t } = useTranslation();
   return (
     <>
-      <h3>{t("temperature_add")}</h3>
       <input type="number" name="temperature" 
              placeholder="Temperature (celcius)" required/>
       <AreaDropdown/>

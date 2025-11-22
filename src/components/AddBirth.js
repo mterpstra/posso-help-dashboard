@@ -10,7 +10,6 @@ const AddBirthForm = (props) => {
   const { t } = useTranslation();
   return (
     <>
-      <h3>{t("births_add")}</h3>
       <TagNumberInput/>
       <BreedDropdown/>
       <SexDropdown/>

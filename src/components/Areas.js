@@ -18,7 +18,7 @@ export const Areas = () => {
         <DownloadButton collection="areas"/>
       </div>
       <h2>
-        Areas
+        {screen} Areas
       </h2>
 
       {(screen == "list") && <ListAreas/>}

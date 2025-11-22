@@ -18,7 +18,7 @@ export const Temperature = () => {
         <DownloadButton collection="temperatures"/>
       </div>
       <h2>
-        Temperatures
+        {screen} Temperatures
       </h2>
 
       {(screen == "list") && <ListTemperatures/>}

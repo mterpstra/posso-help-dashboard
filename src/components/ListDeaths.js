@@ -16,7 +16,6 @@ export const ListDeaths = (props) => {
   return (
     <>
       <DataCollection 
-        title={t("deaths_title")} 
         collection={collection} 
         columns={columns}/>
     </>
