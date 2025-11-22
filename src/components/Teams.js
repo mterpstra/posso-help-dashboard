@@ -12,15 +12,15 @@ export const Team = () => {
       <div class="content-header">
         <div class="action-buttons">
           <ListButton 
-            isActive={screen=="list"}
+            isActive={screen === "list"}
             onClick={() => setScreen("list")}
           />
           <AddButton 
-            isActive={screen=="add"}
+            isActive={screen === "add"}
             onClick={() => setScreen("add")}
           />
           <UploadButton 
-            isActive={screen=="upload"}
+            isActive={screen === "upload"}
             onClick={() => setScreen("upload")}
           />
           <DownloadButton collection="teams"/>
