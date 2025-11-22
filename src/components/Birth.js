@@ -9,25 +9,30 @@ export const Birth = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="births"/>
+      <div class="content-header">
+        <div class="action-buttons">
+          <ListButton 
+            isActive={screen=="list"}
+            onClick={() => setScreen("list")}
+          />
+          <AddButton 
+            isActive={screen=="add"}
+            onClick={() => setScreen("add")}
+          />
+          <UploadButton 
+            isActive={screen=="upload"}
+            onClick={() => setScreen("upload")}
+          />
+          <DownloadButton collection="births"/>
+        </div>
       </div>
-      <h2>
-        {screen} Births
-      </h2>
 
       {(screen === "list") && <ListBirths/>}
-
       {(screen === "add") && 
         <AddBirth 
           onSuccess={() => setScreen("list")}
         />
       }
-
-
       {(screen === "upload") && 
         <Upload collection="births"
           onSuccess={() => setScreen("list")}

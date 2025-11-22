@@ -9,25 +9,30 @@ export const Death = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="deaths"/>
+      <div class="content-header">
+        <div class="action-buttons">
+          <ListButton 
+            isActive={screen=="list"}
+            onClick={() => setScreen("list")}
+          />
+          <AddButton 
+            isActive={screen=="add"}
+            onClick={() => setScreen("add")}
+          />
+          <UploadButton 
+            isActive={screen=="upload"}
+            onClick={() => setScreen("upload")}
+          />
+          <DownloadButton collection="deaths"/>
+        </div>
       </div>
-      <h2>
-        {screen} Deaths 
-      </h2>
 
       {(screen === "list") && <ListDeaths/>}
-
       {(screen === "add") && 
         <AddDeath 
           onSuccess={() => setScreen("list")}
         />
       }
-
-
       {(screen === "upload") && 
         <Upload collection="deaths"
           onSuccess={() => setScreen("list")}

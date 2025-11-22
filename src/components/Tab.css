@@ -21,16 +21,9 @@
 }
 
 .TabList {
-  overflow:hidden;
   display:flex;
+  flex-wrap:wrap;
   flex-direction:row;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.TabList .left {
-  overflow:hidden;
-  display:flex;
-  flex-direction:row;
+  flex-shrink:0;
   gap:10px;
 }

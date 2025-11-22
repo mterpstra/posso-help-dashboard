@@ -25,9 +25,7 @@ export const TabList = (props) => {
 
   return (
     <div className="TabList white-container">
-      <div className="left">
-        {tabListItems}
-      </div>
+      {tabListItems}
     </div>
   );
 }

@@ -9,25 +9,30 @@ export const Team = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="teams"/>
+      <div class="content-header">
+        <div class="action-buttons">
+          <ListButton 
+            isActive={screen === "list"}
+            onClick={() => setScreen("list")}
+          />
+          <AddButton 
+            isActive={screen === "add"}
+            onClick={() => setScreen("add")}
+          />
+          <UploadButton 
+            isActive={screen === "upload"}
+            onClick={() => setScreen("upload")}
+          />
+          <DownloadButton collection="teams"/>
+        </div>
       </div>
-      <h2>
-        Team 
-      </h2>
 
       {(screen === "list") && <ListTeams/>}
-
       {(screen === "add") && 
         <AddTeam 
           onSuccess={() => setScreen("list")}
         />
       }
-
-
       {(screen === "upload") && 
         <Upload collection="teams"
           onSuccess={() => setScreen("list")}
