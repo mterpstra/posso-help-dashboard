@@ -9,15 +9,15 @@ export const Temperature = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="temperatures"/>
+      <div class="content-header">
+        <h2>{screen} Temperatures</h2>
+        <div class="action-buttons">
+          <ListButton onClick={() => setScreen("list")}/>
+          <AddButton onClick={() => setScreen("add")}/>
+          <UploadButton onClick={() => setScreen("upload")}/>
+          <DownloadButton collection="temperatures"/>
+        </div>
       </div>
-      <h2>
-        {screen} Temperatures
-      </h2>
 
       {(screen === "list") && <ListTemperatures/>}
 

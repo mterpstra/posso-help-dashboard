@@ -9,15 +9,15 @@ export const Areas = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="areas"/>
+      <div class="content-header">
+        <h2>{screen} Areas</h2>
+        <div class="action-buttons">
+          <ListButton onClick={() => setScreen("list")}/>
+          <AddButton onClick={() => setScreen("add")}/>
+          <UploadButton onClick={() => setScreen("upload")}/>
+          <DownloadButton collection="areas"/>
+        </div>
       </div>
-      <h2>
-        {screen} Areas
-      </h2>
 
       {(screen === "list") && <ListAreas/>}
 

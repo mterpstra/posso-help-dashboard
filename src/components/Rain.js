@@ -9,15 +9,15 @@ export const Rain = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="rain"/>
+      <div class="content-header">
+        <h2>{screen} Rain</h2>
+        <div class="action-buttons">
+          <ListButton onClick={() => setScreen("list")}/>
+          <AddButton onClick={() => setScreen("add")}/>
+          <UploadButton onClick={() => setScreen("upload")}/>
+          <DownloadButton collection="rain"/>
+        </div>
       </div>
-      <h2>
-        {screen} Rain
-      </h2>
 
       {(screen === "list") && <ListRain/>}
 

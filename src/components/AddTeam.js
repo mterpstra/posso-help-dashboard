@@ -16,7 +16,6 @@ const AddTeamForm = (props) => {
 
   return (
     <>
-      <h3>{t("team_add")}</h3>
       <input type="text" name="name" 
              placeholder="Name" required/>
       <PhoneNumberInput

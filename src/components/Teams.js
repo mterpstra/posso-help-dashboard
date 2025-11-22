@@ -9,15 +9,15 @@ export const Team = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="teams"/>
+      <div class="content-header">
+        <h2>{screen} Team</h2>
+        <div class="action-buttons">
+          <ListButton onClick={() => setScreen("list")}/>
+          <AddButton onClick={() => setScreen("add")}/>
+          <UploadButton onClick={() => setScreen("upload")}/>
+          <DownloadButton collection="teams"/>
+        </div>
       </div>
-      <h2>
-        Team 
-      </h2>
 
       {(screen === "list") && <ListTeams/>}
 

@@ -9,15 +9,15 @@ export const Death = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="deaths"/>
+      <div class="content-header">
+        <h2>{screen} Deaths</h2>
+        <div class="action-buttons">
+          <ListButton onClick={() => setScreen("list")}/>
+          <AddButton onClick={() => setScreen("add")}/>
+          <UploadButton onClick={() => setScreen("upload")}/>
+          <DownloadButton collection="deaths"/>
+        </div>
       </div>
-      <h2>
-        {screen} Deaths 
-      </h2>
 
       {(screen === "list") && <ListDeaths/>}
 

@@ -1,6 +1,11 @@
 .Dashboard {
+  height:100%;
   display:flex;
   flex-direction:column;
   padding:20px;
   gap:20px;
+}
+
+.dashboard-content {
+  flex-grow:1;
 }

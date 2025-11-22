@@ -43,7 +43,7 @@ export const UploadButton = (props) => {
 
 export const DownloadButton = (props) => {
   const token = localStorage.getItem('zapmanejo_token');
-  const url = `http://localhost:8080/api/download/${props.collection}?token=${token}`
+  const url = `/api/download/${props.collection}?token=${token}`
   return ( 
     <a href={url} target="_blank" download>
       <ActionButton 
@@ -54,4 +54,3 @@ export const DownloadButton = (props) => {
     </a>
   );
 }
-

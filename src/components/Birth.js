@@ -9,15 +9,15 @@ export const Birth = () => {
 
   return (
     <>
-      <div class="action-buttons">
-        <ListButton onClick={() => setScreen("list")}/>
-        <AddButton onClick={() => setScreen("add")}/>
-        <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="births"/>
+      <div class="content-header">
+        <h2>{screen} Births</h2>
+        <div class="action-buttons">
+            <ListButton onClick={() => setScreen("list")}/>
+            <AddButton onClick={() => setScreen("add")}/>
+            <UploadButton onClick={() => setScreen("upload")}/>
+            <DownloadButton collection="births"/>
+        </div>
       </div>
-      <h2>
-        {screen} Births
-      </h2>
 
       {(screen === "list") && <ListBirths/>}
 

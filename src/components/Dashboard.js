@@ -55,8 +55,7 @@ const Dashboard = (props) => {
         activeTab={activeTab}
         onTabClicked={onTabClicked}
       />
-      <div className='white-container'>
-
+      <div className='white-container dashboard-content'>
         {(screen === "overview")        && <Overview/>}
         {(screen === "births")          && <Birth/>}
         {(screen === "deaths")          && <Death/>}
