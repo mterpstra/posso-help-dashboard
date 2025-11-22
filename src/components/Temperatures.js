@@ -1,19 +1,40 @@
-import DataCollection from './DataCollection.js';
-import { useTranslation } from 'react-i18next';
-export const Temperatures = (props) => {
-  const { t } = useTranslation();
-  const collection = 'temperature';
-  const columns = [
-    {name: t("temperature"), selector: row => `${row.temperature} celcius`, sortable:true},
-    {name: t("date"),        selector: row => row.date,       sortable:true},
-    {name: t("who"),         selector: row => row.created_by, sortable:true},
-    {name: t("from"),        selector: row => row.phone,      sortable:true},
-  ];
+import React, { useState } from 'react';
+import ListTemperatures from './ListTemperatures.js';
+import AddTemperature from './AddTemperature.js';
+import Upload from './Upload.js';
+import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
+
+export const Temperature = () => {
+  const [screen, setScreen] = useState("list");
+
   return (
-    <DataCollection 
-      title={t("temperature_title")} 
-      collection={collection} 
-      columns={columns}/>
+    <>
+      <div class="action-buttons">
+        <ListButton onClick={() => setScreen("list")}/>
+        <AddButton onClick={() => setScreen("add")}/>
+        <UploadButton onClick={() => setScreen("upload")}/>
+        <DownloadButton collection="temperatures"/>
+      </div>
+      <h2>
+        {screen} Temperatures
+      </h2>
+
+      {(screen === "list") && <ListTemperatures/>}
+
+      {(screen === "add") && 
+        <AddTemperature
+          onSuccess={() => setScreen("list")}
+        />
+      }
+
+
+      {(screen === "upload") && 
+        <Upload collection="temperatures"
+          onSuccess={() => setScreen("list")}
+        />
+      }
+    </>
   );
 }
-export default Temperatures;
+
+export default Temperature;

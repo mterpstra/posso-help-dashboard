@@ -1,12 +1,9 @@
-import { useTranslation } from 'react-i18next';
 import AreaDropdown from './AreaDropdown.js';
 import DataCollectionAdd from './DataCollectionAdd.js';
 
 const AddRainForm = (props) => {
-  const { t } = useTranslation();
   return (
     <>
-      <h3>{t("rainfall_add")}</h3>
       <input type="number" name="amount" 
              placeholder="Rainfall in mm" required/>
       <AreaDropdown/>

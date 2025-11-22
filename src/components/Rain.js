@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ListAreas from './ListAreas.js';
-import AddArea from './AddArea.js';
+import ListRain from './ListRain.js';
+import AddRain from './AddRain.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
 
-export const Areas = () => {
+export const Rain = () => {
   const [screen, setScreen] = useState("list");
 
   return (
@@ -13,23 +13,23 @@ export const Areas = () => {
         <ListButton onClick={() => setScreen("list")}/>
         <AddButton onClick={() => setScreen("add")}/>
         <UploadButton onClick={() => setScreen("upload")}/>
-        <DownloadButton collection="areas"/>
+        <DownloadButton collection="rain"/>
       </div>
       <h2>
-        {screen} Areas
+        {screen} Rain
       </h2>
 
-      {(screen === "list") && <ListAreas/>}
+      {(screen === "list") && <ListRain/>}
 
       {(screen === "add") && 
-        <AddArea
+        <AddRain
           onSuccess={() => setScreen("list")}
         />
       }
 
 
       {(screen === "upload") && 
-        <Upload collection="areas"
+        <Upload collection="rain"
           onSuccess={() => setScreen("list")}
         />
       }
@@ -37,4 +37,4 @@ export const Areas = () => {
   );
 }
 
-export default Areas;
+export default Rain;

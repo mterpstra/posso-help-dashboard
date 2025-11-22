@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import DataCollectionAdd from './DataCollectionAdd.js';
 import AreaDropdown from './AreaDropdown.js';
 import TagNumberInput from './TagNumberInput.js';
@@ -7,10 +6,8 @@ import BreedDropdown from './BreedDropdown.js';
 import DeathCauseDropdown from './DeathCauseDropdown.js';
 import DateInput from './DateInput';
 const AddDeathForm = (props) => {
-  const { t } = useTranslation();
   return (
     <>
-      <h3>{t("deaths_add")}</h3>
       <TagNumberInput/>
       <DeathCauseDropdown/>
       <BreedDropdown/>

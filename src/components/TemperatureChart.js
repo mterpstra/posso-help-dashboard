@@ -19,7 +19,7 @@ export const TemperatureChart = (props) => {
   }
   return (
     <DataCollectionPieChart
-      collection="temperature"
+      collection="temperatures"
       aggregateData={aggregateData}
       title={t("temperature_by_month")}
       colors={["#7F3500", "#0B7F00", "#004A7F", "#74007F"]}

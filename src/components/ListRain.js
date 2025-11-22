@@ -1,6 +1,6 @@
 import DataCollection from './DataCollection';
 import { useTranslation } from 'react-i18next';
-export const Rainfall = (props) => {
+export const ListRain = (props) => {
   const { t } = useTranslation();
   const collection = "rain";
   const columns = [
@@ -12,9 +12,8 @@ export const Rainfall = (props) => {
   ];
   return (
     <DataCollection 
-      title={t("rainfall_title")} 
       collection={collection} 
       columns={columns}/>
   );
 }
-export default Rainfall;
+export default ListRain;

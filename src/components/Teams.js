@@ -1,18 +1,40 @@
-import DataCollection from './DataCollection';
-import { useTranslation } from 'react-i18next';
-export const Teams = (props) => {
-  const { t } = useTranslation();
-  const collection = "teams";
-  const columns = [
-    { name: t("name"),         selector: row => row.name},
-    { name: t("phone_number"), selector: row => row.phone_number},
-    { name: t("language"),     selector: row => row.lang},
-  ];
+import React, { useState } from 'react';
+import ListTeams from './ListTeams.js';
+import AddTeam from './AddTeam.js';
+import Upload from './Upload.js';
+import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
+
+export const Team = () => {
+  const [screen, setScreen] = useState("list");
+
   return (
-    <DataCollection 
-      title={t("team_title")} 
-      collection={collection} 
-      columns={columns}/>
+    <>
+      <div class="action-buttons">
+        <ListButton onClick={() => setScreen("list")}/>
+        <AddButton onClick={() => setScreen("add")}/>
+        <UploadButton onClick={() => setScreen("upload")}/>
+        <DownloadButton collection="teams"/>
+      </div>
+      <h2>
+        Team 
+      </h2>
+
+      {(screen === "list") && <ListTeams/>}
+
+      {(screen === "add") && 
+        <AddTeam 
+          onSuccess={() => setScreen("list")}
+        />
+      }
+
+
+      {(screen === "upload") && 
+        <Upload collection="teams"
+          onSuccess={() => setScreen("list")}
+        />
+      }
+    </>
   );
 }
-export default Teams;
+
+export default Team;
