@@ -21,15 +21,9 @@ const Header = (props) => {
         <span>{t('dashboard')}</span>
       </div>
       <div className="profile">
-
         <div onClick={onClickProfile}>
-          <a href="#">{props.user.name}</a>
+          <a href="#">{props.user.name.substring(0,1)}</a>
         </div>
-
-        <div onClick={onClickLogout}>
-          <a href="#">Log out</a>
-        </div>
-
       </div>
     </div>
   );

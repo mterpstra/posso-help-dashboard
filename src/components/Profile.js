@@ -71,6 +71,12 @@ export const Profile = (props) => {
     fetchData();
   }, []);
 
+  const logout = () => {
+    localStorage.removeItem('zapmanejo_token');
+    localStorage.removeItem('zapmanejo_user');
+    window.location.reload();
+  }
+
   return (
     <div>
       <h2>Profile</h2>
@@ -83,6 +89,7 @@ export const Profile = (props) => {
           </select>
           <button type="submit">Update</button>
           <SuccessMessage message={success}/>
+          <a href="#" onClick={logout}>Log out</a>
         </form>
       </div>
     </div>
