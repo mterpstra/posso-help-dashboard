@@ -13,13 +13,14 @@
 }
 
 .Header .logo p {
-  font-size: 28px;
+  font-size: 18px;
   font-weight: bold;
   color: #2d5016;
   margin-right:10px;
 }
 
 .Header .logo span {
+  font-size: 14px;
   color: #666;
 }
 
@@ -28,14 +29,14 @@
   flex-direction:column;
   justify-content:center;
   align-items: center;
-  height:50px;
-  width:50px;
-  border-radius:25px;
+  height:40px;
+  width:40px;
+  border-radius:20px;
   background:#2d5016;
 }
 .Header .profile a {
   color:white;
   font-weight:bold;
-  font-size:30px;
+  font-size:20px;
   text-decoration:none;
 }
