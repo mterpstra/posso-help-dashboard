@@ -69,6 +69,16 @@ const resources = {
 
       // Buttons 
       "add_button":   "Add",
+            "herd": "Herd Inventory",
+      "herd_title": "Herd Inventory",
+      "total_animals": "Total Animals",
+      "current_herd": "Current Herd",
+      "females": "Females",
+      "males": "Males",
+      "pregnant": "Pregnant",
+      "dead": "Dead",
+      "aborted": "Aborted",
+      "sold": "Sold",
     }
   },
   pt: {
@@ -135,6 +145,16 @@ const resources = {
 
       // Buttons 
       "add_button":   "Adicionar",
+            "herd": "Rebanho",
+      "herd_title": "Inventário de Rebanho",
+      "total_animals": "Total Registrado",
+      "current_herd": "Rebanho Atual",
+      "females": "Fêmeas",
+      "males": "Machos",
+      "pregnant": "Prenhes",
+      "dead": "Mortos",
+      "aborted": "Abortados",
+      "sold": "Vendidos",
     }
   }
 };
