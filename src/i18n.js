@@ -28,6 +28,7 @@ const resources = {
       "temperatures":  "Temperatures",
       "areas":         "Areas",
       "team":          "Team",
+      "reproduction":  "Reproduction",
 
       // Overview Screen
       "overview_title":       "Overview",
@@ -104,6 +105,7 @@ const resources = {
       "temperatures":  "Temperaturas",
       "areas":         "Áreas",
       "team":          "Equipe",
+      "reproduction":  "Reprodução",
 
       // Overview Screen
       "overview_title":       "Visão Geral",
