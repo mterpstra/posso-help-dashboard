@@ -1,6 +1,6 @@
 import DataCollection from './DataCollection';
 import { useTranslation } from 'react-i18next';
-export const Births = (props) => {
+export const ListBirths = () => {
   const { t } = useTranslation();
   const collection = 'births';
   const columns = [
@@ -9,15 +9,16 @@ export const Births = (props) => {
     {name: t("sex"),   selector: row => row.sex,sortable: true},
     {name: t("pure"),  selector: (row) => (row.pure_breed) ? "true" : "false", sortable: true},
     {name: t("area"),  selector: row => row.area, sortable: true},
-    {name: t("date"),  selector: row => row.date, sortable: true},
+    {name: t("date"),  selector: row => row.date.substring(0,10), sortable: true},
     {name: t("who"),   selector: row => row.created_by, sortable: true},
     {name: t("from"),  selector: row => row.phone, sortable: true},
   ];
   return (
-    <DataCollection 
-      title={t("births_title")} 
-      collection={collection} 
-      columns={columns}/>
+    <>
+      <DataCollection 
+        collection={collection} 
+        columns={columns}/>
+    </>
   );
 }
-export default Births;
+export default ListBirths;

@@ -1,18 +1,45 @@
-import DataCollection from './DataCollection';
-import { useTranslation } from 'react-i18next';
-export const Areas = (props) => {
-  const { t } = useTranslation();
-  const collection = 'areas'
-  const columns = [
-    {name: t("area"),       selector: row => row.name},
-    {name: t("nicknames"),  selector: row => row.matches},
-    {name: t("created_by"), selector: row => row.created_by},
-  ];
+import React, { useState } from 'react';
+import ListAreas from './ListAreas.js';
+import AddArea from './AddArea.js';
+import Upload from './Upload.js';
+import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
+
+export const Areas = () => {
+  const [screen, setScreen] = useState("list");
+
   return (
-    <DataCollection 
-      title={t("areas_title")} 
-      collection={collection} 
-      columns={columns}/>
+    <>
+      <div class="content-header">
+        <div class="action-buttons">
+          <ListButton 
+            isActive={screen=="list"}
+            onClick={() => setScreen("list")}
+          />
+          <AddButton 
+            isActive={screen=="add"}
+            onClick={() => setScreen("add")}
+          />
+          <UploadButton 
+            isActive={screen=="upload"}
+            onClick={() => setScreen("upload")}
+          />
+          <DownloadButton collection="areas"/>
+        </div>
+      </div>
+
+      {(screen === "list") && <ListAreas/>}
+      {(screen === "add") && 
+        <AddArea
+          onSuccess={() => setScreen("list")}
+        />
+      }
+      {(screen === "upload") && 
+        <Upload collection="areas"
+          onSuccess={() => setScreen("list")}
+        />
+      }
+    </>
   );
 }
+
 export default Areas;

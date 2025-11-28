@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './Dashboard.css';
 import Header from './Header.js';
 import Overview from './Overview.js';
-import Births from './Births.js';
-import Deaths from './Deaths.js';
-import Rainfall from './Rainfall.js';
+import Birth from './Birth.js';
+import Death from './Deaths.js';
+import Rain from './Rain.js';
 import Temperatures from './Temperatures.js';
 import Reproduction from './Reproduction.js';
 import Areas from './Areas.js';
@@ -17,7 +17,7 @@ const Dashboard = (props) => {
     "Overview", 
     "Births",
     "Deaths",
-    "Rainfall",
+    "Rain",
     "Temperatures",
     "Reproduction",
     "Areas",
@@ -26,7 +26,7 @@ const Dashboard = (props) => {
   const getComponent = () => {
     if (activeTab === 1) return "births";
     if (activeTab === 2) return "deaths";
-    if (activeTab === 3) return "rainfall";
+    if (activeTab === 3) return "rain";
     if (activeTab === 4) return "temperatures";
     if (activeTab === 5) return "reproduction";
     if (activeTab === 6) return "areas";
@@ -52,11 +52,11 @@ const Dashboard = (props) => {
         activeTab={activeTab}
         onTabClicked={onTabClicked}
       />
-      <div className='white-container'>
+      <div className='white-container dashboard-content'>
         {(screen === "overview")        && <Overview/>}
-        {(screen === "births")          && <Births/>}
-        {(screen === "deaths")          && <Deaths/>}
-        {(screen === "rainfall")        && <Rainfall/>}
+        {(screen === "births")          && <Birth/>}
+        {(screen === "deaths")          && <Death/>}
+        {(screen === "rain")            && <Rain/>}
         {(screen === "temperatures")    && <Temperatures/>}
         {(screen === "reproduction")    && <Reproduction/>}
         {(screen === "areas")           && <Areas/>}

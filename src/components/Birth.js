@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ListTeams from './ListTeams.js';
-import AddTeam from './AddTeam.js';
+import ListBirths from './ListBirths.js';
+import AddBirth from './AddBirth.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
 
-export const Team = () => {
+export const Birth = () => {
   const [screen, setScreen] = useState("list");
 
   return (
@@ -12,29 +12,29 @@ export const Team = () => {
       <div class="content-header">
         <div class="action-buttons">
           <ListButton 
-            isActive={screen === "list"}
+            isActive={screen=="list"}
             onClick={() => setScreen("list")}
           />
           <AddButton 
-            isActive={screen === "add"}
+            isActive={screen=="add"}
             onClick={() => setScreen("add")}
           />
           <UploadButton 
-            isActive={screen === "upload"}
+            isActive={screen=="upload"}
             onClick={() => setScreen("upload")}
           />
-          <DownloadButton collection="teams"/>
+          <DownloadButton collection="births"/>
         </div>
       </div>
 
-      {(screen === "list") && <ListTeams/>}
+      {(screen === "list") && <ListBirths/>}
       {(screen === "add") && 
-        <AddTeam 
+        <AddBirth 
           onSuccess={() => setScreen("list")}
         />
       }
       {(screen === "upload") && 
-        <Upload collection="teams"
+        <Upload collection="births"
           onSuccess={() => setScreen("list")}
         />
       }
@@ -42,4 +42,4 @@ export const Team = () => {
   );
 }
 
-export default Team;
+export default Birth;

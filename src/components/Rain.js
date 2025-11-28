@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import ListTeams from './ListTeams.js';
-import AddTeam from './AddTeam.js';
+import ListRain from './ListRain.js';
+import AddRain from './AddRain.js';
 import Upload from './Upload.js';
 import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
 
-export const Team = () => {
+export const Rain = () => {
   const [screen, setScreen] = useState("list");
 
   return (
@@ -23,18 +23,18 @@ export const Team = () => {
             isActive={screen === "upload"}
             onClick={() => setScreen("upload")}
           />
-          <DownloadButton collection="teams"/>
+          <DownloadButton collection="rain"/>
         </div>
       </div>
 
-      {(screen === "list") && <ListTeams/>}
+      {(screen === "list") && <ListRain/>}
       {(screen === "add") && 
-        <AddTeam 
+        <AddRain
           onSuccess={() => setScreen("list")}
         />
       }
       {(screen === "upload") && 
-        <Upload collection="teams"
+        <Upload collection="rain"
           onSuccess={() => setScreen("list")}
         />
       }
@@ -42,4 +42,4 @@ export const Team = () => {
   );
 }
 
-export default Team;
+export default Rain;

@@ -13,7 +13,6 @@ const UnauthenticatedApp = () => {
 
   return (
     <div className="UnauthenticatedApp">
-    <div className="white-container">
       {screen === "login" && 
         <Login 
           onRegisterClick={() => setScreen("register")}
@@ -50,7 +49,6 @@ const UnauthenticatedApp = () => {
           onLoginClick={() => setScreen("login")}
         />
       }
-    </div>
     </div>
   );
 }
