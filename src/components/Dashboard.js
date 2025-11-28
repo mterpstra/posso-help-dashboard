@@ -7,6 +7,9 @@ import Death from './Deaths.js';
 import Rain from './Rain.js';
 import Temperatures from './Temperatures.js';
 import Reproduction from './Reproduction.js';
+import ReproductionV2 from './ReproductionV2.js';
+
+
 import Areas from './Areas.js';
 import Teams from './Teams.js';
 import Profile from './Profile.js';
@@ -19,18 +22,20 @@ const Dashboard = (props) => {
     "Deaths",
     "Rain",
     "Temperatures",
-    "Reproduction",
     "Areas",
-    "Team"
+    "Team",
+    "Reproduction",
+    "ReproductionV2"
   ];
   const getComponent = () => {
     if (activeTab === 1) return "births";
     if (activeTab === 2) return "deaths";
     if (activeTab === 3) return "rain";
     if (activeTab === 4) return "temperatures";
-    if (activeTab === 5) return "reproduction";
-    if (activeTab === 6) return "areas";
-    if (activeTab === 7) return "teams";
+    if (activeTab === 5) return "areas";
+    if (activeTab === 6) return "teams";
+    if (activeTab === 7) return "reproduction";
+    if (activeTab === 8) return "reproductionV2";
     if (activeTab === 9) return "profile";
     return "overview";
   };
@@ -58,9 +63,10 @@ const Dashboard = (props) => {
         {(screen === "deaths")          && <Death/>}
         {(screen === "rain")            && <Rain/>}
         {(screen === "temperatures")    && <Temperatures/>}
-        {(screen === "reproduction")    && <Reproduction/>}
         {(screen === "areas")           && <Areas/>}
         {(screen === "teams")           && <Teams/>}
+        {(screen === "reproduction")    && <Reproduction/>}
+        {(screen === "reproductionV2")  && <ReproductionV2/>}
         {(screen === "profile")         && <Profile/>}
       </div>
     </div>
