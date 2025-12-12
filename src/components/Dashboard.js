@@ -27,7 +27,7 @@ const Dashboard = (props) => {
     "Team",
     "Reproduction",
     "RebanhoTab",
-    "ReproductionV2"
+    "Reproduction (mine)"
   ];
   const getComponent = () => {
     if (activeTab === 1) return "births";

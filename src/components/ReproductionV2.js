@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import ListReproductions from './ListReproductions.js';
-import DataCollectionAdd, { DataCollectionEdit } from './DataCollectionAdd.js';
+import DataCollectionAdd from './DataCollectionAdd.js';
 import Upload from './Upload.js';
-import Download from './Download.js';
-import { ActionButtons } from './ActionButtons';
+import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionButtons';
 
 import TagNumberInput from './TagNumberInput.js';
 import ProtocolDropdown from './ProtocolDropdown.js';
@@ -20,10 +19,10 @@ export const ReproductionV2 = () => {
     const start_date  = formData.get("start_date");
     const predicted_iatf = formData.get("predicted_iatf");
     const status = formData.get("status");
-    return {
+    return JSON.stringify({
       tag, nickname, protocol_name, 
       start_date, predicted_iatf, status,
-    };
+    });
   }
 
   const ReproductionForm = (props) => {
@@ -80,12 +79,21 @@ export const ReproductionV2 = () => {
   return (
     <>
       <div class="content-header">
-        <ActionButtons
-          row={editRow}
-          onClick={(action) => {
-            setScreen(action);
-          }}
-        />
+        <div class="action-buttons">
+          <ListButton 
+            isActive={screen=="list"}
+            onClick={() => setScreen("list")}
+          />
+          <AddButton 
+            isActive={screen=="add"}
+            onClick={() => setScreen("add")}
+          />
+          <UploadButton 
+            isActive={screen=="upload"}
+            onClick={() => setScreen("upload")}
+          />
+          <DownloadButton collection="reproduction.active"/>
+        </div>
       </div>
 
       {(screen === "list") && 
@@ -95,13 +103,7 @@ export const ReproductionV2 = () => {
       }
 
       {(screen === "upload") && 
-        <Upload collection="reproduction.action"
-          onSuccess={() => setScreen("list")}
-        />
-      }
-
-      {(screen === "download") && 
-        <Download collection="reproduction.action"
+        <Upload collection="reproduction.active"
           onSuccess={() => setScreen("list")}
         />
       }
@@ -116,16 +118,6 @@ export const ReproductionV2 = () => {
         />
       }
 
-      {(screen === "edit") && 
-        <DataCollectionEdit
-          row={editRow}
-          collection="reproduction.active"
-          getBodyFromForm={getBodyFromForm}
-          formElements={ReproductionForm}
-          onSuccess={() => setScreen("list")}
-          duplicateMsg="should never happen"
-        />
-      }
     </>
   );
 }
