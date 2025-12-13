@@ -1,4 +1,11 @@
 export const Patch = (collection, _id, field, value, success, error) => {
+
+  console.log("Inside Patch", 
+    "collection", collection,
+    "id", _id, 
+    "field", field,
+    "value", value);
+
   const token = localStorage.getItem('zapmanejo_token');
   let body = {_id};
   body[field] = value;
