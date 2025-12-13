@@ -10,6 +10,11 @@ export const ListBirths = () => {
     {name:"Female", value: "f"},
   ];
 
+  const pureOptions = [
+    {name:"True",  value: true},
+    {name:"False", value: false},
+  ];
+
   const breedOptions = [
     {name:"Angus",     value:"angus"},
     {name:"Nalore",    value:"nalore"},
@@ -59,11 +64,15 @@ export const ListBirths = () => {
 
     {
       name: t("pure"),  
-      selector: (row) => (row.pure_breed) ? "true" : "false", 
-      sortable: true
+      sortable: true,
+      cell: row => <DataCellDropdown
+        collection="births"
+        options={pureOptions}
+        field="pure_bread"
+        id={row._id}
+        initialValue={(row.pure_bread) ? true : false}
+      />
     },
-
-
 
 
     {name: t("area"),  selector: row => row.area, sortable: true},

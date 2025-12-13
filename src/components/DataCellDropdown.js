@@ -9,12 +9,15 @@ const DataCellDropdown = (props) => {
       console.log("values match", value, e.target.value);
       return;
     }
-
-    Patch(props.collection, props.id, props.field, e.target.value,
+    let newValue = e.target.value;
+    if ("boolean" === typeof props.initialValue) {
+      newValue = (e.target.value === "true") ? true : false;
+    }
+    Patch(props.collection, props.id, props.field, newValue,
       () => {
         console.log("patch successfull");
         setEdit(false);
-        setValue(e.target.value);
+        setValue(newValue);
       },
       () => {
         console.log("patch error");
