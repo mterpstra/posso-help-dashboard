@@ -1,27 +1,37 @@
+import React, { useState } from 'react';
 import DataCollection from './DataCollection';
-import DataCellInput from './DataCellInput';
-import DataCellDropdown from './DataCellDropdown';
+import BreedDropdown from './BreedDropdown';
+import SexDropdown from './SexDropdown';
+import AreaDropdown from './AreaDropdown';
+import PureBreedDropdown from './PureBreedDropdown';
+import TagNumberInput from './TagNumberInput';
+import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
 
 export const ListBirths = () => {
+  const [refreshKey, setRefreshKey] = useState(0)
+  const editSuccess = () => {
+    setRefreshKey(refreshKey => refreshKey + 1)
+  }
 
-  const sexOptions = [
-    {name:"Male",   value: "m"},
-    {name:"Female", value: "f"},
-  ];
+  const onChange = (e, field, id) => {
 
-  const pureOptions = [
-    {name:"True",  value: true},
-    {name:"False", value: false},
-  ];
+    let value = e.target.value;
+    if (value === "true") {
+      value = true;
+    }
+    if (value === "false") {
+      value = false;
+    }
 
-  const breedOptions = [
-    {name:"Angus",     value:"angus"},
-    {name:"Nalore",    value:"nalore"},
-    {name:"Brangus",   value:"brangus"},
-    {name:"Sta Zelia", value:"sta_zelia"},
-    {name:"Cruzado",   value:"cruzado"},
-  ];
+    if (field === "tag") {
+      value = parseInt(value, 10);
+    }
+
+    Patch("births", id, field, value,
+      () => {setRefreshKey(refreshKey => refreshKey + 1)}
+    )
+  }
    
   const { t } = useTranslation();
   const collection = 'births';
@@ -29,53 +39,56 @@ export const ListBirths = () => {
     {
       name: t("tag"),
       sortable: true,
-      cell: row => <DataCellInput
-        collection="births"
-        field="tag"
-        id={row._id}
-        initialValue={row.tag}
+      selector: row => row.tag,
+      cell: row => <TagNumberInput
+        value={row.tag}
+        onBlur={(e) => {onChange(e, "tag", row._id)}}
       />
     },
 
     {
       name: t("breed"),
       sortable: true,
-      cell: row => <DataCellDropdown
-        collection="births"
-        options={breedOptions}
-        field="breed"
-        id={row._id}
-        initialValue={row.breed}
-      />
+      selector: row => row.breed,
+      cell: row => <BreedDropdown
+        selected={row.breed}
+        onChange={(e) => {onChange(e, "breed", row._id)}}
+      />,
     },
 
     {
       name: t("sex"),   
       sortable: true,
-      cell: row => <DataCellDropdown
-        collection="births"
-        options={sexOptions}
-        field="sex"
-        id={row._id}
-        initialValue={row.sex}
+      selector: row => row.sex,
+      cell: row => <SexDropdown
+        selected={row.sex}
+        onChange={(e) => {onChange(e, "sex", row._id)}}
       />
+
     },
 
 
     {
       name: t("pure"),  
       sortable: true,
-      cell: row => <DataCellDropdown
-        collection="births"
-        options={pureOptions}
-        field="pure_bread"
-        id={row._id}
-        initialValue={(row.pure_bread) ? true : false}
+      selector: row => (row.pure_bread) ? "true" : "false",
+      cell: row => <PureBreedDropdown
+        selected={row.pure_bread}
+        onChange={(e) => {onChange(e, "pure_bread", row._id)}}
       />
     },
 
 
-    {name: t("area"),  selector: row => row.area, sortable: true},
+    {
+      name: t("area"),  
+      sortable: true,
+      selector: row => row.area,
+      cell: row => <AreaDropdown
+        selected={row.area}
+        onChange={(e) => {onChange(e, "area", row._id)}}
+      />
+    },
+
     {name: t("date"),  selector: row => row.date.substring(0,10), sortable: true},
     {name: t("who"),   selector: row => row.created_by, sortable: true},
     {name: t("from"),  selector: row => row.phone, sortable: true},
@@ -83,6 +96,8 @@ export const ListBirths = () => {
   return (
     <>
       <DataCollection 
+        // Forces refresh of child component (DataCollection)
+        key={refreshKey}
         collection={collection} 
         columns={columns}/>
     </>

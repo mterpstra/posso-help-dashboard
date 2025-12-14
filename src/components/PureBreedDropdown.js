@@ -4,12 +4,12 @@ const Option = (props) => {
   } 
   return <option value={props.value}>{props.name}</option>
 }
-export const SexDropdown = (props) => {
+export const PureBreedDropdown = (props) => {
   return (
     <select name="sex" onChange={props.onChange}>
-      <Option value="m" name="Male"   selected={props.selected}/>
-      <Option value="f" name="Female" selected={props.selected}/>
+      <Option value={true}  name="Pure"  selected={props.selected}/>
+      <Option value={false} name="No"    selected={props.selected}/>
     </select>
   );
 }
-export default SexDropdown;
+export default PureBreedDropdown;

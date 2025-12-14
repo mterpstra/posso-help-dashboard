@@ -28,12 +28,22 @@ export const AreaDropdown = (props) => {
     fetchData();
   }, []);
 
+
+  const Option = (props) => {
+    if (props.selected === props.value) {
+      return <option value={props.value} selected="selected">{props.name}</option>
+    } 
+    return <option value={props.value}>{props.name}</option>
+  }
+
   return (
-    <select name="area">
+    <select name="area" onChange={props.onChange}>
       {areas.map((area) => (
-        <option key={area.name} value={area.name}>
-          {area.name}
-        </option>
+        <Option key={area.name} 
+          value={area.name} 
+          name={area.name}
+          selected={props.selected}
+        />
       ))}
     </select>
   );

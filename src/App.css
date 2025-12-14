@@ -75,3 +75,13 @@ input[type=number] {
 .action-buttons a {
   text-decoration:none;
 }
+
+
+.rdt_TableCell select {
+  border:0;
+  text-align:right;
+}
+
+.rdt_TableCell input {
+  border:0;
+}
