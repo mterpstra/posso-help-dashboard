@@ -29,7 +29,9 @@ export const ListBirths = () => {
     }
 
     Patch("births", id, field, value,
-      () => {setRefreshKey(refreshKey => refreshKey + 1)}
+      () => {
+        setRefreshKey(refreshKey => refreshKey + 1)
+      }
     )
   }
    
@@ -42,7 +44,9 @@ export const ListBirths = () => {
       selector: row => row.tag,
       cell: row => <TagNumberInput
         value={row.tag}
-        onBlur={(e) => {onChange(e, "tag", row._id)}}
+        onBlur={(e) => {
+          onChange(e, "tag", row._id);
+        }}
       />
     },
 
@@ -67,7 +71,6 @@ export const ListBirths = () => {
 
     },
 
-
     {
       name: t("pure"),  
       sortable: true,
@@ -77,7 +80,6 @@ export const ListBirths = () => {
         onChange={(e) => {onChange(e, "pure_bread", row._id)}}
       />
     },
-
 
     {
       name: t("area"),  

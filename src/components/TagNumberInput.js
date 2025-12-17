@@ -1,9 +1,20 @@
 import React, { useState } from 'react';
 export const TagNumberInput = (props) => {
   const [value, setValue] = useState(props.value);
+  const [edit, setEdit] = useState(false);
+
   const onChange = (e) => {
     setValue(e.target.value);
   }
+
+  if (!edit) {
+    return (
+      <div onClick={() => {setEdit(true)}}>
+        {props.value}
+      </div>
+    );
+  }
+
   return (
     <input type="number" name="tag" 
            placeholder="Tag Number" required
