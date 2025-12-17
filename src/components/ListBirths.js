@@ -10,12 +10,8 @@ import { useTranslation } from 'react-i18next';
 
 export const ListBirths = () => {
   const [refreshKey, setRefreshKey] = useState(0)
-  const editSuccess = () => {
-    setRefreshKey(refreshKey => refreshKey + 1)
-  }
 
   const onChange = (e, field, id) => {
-
     let value = e.target.value;
     if (value === "true") {
       value = true;
@@ -29,10 +25,12 @@ export const ListBirths = () => {
     }
 
     Patch("births", id, field, value,
-      () => {
-        setRefreshKey(refreshKey => refreshKey + 1)
-      }
-    )
+      () => { 
+        console.log("success");
+        setRefreshKey(refreshKey => refreshKey + 1);
+      },
+      () => { console.log("error")},
+    );
   }
    
   const { t } = useTranslation();
@@ -43,10 +41,9 @@ export const ListBirths = () => {
       sortable: true,
       selector: row => row.tag,
       cell: row => <TagNumberInput
+        edit={false}
         value={row.tag}
-        onBlur={(e) => {
-          onChange(e, "tag", row._id);
-        }}
+        onBlur={(e) => {onChange(e, "tag", row._id)}}
       />
     },
 

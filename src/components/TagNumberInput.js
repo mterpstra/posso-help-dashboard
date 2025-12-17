@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 export const TagNumberInput = (props) => {
   const [value, setValue] = useState(props.value);
-  const [edit, setEdit] = useState(false);
+  const [edit, setEdit] = useState(props.edit);
 
   const onChange = (e) => {
     setValue(e.target.value);
