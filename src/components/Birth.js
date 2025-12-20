@@ -9,8 +9,8 @@ export const Birth = () => {
 
   return (
     <>
-      <div class="content-header">
-        <div class="action-buttons">
+      <div className="content-header">
+        <div className="action-buttons">
           <ListButton 
             isActive={screen=="list"}
             onClick={() => setScreen("list")}

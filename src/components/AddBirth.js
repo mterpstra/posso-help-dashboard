@@ -8,7 +8,7 @@ import DateInput from './DateInput.js';
 const AddBirthForm = (props) => {
   return (
     <>
-      <TagNumberInput/>
+      <TagNumberInput edit={true}/>
       <BreedDropdown/>
       <SexDropdown/>
       <AreaDropdown/>

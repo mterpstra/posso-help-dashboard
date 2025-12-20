@@ -9,7 +9,7 @@ export const Death = () => {
 
   return (
     <>
-      <div class="content-header">
+      <div className="content-header">
         <div class="action-buttons">
           <ListButton 
             isActive={screen=="list"}
