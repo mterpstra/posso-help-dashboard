@@ -7,9 +7,16 @@ export const TagNumberInput = (props) => {
     setValue(e.target.value);
   }
 
+  const onClick = () => {
+    setEdit(true);
+    setValue(props.value);
+  }
+
   if (!edit) {
     return (
-      <div onClick={() => {setEdit(true)}}>
+      <div onClick={onClick} style={{cursor:"pointer"}}>
+        <span>&#10000;</span>
+        &nbsp;
         {props.value}
       </div>
     );
@@ -17,7 +24,9 @@ export const TagNumberInput = (props) => {
 
   return (
     <input type="number" name="tag" 
-           placeholder="Tag Number" required
+           placeholder="Tag Number" 
+           required
+           autoFocus
            value={value}
            onChange={onChange}
            onBlur={props.onBlur}
