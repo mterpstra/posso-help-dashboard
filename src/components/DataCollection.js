@@ -60,6 +60,8 @@ export const DataCollection = (props) => {
         selectableRows
         onSelectedRowsChange={handleChange}
         clearSelectedRows={toggledClearRows}
+        expandableRows={props.expandableRows}
+        expandableRowsComponent={props.expandableRowsComponent}
       />
       <DeleteButton 
         onComplete={handleDeleteComplete}

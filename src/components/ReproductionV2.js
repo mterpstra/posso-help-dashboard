@@ -15,12 +15,16 @@ export const ReproductionV2 = () => {
     console.log("reproduction row edit", row);
     const tag = Number(formData.get("tag"));
     const nickname = formData.get("nickname");
-    const protocol_name = formData.get("protocol_name");
+    
+    const protocol = formData.get("protocol").split("::", 2);
+    const protocol_id = protocol[0];
+    const protocol_name = protocol[1];
+
     const start_date  = formData.get("start_date");
     const predicted_iatf = formData.get("predicted_iatf");
     const status = formData.get("status");
     return JSON.stringify({
-      tag, nickname, protocol_name, 
+      tag, nickname, protocol_id, protocol_name,
       start_date, predicted_iatf, status,
     });
   }
@@ -35,6 +39,7 @@ export const ReproductionV2 = () => {
 
         <TagNumberInput 
           value={tag}
+          edit={true}
           onChange={(e) => setTag(e.target.value)}
         />
 
@@ -48,6 +53,7 @@ export const ReproductionV2 = () => {
           value={protocol}
         />
 
+        <div>Start Date</div>
         <DateInput 
           name="start_date" 
           prompt="Start Date" 

@@ -1,14 +1,5 @@
-export const Patch = (collection, _id, field, value, success, error) => {
-
-  console.log("Inside Patch", 
-    "collection", collection,
-    "id", _id, 
-    "field", field,
-    "value", value);
-
+export const PatchV2 = (collection, body, success, error) => {
   const token = localStorage.getItem('zapmanejo_token');
-  let body = {_id};
-  body[field] = value;
   const url = `/api/data/${collection}`;
   fetch(url, {
     method: 'PATCH',
@@ -20,7 +11,9 @@ export const Patch = (collection, _id, field, value, success, error) => {
   })
   .then(response => {
     if (response.status === 200) {
-      success();
+      if (typeof success === "function") {
+        success();
+      }
     }
     if (response.status === 401) {
       localStorage.removeItem('zapmanejo_token');
@@ -30,7 +23,17 @@ export const Patch = (collection, _id, field, value, success, error) => {
   })
   .catch(error => {
     console.error('Error updating form data:', error);
-    error();
+    if (typeof error === "function") {
+      error();
+    }
   });
 }
+
+
+export const Patch = (collection, _id, field, value, success, error) => {
+  let body = {_id};
+  body[field] = value;
+  PatchV2(collection, body, success, error);
+}
+
 export default Patch;
