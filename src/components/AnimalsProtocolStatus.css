@@ -1,0 +1,55 @@
+.AnimalsProtcolStatus {
+  background: #d2e1c361;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.AnimalsProtcolStatus .name {
+  font-size:16pt;
+}
+
+.AnimalsProtcolStatus .desc {
+  font-size:12pt;
+  margin-bottom:10px;
+}
+
+
+.AnimalsProtcolStatus .timeline {
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  border-top: 1px solid #2d5016;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.AnimalsProtcolStatus .Days {
+  font-weight:bold;
+  margin-bottom:5px;
+  margin-right:20px;
+}
+
+.AnimalsProtcolStatus .treatments-container {
+  flex-basis:100%;
+}
+
+.Checkbox {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: flex-start;
+}
+.Checkbox span {
+  margin-left:5px;
+}
+
+
+.AnimalsProtcolStatus .Treatment {
+  margin:5px 0px 10px 20px;
+}
+
+.AnimalsProtcolStatus .treatments-header {
+  font-weight:bold;
+}

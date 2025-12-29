@@ -6,10 +6,15 @@ import Birth from './Birth.js';
 import Death from './Deaths.js';
 import Rain from './Rain.js';
 import Temperatures from './Temperatures.js';
+import Reproduction from './Reproduction.js';
+import RebanhoTab from './RebanhoTab.js';
+import ReproductionV2 from './ReproductionV2.js';
+
+
 import Areas from './Areas.js';
 import Teams from './Teams.js';
-import { TabList } from './Tab.js';
 import Profile from './Profile.js';
+import { TabList } from './Tab.js';
 
 const Dashboard = (props) => {
   const tabs = [
@@ -19,9 +24,11 @@ const Dashboard = (props) => {
     "Rain",
     "Temperatures",
     "Areas",
-    "Team"
+    "Team",
+    "Reproduction"
+    //"Reproduction",
+    //"RebanhoTab",
   ];
-
   const getComponent = () => {
     if (activeTab === 1) return "births";
     if (activeTab === 2) return "deaths";
@@ -29,21 +36,20 @@ const Dashboard = (props) => {
     if (activeTab === 4) return "temperatures";
     if (activeTab === 5) return "areas";
     if (activeTab === 6) return "teams";
-    if (activeTab === 9) return "profile";
+    if (activeTab === 7) return "reproductionV2";
+    //if (activeTab === 8) return "reproduction";
+    //if (activeTab === 9) return "rebanho";
 
+    if (activeTab === 10) return "profile";
     return "overview";
   };
-  
   const [activeTab, setActiveTab] = useState(0);
-
   const onTabClicked = (id) => {
     setActiveTab(id);
   }
-
   const onClickProfile = () => {
-    setActiveTab(9);
+    setActiveTab(10);
   }
-
   const screen = getComponent(); 
   return (
     <div className='Dashboard'>
@@ -63,6 +69,10 @@ const Dashboard = (props) => {
         {(screen === "temperatures")    && <Temperatures/>}
         {(screen === "areas")           && <Areas/>}
         {(screen === "teams")           && <Teams/>}
+        {(screen === "reproductionV2")  && <ReproductionV2/>}
+        {/*(screen === "reproduction")    && <Reproduction/>*/}
+        {/*(screen === "rebanho")         && <RebanhoTab/>*/}
+
         {(screen === "profile")         && <Profile/>}
       </div>
     </div>

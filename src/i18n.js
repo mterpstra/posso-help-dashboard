@@ -24,9 +24,10 @@ const resources = {
       "overview":      "Overview",
       "births":        "Births",
       "deaths":        "Deaths",
-      "rain":      "Rain",
+      "rain":          "Rain",
       "temperatures":  "Temperatures",
       "areas":         "Areas",
+      "reproduction":  "Reproduction",
       "team":          "Team",
 
       // Overview Screen
@@ -62,9 +63,16 @@ const resources = {
       "from":         "From",
       "amount":       "Amount",
       "temperature":  "Temperature",
+      "nickname":     "Nickname",
       "nicknames":    "Nicknames",
       "name":         "Name",
       "phone_number": "Phone Number",
+      "protocol_name":"Protocol",
+      "start_date":   "Start Date",
+      "current_day":  "Current Day",
+      "predicted_iatf":"Predicted IATF",
+      "status":       "Status",
+      "notes":        "Notes",
       "language":     "Language",
 
       // Buttons 
@@ -93,6 +101,7 @@ const resources = {
       "rain":          "Chuvas",
       "temperatures":  "Temperaturas",
       "areas":         "Áreas",
+      "reproduction":  "Reprodução",
       "team":          "Equipe",
 
       // Overview Screen
@@ -128,9 +137,16 @@ const resources = {
       "from":         "De",
       "amount":       "Quantia",
       "temperature":  "Temperatura",
+      "nickname":     "Apelido",
       "nicknames":    "Apelidos",
       "name":         "Nome",
       "phone_number": "Número de Telefone",
+      "protocol_name":"Protocolo",
+      "start_date":   "Data de início",
+      "current_day":  "Dia atual",
+      "predicted_iatf":"IATF previsto",
+      "status":        "Status",
+      "notes":        "Notas",
       "language":     "Language",
 
       // Buttons 
