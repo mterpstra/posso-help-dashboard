@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DataCollection from './DataCollection';
 import { useTranslation } from 'react-i18next';
 import AddReproductionNote from './AddReproductionNote.js';
+import ReproductionStatusDropdown from './ReproductionStatusDropdown.js';
 import AnimalsProtocolStatus from './AnimalsProtocolStatus.js';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
@@ -44,12 +45,6 @@ export const ListReproductions = (props) => {
       name: t("nickname"),
       selector: row => row.nickname,
       sortable: true,
-    },
-
-    {
-      name: t("protocol_id"),
-      selector: row => row.protocol_id,
-      sortable: true
     },
 
     {
@@ -101,7 +96,16 @@ export const ListReproductions = (props) => {
     {
       name: t("status"),         
       selector: row => row.status,         
-      sortable: true
+      sortable: true,
+      cell: row => <ReproductionStatusDropdown
+        selected={row.status}
+        onChange={(e) => {
+          Patch(collection, row._id, "status", e.target.value,
+            () => {console.log("success")},
+            () => { console.log("error")},
+          );
+        }}
+      />
     },
 
     {

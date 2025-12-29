@@ -62,9 +62,16 @@ const resources = {
       "from":         "From",
       "amount":       "Amount",
       "temperature":  "Temperature",
+      "nickname":     "Nickname",
       "nicknames":    "Nicknames",
       "name":         "Name",
       "phone_number": "Phone Number",
+      "protocol_name":"Protocol",
+      "start_date":   "Start Date",
+      "current_day":  "Current Day",
+      "predicted_iatf":"Predicted IATF",
+      "status":       "Status",
+      "notes":        "Notes",
       "language":     "Language",
 
       // Buttons 
@@ -128,9 +135,16 @@ const resources = {
       "from":         "De",
       "amount":       "Quantia",
       "temperature":  "Temperatura",
+      "nickname":     "Apelido",
       "nicknames":    "Apelidos",
       "name":         "Nome",
       "phone_number": "Número de Telefone",
+      "protocol_name":"Protocolo",
+      "start_date":   "Data de início",
+      "current_day":  "Dia atual",
+      "predicted_iatf":"IATF previsto",
+      "status":        "Status",
+      "notes":        "Notas",
       "language":     "Language",
 
       // Buttons 

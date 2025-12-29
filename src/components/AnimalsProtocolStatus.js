@@ -110,13 +110,14 @@ export const AnimalsProtocolStatus = (props) => {
               checked={isComplete(props.animal, index)}
             />
 
+            {props.protocol.timeline_days[index].treatments &&
             <div className="treatments-container">
               <div className="treatments-header">Treatments:</div>
               {props.protocol.timeline_days[index].treatments.map((treatment, treatmentIndex) => (
                 <Treatment treatment={treatment}/>
               ))}
             </div>
-
+            }
 
           </div>
         </div>
