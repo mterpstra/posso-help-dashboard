@@ -1,3 +1,37 @@
-.NoteList {
-  background:green;
+.NoteList { 
+  background: #d2e1c361;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.NoteList input { 
+  margin-top:20px;
+  margin-right:20px;
+  width:80%;
+}
+
+.Note {
+  display:flex;
+  flex-direction: column;
+  border-top: 1px solid #2d5016;
+  padding-top: 10px;
+  margin-top: 20px;
+}
+
+.Note div:first-child {
+  font-weight:bold;
+  margin-right:20px;
+}
+
+.Note div:first-child span:first-child {
+  margin-right:10px;
+}
+
+.NoteText {
+  margin-top:10px;
+  margin-left:20px;
+}
+
+.NoteList input, .NoteList button {
+  height:30px;
 }

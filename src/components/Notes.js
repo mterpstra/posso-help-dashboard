@@ -3,10 +3,9 @@ import "./Notes.css";
 import Patch from "./Patch.js";
 const Note = (props) => {
   return (
-    <div>
+    <div className="Note">
       <div>
         <span className="CreatedOn">{props.item.created_on}</span>
-        <span>-</span>
         <span className="CreatedBy">{props.item.created_by}</span>
       </div>
       <div className="NoteText">{props.item.note}</div>
@@ -45,22 +44,14 @@ const Notes = (props) => {
     <Note key={index} id={index} item={item}/>
   ));
 
-  if ((notes === undefined) ||
-   (notes === null ) ||
-   (notes.length === 0))
-  {
-    return (
-      <div className="NoteList">
-        <input onBlur={handleNewNote}/>
-        <button>Add</button>
-      </div>
-    );
-  }
-
   return (
     <div className="NoteList">
-      {notesList}
-      <input onBlur={handleNewNote}/>
+      {notes != undefined &&
+       notes != null      && 
+       notes.length != 0  &&
+        notesList
+      }
+      <input placeholder="Add New Note" name="add-note" onBlur={handleNewNote}/>
       <button>Add</button>
     </div>
   );

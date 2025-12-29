@@ -30,7 +30,6 @@ export const ReproductionV2 = () => {
   }
 
   const ReproductionForm = (props) => {
-    console.log("ReproductionForm", props);
     const [tag, setTag] = useState(props.tag);
     const [nickname, setNickname] = useState(props.nickname);
     const [protocol, setProtocol] = useState(props.protocol_name);

@@ -24,9 +24,10 @@ const resources = {
       "overview":      "Overview",
       "births":        "Births",
       "deaths":        "Deaths",
-      "rain":      "Rain",
+      "rain":          "Rain",
       "temperatures":  "Temperatures",
       "areas":         "Areas",
+      "reproduction":  "Reproduction",
       "team":          "Team",
 
       // Overview Screen
@@ -100,6 +101,7 @@ const resources = {
       "rain":          "Chuvas",
       "temperatures":  "Temperaturas",
       "areas":         "Áreas",
+      "reproduction":  "Reprodução",
       "team":          "Equipe",
 
       // Overview Screen

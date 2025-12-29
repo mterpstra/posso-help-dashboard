@@ -31,15 +31,15 @@ export const AnimalsProtocolStatus = (props) => {
   const Days = (props) => {
     if (props.start === props.end) {
       return (
-        <div className="Days">
+        <span className="Days">
           Day: {props.start}
-        </div>
+        </span >
       );
     }
     return (
-      <div className="Days">
+      <span className="Days">
         Days: {props.start} - {props.end}
-      </div>
+      </span>
     );
   }
 
@@ -92,28 +92,26 @@ export const AnimalsProtocolStatus = (props) => {
       <div className="desc">{props.protocol.description}</div>
       {props.protocol.timeline_days.map((day, index) => (
         <div className="timeline">
-          <div className="event">
+          <div>
             <Days 
               start={day.start_day}
               end={day.end_day}
             />
-            <div className="event">{day.event}</div>
-            <Checkbox
-              id={props.animal._id}
-              field={`protocol.timeline_days.${index}.completed`}
-              checked={isComplete(props.animal, index)}
-            />
-
-            {props.protocol.timeline_days[index].treatments &&
-            <div className="treatments-container">
-              <div className="treatments-header">Treatments:</div>
-              {props.protocol.timeline_days[index].treatments.map((treatment, treatmentIndex) => (
-                <Treatment treatment={treatment}/>
-              ))}
-            </div>
-            }
-
+            <span>{day.event}</span>
           </div>
+          <Checkbox
+            id={props.animal._id}
+            field={`protocol.timeline_days.${index}.completed`}
+            checked={isComplete(props.animal, index)}
+          />
+          {props.protocol.timeline_days[index].treatments &&
+          <div className="treatments-container">
+            <div className="treatments-header">Treatments:</div>
+            {props.protocol.timeline_days[index].treatments.map((treatment, treatmentIndex) => (
+              <Treatment treatment={treatment}/>
+            ))}
+          </div>
+          }
         </div>
       ))}
     </div>

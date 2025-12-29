@@ -25,9 +25,9 @@ const Dashboard = (props) => {
     "Temperatures",
     "Areas",
     "Team",
-    "Reproduction",
-    "RebanhoTab",
-    "Reproduction (mine)"
+    "Reproduction"
+    //"Reproduction",
+    //"RebanhoTab",
   ];
   const getComponent = () => {
     if (activeTab === 1) return "births";
@@ -36,9 +36,10 @@ const Dashboard = (props) => {
     if (activeTab === 4) return "temperatures";
     if (activeTab === 5) return "areas";
     if (activeTab === 6) return "teams";
-    if (activeTab === 7) return "reproduction";
-    if (activeTab === 8) return "rebanho";
-    if (activeTab === 9) return "reproductionV2";
+    if (activeTab === 7) return "reproductionV2";
+    //if (activeTab === 8) return "reproduction";
+    //if (activeTab === 9) return "rebanho";
+
     if (activeTab === 10) return "profile";
     return "overview";
   };
@@ -68,9 +69,10 @@ const Dashboard = (props) => {
         {(screen === "temperatures")    && <Temperatures/>}
         {(screen === "areas")           && <Areas/>}
         {(screen === "teams")           && <Teams/>}
-        {(screen === "reproduction")    && <Reproduction/>}
-        {(screen === "rebanho")         && <RebanhoTab/>}
         {(screen === "reproductionV2")  && <ReproductionV2/>}
+        {/*(screen === "reproduction")    && <Reproduction/>*/}
+        {/*(screen === "rebanho")         && <RebanhoTab/>*/}
+
         {(screen === "profile")         && <Profile/>}
       </div>
     </div>

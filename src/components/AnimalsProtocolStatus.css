@@ -1,5 +1,7 @@
 .AnimalsProtcolStatus {
-  margin:20px
+  background: #d2e1c361;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .AnimalsProtcolStatus .name {
@@ -13,29 +15,34 @@
 
 
 .AnimalsProtcolStatus .timeline {
-  margin-bottom:20px;
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  border-top: 1px solid #2d5016;
+  padding-top: 10px;
+  margin-top: 20px;
 }
 
 .AnimalsProtcolStatus .Days {
   font-weight:bold;
   margin-bottom:5px;
-}
-
-.AnimalsProtcolStatus .event {
-  margin-left:20px;
+  margin-right:20px;
 }
 
 .AnimalsProtcolStatus .treatments-container {
-  margin-left:20px;
+  flex-basis:100%;
 }
 
 .Checkbox {
-  margin-left:20px;
   display: flex;
   flex-direction: row;
   align-content: center;
   align-items: center;
   justify-content: flex-start;
+}
+.Checkbox span {
+  margin-left:5px;
 }
 
 

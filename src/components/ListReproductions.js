@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./ListReproductions.css";
 import DataCollection from './DataCollection';
 import { useTranslation } from 'react-i18next';
 import AddReproductionNote from './AddReproductionNote.js';
@@ -12,9 +13,18 @@ import { daysSince } from "./Utils.js";
 
 export const ListReproductions = (props) => {
 
+  const [showProtocol, setShowProtocol] = useState(false);
+  const [showNotes, setShowNotes] = useState(false);
+  const [protocols, setProtocols] = useState(null);
+  const { t } = useTranslation();
+  const collection = 'reproduction.active';
+
+  useEffect(() => {
+    Get('reproduction.protocols', 
+      (data) => {setProtocols(data)});
+  }, []);
 
   const ExpandedProtocol = (props) => {
-
     for (const [index, protocol] of protocols.entries()) {
       if (props.data.protocol_id === protocol._id) {
         return (
@@ -27,31 +37,42 @@ export const ListReproductions = (props) => {
     }
   }
 
-
   const ExpandedComponent = ({ data }) => {
-
     return (
-      <div>
-        <h3>Protocol</h3>
-        <ExpandedProtocol data={data}/>
-        <h3>Notes</h3>
-        <Notes 
-          notes={data.notes || []}
-          id={data._id}
-        />
+      <div className="ExpandedComponent">
+
+        {showProtocol && 
+          <h4 onClick={()=>setShowProtocol(!showProtocol)}>
+            Hide Protocol View
+          </h4>
+        }
+        {!showProtocol && 
+          <h4 onClick={()=>setShowProtocol(!showProtocol)}>
+            Show Protocol View
+          </h4>
+        }
+        {showProtocol && <ExpandedProtocol data={data}/>}
+
+
+        {showNotes && 
+          <h4 onClick={()=>setShowNotes(!showNotes)}>
+            Hide Notes View
+          </h4>
+        }
+        {!showNotes && 
+          <h4 onClick={()=>setShowNotes(!showNotes)}>
+            Show Notes View
+          </h4>
+        }
+        {showNotes && <Notes notes={data.notes || []} id={data._id} />}
+
+
+
+
+
       </div>
     );
   }
-
-  const [screen, setScreen] = useState("list");
-  const [protocols, setProtocols] = useState(null);
-  const { t } = useTranslation();
-  const collection = 'reproduction.active';
-
-  useEffect(() => {
-    Get('reproduction.protocols', 
-      (data) => {setProtocols(data)});
-  }, []);
 
   const columns = [
     {
@@ -134,8 +155,6 @@ export const ListReproductions = (props) => {
      */
   ];
 
-
-  if (screen === "add") { return ( <AddReproductionNote/>); }
 
   return (
     <div>
