@@ -6,22 +6,41 @@ import ReproductionStatusDropdown from './ReproductionStatusDropdown.js';
 import AnimalsProtocolStatus from './AnimalsProtocolStatus.js';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
+import Notes from "./Notes.js";
 import { Get } from './Get.js';
 import { daysSince } from "./Utils.js";
 
 export const ListReproductions = (props) => {
 
-  const ExpandedComponent = ({ data }) => {
+
+  const ExpandedProtocol = (props) => {
+
     for (const [index, protocol] of protocols.entries()) {
-      if (data.protocol_id === protocol._id) {
+      if (props.data.protocol_id === protocol._id) {
         return (
           <AnimalsProtocolStatus
             protocol={protocol}
-            animal={data}
+            animal={props.data}
           />
         );
       }
     }
+  }
+
+
+  const ExpandedComponent = ({ data }) => {
+
+    return (
+      <div>
+        <h3>Protocol</h3>
+        <ExpandedProtocol data={data}/>
+        <h3>Notes</h3>
+        <Notes 
+          notes={data.notes || []}
+          id={data._id}
+        />
+      </div>
+    );
   }
 
   const [screen, setScreen] = useState("list");
@@ -60,7 +79,6 @@ export const ListReproductions = (props) => {
       cell: row => <DateInput
         date={row.start_date}
         onChange={(value) => {
-          console.log("parent on change", value);
           Patch("reproduction.active", row._id, "start_date", value,
             () => {console.log("success")},
             () => {console.log("error")},
@@ -83,7 +101,6 @@ export const ListReproductions = (props) => {
       cell: row => <DateInput
         date={row.predicted_iatf}
         onChange={(value) => {
-          console.log("parent on change", value);
           Patch("reproduction.active", row._id, "predicted_iatf", value,
             () => {console.log("success")},
             () => {console.log("error")},
@@ -108,45 +125,15 @@ export const ListReproductions = (props) => {
       />
     },
 
+    /*
     {
       name: t("notes"),          
-      selector: row => Notes(row.notes),   
+      selector: row => row.notes,   
       sortable: true
     },
+     */
   ];
 
-  const AddNote = (props) => {
-    setScreen("add");
-  }
-
-  const Note = (props) => {
-    return (
-      <>
-        <div>{props.item.created_by}</div>
-        <div>{props.item.created_on}</div>
-        <div>{props.item.note}</div>
-      </>
-    );
-  }
-
-  const Notes = (props) => {
-    if (Array.isArray(props) === false) {
-      return (
-        <button onClick={AddNote}>
-          Add
-        </button>
-      );
-    }
-
-    const notesList = props.map((item, index) => (
-      <Note key={index} id={index} item={item}/>
-    ));
-    return (
-      <div className="NoteList">
-        {notesList}
-      </div>
-    );
-  }
 
   if (screen === "add") { return ( <AddReproductionNote/>); }
 

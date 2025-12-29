@@ -7,9 +7,9 @@ export const AnimalsProtocolStatus = (props) => {
     if (protocol === "object") {
       return
     }
-    console.log("Generating protocol section for animal:", animal.tag);
     const body = {
       "_id":animal._id,
+      "notes":[],
       "protocol": {
         "timeline_days":[
           {"treatments":[{"completed":false},{"completed":false}],"completed":false},
@@ -44,7 +44,6 @@ export const AnimalsProtocolStatus = (props) => {
   }
 
   const Checkbox = (props) => {
-    console.log("Checkbox", props);
     const isChecked = (props.checked) ? "checked" : "";
     const onChange = (e) => {
       Patch ("reproduction.active", 
@@ -53,7 +52,6 @@ export const AnimalsProtocolStatus = (props) => {
         e.target.checked);
     }
 
-    console.log("isChecked", isChecked);
     if (isChecked) {
       return (
         <div className="Checkbox">
@@ -77,17 +75,13 @@ export const AnimalsProtocolStatus = (props) => {
   }
 
   const isComplete = (animal, dayIndex, treatmentIndex) => {
-    console.log("isComplete", animal);
     if (animal.protocol == undefined) {
-      console.log("protocol is undefined");
       return false;
     }
     if (animal.protocol == null) {
-      console.log("protocol is null");
       return false;
     }
     const completed = animal.protocol.timeline_days[dayIndex].completed;
-    console.log("protocol completed", dayIndex, completed);
     return animal.protocol.timeline_days[dayIndex].completed;
   }
 
@@ -127,7 +121,6 @@ export const AnimalsProtocolStatus = (props) => {
 }
 
 export const Treatment = (props) => {
-  console.log("treatment", props.treatment);
   return (
     <div className="Treatment">
 
