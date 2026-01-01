@@ -10,7 +10,12 @@ export const PatchV2 = (collection, body, success, error) => {
     body: JSON.stringify(body),
   })
   .then(response => {
+    const new_user = response.headers.get("x-new-user");
     if (response.status === 200) {
+      if ((new_user !== null) && (new_user !== undefined) &&
+          (typeof new_user === "string") && (new_user !== "")) {
+        localStorage.setItem('zapmanejo_user', new_user);
+      }
       if (typeof success === "function") {
         success();
       }

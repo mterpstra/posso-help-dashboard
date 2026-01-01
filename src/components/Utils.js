@@ -25,3 +25,39 @@ export const daysSince = (pastDateString) => {
 
   return daysPassed;
 }
+
+
+export const Fetch = (url, method, body, success, error) => {
+  const token = localStorage.getItem('zapmanejo_token');
+  fetch(url, {
+    method: method,
+    headers: {
+      "Authorization":`Bearer ${token}`,
+      "Content-Type":"application/json"
+    },
+    body: body,
+  })
+  .then(response => {
+    if (response.status === 401) {
+      localStorage.removeItem('zapmanejo_token');
+      localStorage.removeItem('zapmanejo_user');
+      window.location.reload();
+      return;
+    }
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    return response.json()
+  })
+  .then(json => {
+    if (typeof success === "function") {
+      success(json);
+    }
+
+  })
+  .catch(error => {
+    if (typeof error === "function") {
+      error();
+    }
+  });
+}
