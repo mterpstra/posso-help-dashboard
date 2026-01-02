@@ -13,8 +13,6 @@ import { daysSince } from "./Utils.js";
 
 export const ListReproductions = (props) => {
 
-  const [showProtocol, setShowProtocol] = useState(false);
-  const [showNotes, setShowNotes] = useState(false);
   const [protocols, setProtocols] = useState(null);
   const { t } = useTranslation();
   const collection = 'reproduction.active';
@@ -38,6 +36,8 @@ export const ListReproductions = (props) => {
   }
 
   const ExpandedComponent = ({ data }) => {
+    const [showProtocol, setShowProtocol] = useState(false);
+    const [showNotes, setShowNotes] = useState(false);
     return (
       <div className="ExpandedComponent">
         {showProtocol && 
