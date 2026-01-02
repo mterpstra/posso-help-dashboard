@@ -1,7 +1,9 @@
 import './AnimalsProtocolStatus.css';
+import { useTranslation } from 'react-i18next';
 import Patch, { PatchV2 } from './Patch.js';
 
 export const AnimalsProtocolStatus = (props) => {
+  const { t } = useTranslation();
   const PrepProtocolSection = (animal) => {
     const protocol = typeof animal.protocol;
     if (protocol === "object") {
@@ -106,7 +108,9 @@ export const AnimalsProtocolStatus = (props) => {
           />
           {props.protocol.timeline_days[index].treatments &&
           <div className="treatments-container">
-            <div className="treatments-header">Treatments:</div>
+            <div className="treatments-header">
+              {t("treatments")}:
+            </div>
             {props.protocol.timeline_days[index].treatments.map((treatment, treatmentIndex) => (
               <Treatment treatment={treatment}/>
             ))}
@@ -119,30 +123,31 @@ export const AnimalsProtocolStatus = (props) => {
 }
 
 export const Treatment = (props) => {
+  const { t } = useTranslation();
   return (
     <div className="Treatment">
 
       {props.treatment.medication &&
       <div className="medication">
-        Medication: {props.treatment.medication}
+        {t("medication")}: {props.treatment.medication}
       </div>
       }
 
       {props.treatment.device &&
       <div className="device">
-        Device: {props.treatment.device}
+        {t("device")}: {props.treatment.device}
       </div>
       }
 
       {props.treatment.procedure &&
       <div className="procedure">
-        Device: {props.treatment.procedure}
+        {t("proceedure")}: {props.treatment.procedure}
       </div>
       }
 
       {props.treatment.notes &&
       <div className="notes">
-        Notes: {props.treatment.notes}
+        {t("notes")}: {props.treatment.notes}
       </div>
       }
     </div>
