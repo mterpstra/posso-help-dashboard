@@ -77,6 +77,18 @@ const resources = {
 
       // Buttons 
       "add_button":   "Add",
+
+      // Reproduction
+      "hide-protocol-view": "Hide Protocol View",
+      "show-protocol-view": "Show Protocol View",
+      "hide-notes-view":    "Hide Notes View",
+      "show-notes-view":    "Show Notes View",
+
+      "treatments": "Treatments",
+      "medication": "Medication",
+      "device":     "Device",
+      "proceedure": "Proceedure",
+      "notes":      "Notes",
     }
   },
   pt: {
@@ -151,6 +163,18 @@ const resources = {
 
       // Buttons 
       "add_button":   "Adicionar",
+
+      // Reproduction
+      "hide-protocol-view": "Ocultar visualização do protocolo",
+      "show-protocol-view": "Mostrar visualização do protocolo",
+      "hide-notes-view":    "Ocultar visualização de notas",
+      "show-notes-view":    "Visualizar notas do programa",
+
+      "treatments": "Tratamentos",
+      "medication": "Medicamento",
+      "device":     "Dispositivo",
+      "proceedure": "Procedimento",
+      "notes":      "Notas",
     }
   }
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import "./ListReproductions.css";
 import DataCollection from './DataCollection';
-import { useTranslation } from 'react-i18next';
 import AddReproductionNote from './AddReproductionNote.js';
 import ReproductionStatusDropdown from './ReproductionStatusDropdown.js';
 import AnimalsProtocolStatus from './AnimalsProtocolStatus.js';
@@ -13,8 +13,6 @@ import { daysSince } from "./Utils.js";
 
 export const ListReproductions = (props) => {
 
-  const [showProtocol, setShowProtocol] = useState(false);
-  const [showNotes, setShowNotes] = useState(false);
   const [protocols, setProtocols] = useState(null);
   const { t } = useTranslation();
   const collection = 'reproduction.active';
@@ -38,38 +36,33 @@ export const ListReproductions = (props) => {
   }
 
   const ExpandedComponent = ({ data }) => {
+    const [showProtocol, setShowProtocol] = useState(false);
+    const [showNotes, setShowNotes] = useState(false);
     return (
       <div className="ExpandedComponent">
-
         {showProtocol && 
           <h4 onClick={()=>setShowProtocol(!showProtocol)}>
-            Hide Protocol View
+            {t("hide-protocol-view")}
           </h4>
         }
         {!showProtocol && 
           <h4 onClick={()=>setShowProtocol(!showProtocol)}>
-            Show Protocol View
+            {t("show-protocol-view")}
           </h4>
         }
         {showProtocol && <ExpandedProtocol data={data}/>}
 
-
         {showNotes && 
           <h4 onClick={()=>setShowNotes(!showNotes)}>
-            Hide Notes View
+            {t("hide-notes-view")}
           </h4>
         }
         {!showNotes && 
           <h4 onClick={()=>setShowNotes(!showNotes)}>
-            Show Notes View
+            {t("show-notes-view")}
           </h4>
         }
         {showNotes && <Notes notes={data.notes || []} id={data._id} />}
-
-
-
-
-
       </div>
     );
   }

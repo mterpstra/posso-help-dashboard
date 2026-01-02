@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { GetPasswordRequirementsText, IsValidPassword } from "./Password.js";
 import { useTranslation } from 'react-i18next';
 import ErrorMessage from './ErrorMessage';
 import PhoneNumberInput from './PhoneNumberInput.js';
@@ -12,38 +13,12 @@ const Register = (props) => {
   const [phone_number, setPhoneNumber] = useState("");
   const [fetching, setFetching] = useState(false);
 
-  const passwordRequirements = "Password is too weak.  It must be contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character";
-  const isValidPassword = (password) => {
-    // Check minimum length
-    if (password.length < 8) {
-      return false;
-    }
-    // Check for at least one uppercase letter
-    if (!/[A-Z]/.test(password)) {
-      return false;
-    }
-    // Check for at least one lowercase letter
-    if (!/[a-z]/.test(password)) {
-      return false;
-    }
-    // Check for at least one number
-    if (!/\d/.test(password)) {
-      return false;
-    }
-    // Check for at least one special character
-    if (!/[!@#$%^&*]/.test(password)) {
-      return false;
-    }
-    // If all criteria are met
-    return true;
-  }
-
   const submit = (formData) => {
     const password = formData.get("password");
     const confirmPassword  = formData.get("confirm");
 
-    if (!isValidPassword(password)) {
-      setErrorMessage(passwordRequirements);
+    if (!IsValidPassword(password)) {
+      setErrorMessage(GetPasswordRequirementsText());
       return;
     }
 
