@@ -6,7 +6,7 @@ import { ListButton, AddButton, UploadButton, DownloadButton } from './ActionBut
 
 import TagNumberInput from './TagNumberInput.js';
 import ProtocolDropdown from './ProtocolDropdown.js';
-import ReproductionStatusDropdown from './ReproductionStatusDropdown.js';
+import ReproductionStatus from './ReproductionStatus.js';
 import DateInput from './DateInput.js';
 
 export const ReproductionV2 = () => {
@@ -16,16 +16,35 @@ export const ReproductionV2 = () => {
     const tag = Number(formData.get("tag"));
     const nickname = formData.get("nickname");
     
-    const protocol = formData.get("protocol").split("::", 2);
-    const protocol_id = protocol[0];
-    const protocol_name = protocol[1];
+    const protocol_both = formData.get("protocol").split("::", 2);
+    const protocol_id = protocol_both[0];
+    const protocol_name = protocol_both[1];
 
     const start_date  = formData.get("start_date");
     const predicted_iatf = formData.get("predicted_iatf");
-    const status = formData.get("status");
+
+    const result = "pending";
+
+    const notes = [];
+    const protocol = {
+        "timeline_days":[
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
+        ]
+      };
+
     return JSON.stringify({
       tag, nickname, protocol_id, protocol_name,
-      start_date, predicted_iatf, status,
+      start_date, predicted_iatf, result,
+      notes, protocol,
     });
   }
 
@@ -58,14 +77,6 @@ export const ReproductionV2 = () => {
           prompt="Start Date" 
           value={props.state_date} 
         />
-
-        <DateInput 
-          name="predicted_iatf" 
-          prompt="Predicted IATF Date" 
-          value={props.predicted_iatf} 
-        />
-
-        <ReproductionStatusDropdown name="status" />
       </>
     );
   }

@@ -71,7 +71,7 @@ const resources = {
       "start_date":   "Start Date",
       "current_day":  "Current Day",
       "predicted_iatf":"Predicted IATF",
-      "status":       "Status",
+      "status":       "Days Completed",
       "notes":        "Notes",
       "language":     "Language",
 
@@ -157,7 +157,7 @@ const resources = {
       "start_date":   "Data de início",
       "current_day":  "Dia atual",
       "predicted_iatf":"IATF previsto",
-      "status":        "Status",
+      "status":        "Dias concluídos",
       "notes":        "Notas",
       "language":     "Language",
 
