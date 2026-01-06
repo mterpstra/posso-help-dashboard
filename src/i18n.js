@@ -179,7 +179,7 @@ const resources = {
   }
 };
 
-const getLang = () => {
+export const getLang = () => {
   console.log("getLang()", navigator.language);
 
   const user = localStorage.getItem('zapmanejo_user');
