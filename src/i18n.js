@@ -89,6 +89,14 @@ const resources = {
       "device":     "Device",
       "proceedure": "Proceedure",
       "notes":      "Notes",
+
+
+      // Breeds
+      "angus":      "Angus",
+      "brangus":    "Brangus",
+      "cruzado":    "Cruzado",
+      "nelore":     "Nelore",
+      "sta_zelia":  "Sta. Zelia",
     }
   },
   pt: {
@@ -175,6 +183,13 @@ const resources = {
       "device":     "Dispositivo",
       "proceedure": "Procedimento",
       "notes":      "Notas",
+
+      // Breeds
+      "angus":      "Angus",
+      "brangus":    "Brangus",
+      "cruzado":    "Cruzado",
+      "nelore":     "Nelore",
+      "sta_zelia":  "Sta. Zelia",
     }
   }
 };
