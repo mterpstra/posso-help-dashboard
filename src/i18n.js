@@ -97,6 +97,15 @@ const resources = {
       "cruzado":    "Cruzado",
       "nelore":     "Nelore",
       "sta_zelia":  "Sta. Zelia",
+
+      // Death Causes
+      "aborto":       "Aborto",
+      "morreu":       "Morreu",
+      "morto":        "Morto",
+      "nasceu-morto": "Nasceu Morto",
+      "natimorto":    "Natimorto",
+      "natimortos":   "Natimortos",
+      "other":        "Other",
     }
   },
   pt: {
@@ -190,6 +199,15 @@ const resources = {
       "cruzado":    "Cruzado",
       "nelore":     "Nelore",
       "sta_zelia":  "Sta. Zelia",
+
+      // Death Causes
+      "aborto":       "Aborto",
+      "morreu":       "Morreu",
+      "morto":        "Morto",
+      "nasceu-morto": "Nasceu Morto",
+      "natimorto":    "Natimorto",
+      "natimortos":   "Natimortos",
+      "other":        "Other",
     }
   }
 };
