@@ -23,7 +23,8 @@ export const daysSince = (pastDateString) => {
   // 4. Convert the milliseconds difference to days and round down to the nearest whole day
   const daysPassed = Math.floor(millisecondsSince / millisecondsPerDay);
 
-  return daysPassed;
+  // 5. The minus one support "Day Zero" 
+  return daysPassed - 1;
 }
 
 

@@ -1,63 +1,29 @@
 import './AnimalsProtocolStatus.css';
 import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import Patch, { PatchV2 } from './Patch.js';
+import Days from './Days.js';
 
 export const AnimalsProtocolStatus = (props) => {
   const { t } = useTranslation();
-  const PrepProtocolSection = (animal) => {
-    const protocol = typeof animal.protocol;
-    if (protocol === "object") {
-      return
-    }
-    const body = {
-      "_id":animal._id,
-      "notes":[],
-      "protocol": {
-        "timeline_days":[
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-          {"treatments":[{"completed":false},{"completed":false}],"completed":false},
-        ]
-      }
-    }
-    PatchV2 ("reproduction.active", body);
-  }
-
-  const Days = (props) => {
-    if (props.start === props.end) {
-      return (
-        <span className="Days">
-          Day: {props.start}
-        </span >
-      );
-    }
-    return (
-      <span className="Days">
-        Days: {props.start} - {props.end}
-      </span>
-    );
-  }
 
   const Checkbox = (props) => {
-    const isChecked = (props.checked) ? "checked" : "";
+    const [isChecked, setIsChecked]  = useState(props.checked);
     const onChange = (e) => {
       Patch ("reproduction.active", 
-        props.id, 
-        props.field,
-        e.target.checked);
+        props.id, props.field, e.target.checked,
+        () => {
+          setIsChecked(e.target.checked);
+          props.onUpdate();
+        }
+      );
     }
 
     if (isChecked) {
       return (
         <div className="Checkbox">
           <input type="checkbox" 
+            value="completed"
             onChange={onChange} 
             checked
           /> 
@@ -69,6 +35,7 @@ export const AnimalsProtocolStatus = (props) => {
     return (
       <div className="Checkbox">
         <input type="checkbox" 
+          value="not-completed"
           onChange={onChange} 
         /> 
         <span>Not Completed</span>
@@ -87,7 +54,6 @@ export const AnimalsProtocolStatus = (props) => {
     return animal.protocol.timeline_days[dayIndex].completed;
   }
 
-  PrepProtocolSection(props.animal);
   return (
     <div className="AnimalsProtcolStatus">
       <div className="name">{props.protocol.name}</div>
@@ -105,6 +71,7 @@ export const AnimalsProtocolStatus = (props) => {
             id={props.animal._id}
             field={`protocol.timeline_days.${index}.completed`}
             checked={isComplete(props.animal, index)}
+            onUpdate={props.onUpdate}
           />
           {props.protocol.timeline_days[index].treatments &&
           <div className="treatments-container">

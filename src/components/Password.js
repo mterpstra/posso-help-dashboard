@@ -1,3 +1,5 @@
+import getLang from "../i18n.js";
+
 export const GetPasswordRequirementsText = () => { 
   const user = JSON.parse(localStorage.getItem('zapmanejo_user'));
   const english = "Password is too weak.  It must be contain at "
@@ -7,7 +9,8 @@ export const GetPasswordRequirementsText = () => {
                    + "caracteres, uma letra maiúscula, uma letra minúscula, "
                    + "um número e um caractere especial.";
 
-  if (user.lang === "en-US") {
+  const lang = getLang();
+  if (lang === "en-US") {
     return english;
   }
   return portuguese;

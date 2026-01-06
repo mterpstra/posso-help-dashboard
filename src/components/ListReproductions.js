@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import "./ListReproductions.css";
 import DataCollection from './DataCollection';
 import AddReproductionNote from './AddReproductionNote.js';
-import ReproductionStatusDropdown from './ReproductionStatusDropdown.js';
+import ReproductionStatus from './ReproductionStatus.js';
 import AnimalsProtocolStatus from './AnimalsProtocolStatus.js';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
@@ -23,16 +23,25 @@ export const ListReproductions = (props) => {
   }, []);
 
   const ExpandedProtocol = (props) => {
+    const protocol = GetProtocolFromId(props.data.protocol_id);
+    return (
+      <AnimalsProtocolStatus
+        protocol={protocol}
+        animal={props.data}
+        onUpdate={() => 
+          console.log("Something in Animal Protocol Status changed")
+        }
+      />
+    );
+  }
+
+  const GetProtocolFromId = (id) => {
     for (const [index, protocol] of protocols.entries()) {
-      if (props.data.protocol_id === protocol._id) {
-        return (
-          <AnimalsProtocolStatus
-            protocol={protocol}
-            animal={props.data}
-          />
-        );
+      if (id === protocol._id) {
+        return protocol;
       }
     }
+    return null;
   }
 
   const ExpandedComponent = ({ data }) => {
@@ -123,31 +132,31 @@ export const ListReproductions = (props) => {
       />
     },
 
-
     {
       name: t("status"),         
       selector: row => row.status,         
       sortable: true,
-      cell: row => <ReproductionStatusDropdown
-        selected={row.status}
-        onChange={(e) => {
-          Patch(collection, row._id, "status", e.target.value,
-            () => {console.log("success")},
-            () => { console.log("error")},
-          );
-        }}
+      cell: row => <ReproductionStatus
+        animal={row}
+        protocol={GetProtocolFromId(row.protocol_id)}
       />
     },
 
-    /*
     {
-      name: t("notes"),          
-      selector: row => row.notes,   
-      sortable: true
+      name: t("result"),         
+      selector: row => row.result,         
+      sortable: true,
     },
-     */
   ];
 
+
+  if (protocols === null) {
+    return (
+      <>
+        Loading...
+      </>
+    );
+  }
 
   return (
     <div>

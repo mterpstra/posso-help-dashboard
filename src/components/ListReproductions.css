@@ -6,3 +6,68 @@
   text-decoration:underline;
   cursor:pointer;
 }
+
+.status {
+  height:20px;
+  display:flex;
+  flex-direction:row;
+  justify-content:flex-start;
+  gap:5px; 
+}
+
+.status .day {
+  height:20px;
+  width:20px;
+  border-radius:10px;
+  border:1px solid gray;
+  position:relative;
+}
+
+.completed {
+  background:green;
+}
+
+.pending {
+  background:gray;
+}
+
+.missed {
+  background:red;
+}
+
+.due-today {
+  background:yellow;
+}
+
+
+.day .details {
+  position:absolute;
+  min-width:250px;
+  display:none;
+}
+
+.day:hover .details {
+  display:block;
+  background: #d2e1c3;
+  border-radius:5px;
+  border: 1px solid #2d5016;
+  top:10px;
+  right:10px;
+  z-index:99999;
+  overflow:visible;
+  display:fex;
+  flex-direction:column;
+  padding:5px;
+}
+
+/* Selects the last child of a specific parent with class "container" */
+.rdt_TableBody > :last-child .day:hover .details {
+  bottom:10px;
+  top: unset;
+}
+
+
+.rdt_TableBody > :first-child {
+}
+.rdt_TableBody > :last-child {
+}

@@ -71,7 +71,7 @@ const resources = {
       "start_date":   "Start Date",
       "current_day":  "Current Day",
       "predicted_iatf":"Predicted IATF",
-      "status":       "Status",
+      "status":       "Days Completed",
       "notes":        "Notes",
       "language":     "Language",
 
@@ -89,6 +89,23 @@ const resources = {
       "device":     "Device",
       "proceedure": "Proceedure",
       "notes":      "Notes",
+
+
+      // Breeds
+      "angus":      "Angus",
+      "brangus":    "Brangus",
+      "cruzado":    "Cruzado",
+      "nelore":     "Nelore",
+      "sta_zelia":  "Sta. Zelia",
+
+      // Death Causes
+      "aborto":       "Aborto",
+      "morreu":       "Morreu",
+      "morto":        "Morto",
+      "nasceu-morto": "Nasceu Morto",
+      "natimorto":    "Natimorto",
+      "natimortos":   "Natimortos",
+      "other":        "Other",
     }
   },
   pt: {
@@ -157,7 +174,7 @@ const resources = {
       "start_date":   "Data de início",
       "current_day":  "Dia atual",
       "predicted_iatf":"IATF previsto",
-      "status":        "Status",
+      "status":        "Dias concluídos",
       "notes":        "Notas",
       "language":     "Language",
 
@@ -175,11 +192,27 @@ const resources = {
       "device":     "Dispositivo",
       "proceedure": "Procedimento",
       "notes":      "Notas",
+
+      // Breeds
+      "angus":      "Angus",
+      "brangus":    "Brangus",
+      "cruzado":    "Cruzado",
+      "nelore":     "Nelore",
+      "sta_zelia":  "Sta. Zelia",
+
+      // Death Causes
+      "aborto":       "Aborto",
+      "morreu":       "Morreu",
+      "morto":        "Morto",
+      "nasceu-morto": "Nasceu Morto",
+      "natimorto":    "Natimorto",
+      "natimortos":   "Natimortos",
+      "other":        "Other",
     }
   }
 };
 
-const getLang = () => {
+export const getLang = () => {
   console.log("getLang()", navigator.language);
 
   const user = localStorage.getItem('zapmanejo_user');

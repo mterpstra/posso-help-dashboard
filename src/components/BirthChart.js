@@ -14,6 +14,13 @@ const BirthChart = (props) => {
         yValues[index]++;
       }
     }
+
+    // Convert the code names to language
+    // correct readable values.
+    for(let i=0; i < xValues.length; i++) {
+      xValues[i] = t(xValues[i]);
+    }
+
     return {xValues:xValues, yValues:yValues}
   }
   return (
@@ -21,7 +28,7 @@ const BirthChart = (props) => {
       collection="births"
       aggregateData={aggregateData}
       title={t("births_by_breed")}
-      colors={["#3F7F00", "#007F7F", "#3F007F", "#7F0000"]}
+      colors={["#B6D094", "#E1AA7D", "#BE8A60", "#6A2E35", "#2E2836"]}
     />
   );
 }

@@ -14,6 +14,13 @@ export const DeathChart = (props) => {
         yValues[index]++;
       }
     }
+
+    // Convert the code names to language
+    // correct readable values.
+    for(let i=0; i < xValues.length; i++) {
+      xValues[i] = t(xValues[i]);
+    }
+
     return {xValues:xValues, yValues:yValues}
   }
   return (

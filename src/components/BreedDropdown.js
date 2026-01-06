@@ -9,9 +9,9 @@ export const BreedDropdown = (props) => {
   return (
     <select name="breed" onChange={props.onChange}>
       <Option value="angus"     name="Angus"     selected={props.selected}/>
-      <Option value="nalore"    name="Nalore"    selected={props.selected}/>
+      <Option value="nelore"    name="Nelore"    selected={props.selected}/>
       <Option value="brangus"   name="Brangus"   selected={props.selected}/>
-      <Option value="sta_zelio" name="Sta Zelia" selected={props.selected}/>
+      <Option value="sta_zelia" name="Sta Zelia" selected={props.selected}/>
       <Option value="cruzado"   name="Cruzado"   selected={props.selected}/>
     </select>
   );

@@ -1,41 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import { Fetch } from './Utils.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DataCollectionPieChart = (props) => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    const token = localStorage.getItem('zapmanejo_token');
     const url = `/api/data/${props.collection}`;
-    const fetchData = () => {
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          "Authorization":`Bearer ${token}`,
-          "Content-Type":"application/json"
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          if (response.status === 401) {
-            localStorage.removeItem('zapmanejo_token');
-            localStorage.removeItem('zapmanejo_user');
-            window.location.reload();
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
+    Fetch(url, "GET", null, 
+      (data) => {
         setData(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
       });
-    }
-    fetchData();
   }, []);
 
   const graphData = props.aggregateData(data);
