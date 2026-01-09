@@ -5,16 +5,25 @@ export const TemperatureChart = (props) => {
   const aggregateData = (rawData) => {
     var xValues = [];
     var yValues = [];
+    var counts = [];
     for(let i=0; i < rawData.length; i++) {
       const yearMonth = rawData[i].date.slice(0, 7);
       let index = xValues.indexOf(yearMonth);
       if (index < 0) {
         xValues.push(yearMonth);
         yValues.push(rawData[i]["temperature"]);
+        counts.push(1);
       } else {
         yValues[index] += rawData[i]["temperature"];
+        counts[index]++;
       }
     }
+
+    // We are doing average, not totals.
+    for(let i=0; i < yValues.length; i++) {
+      yValues[i] = yValues[i] / counts[i];
+    }
+
     return {xValues:xValues, yValues:yValues}
   }
   return (

@@ -35,7 +35,7 @@ const resources = {
       "births_by_breed":      "Births by Breed",
       "deaths_by_cause":      "Deaths by Cause",
       "rainfall_by_month":    "Rainfall by Month",
-      "temperature_by_month": "Temperature by Month",
+      "temperature_by_month": "Average Temperature by Month",
 
       // Screen Titles
       "births_title":      "Births",
@@ -138,7 +138,7 @@ const resources = {
       "births_by_breed":      "Nascimentos por Raça",
       "deaths_by_cause":      "Mortes por Causa",
       "rainfall_by_month":    "Precipitação por Mês",
-      "temperature_by_month": "Temperatura por Mês",
+      "temperature_by_month": "Temperatura média por mês",
 
       // Screen Titles
       "births_title":      "Nascimentos",

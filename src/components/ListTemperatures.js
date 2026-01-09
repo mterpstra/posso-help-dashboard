@@ -6,6 +6,7 @@ export const ListTemperatures = (props) => {
   const columns = [
     {name: t("temperature"), selector: row => `${row.temperature} celcius`, sortable:true},
     {name: t("date"),        selector: row => row.date.substring(0,10),     sortable:true},
+    {name: t("area"),        selector: row => row.area,       sortable:true},
     {name: t("who"),         selector: row => row.created_by, sortable:true},
     {name: t("from"),        selector: row => row.phone,      sortable:true},
   ];
