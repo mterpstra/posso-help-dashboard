@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Fetch } from './Utils.js';
 import { useTranslation } from 'react-i18next';
 
@@ -22,8 +22,14 @@ ChartJS.register(
 );
 
 export const TemperatureChart = (props) => {
+
+  const colors = ["#383F51","#DDDBF1", "#3C4F76", "#D1BEB0", "#AB9F9D" ];
+
   const { t } = useTranslation();
   const [data, setData] = useState([]);
+
+  const months = useRef([]);
+  const areas  = useRef([]);
 
   useEffect(() => {
     Fetch("/api/data/temperatures", "GET", null, 
@@ -37,33 +43,70 @@ export const TemperatureChart = (props) => {
     for(let i=0; i < rawData.length; i++) {
       const yearMonth = rawData[i].date.slice(0, 7);
       const area = rawData[i]["area"];
-      if (agg[yearMonth] === undefined) {
-        agg[yearMonth] = {total:0, count:0, avg:0};
+
+      if (months.current.indexOf(yearMonth) === -1) {
+        months.current.push(yearMonth);
       }
-      agg[yearMonth].total += rawData[i]["temperature"];
-      agg[yearMonth].count++;
-      agg[yearMonth].avg = (agg[yearMonth].total / agg[yearMonth].count);
+      if (areas.current.indexOf(area) === -1) {
+        areas.current.push(area);
+      }
+
+      if (agg[yearMonth] === undefined) {
+        agg[yearMonth] = {};
+      }
+      if (agg[yearMonth]["all"] === undefined) {
+        agg[yearMonth]["all"] = {total:0, count:0, avg:0};
+      }
+      if (agg[yearMonth][area] === undefined) {
+        agg[yearMonth][area] = {total:0, count:0, avg:0};
+      }
+
+      agg[yearMonth]["all"].total += rawData[i]["temperature"];
+      agg[yearMonth]["all"].count++;
+      agg[yearMonth]["all"].avg = (agg[yearMonth]["all"].total / agg[yearMonth]["all"].count);
+
+      agg[yearMonth][area].total += rawData[i]["temperature"];
+      agg[yearMonth][area].count++;
+      agg[yearMonth][area].avg = (agg[yearMonth][area].total / agg[yearMonth][area].count);
     }
+
+    months.current.sort();
+    areas.current.sort();
+
     return agg;
   }
 
-  let labels = [];
-  let values = [];
-  Object.keys(data).forEach(key => {
-    labels.push(key);
-    values.push(data[key].avg);
+  const thedata = {
+    labels: months.current,
+    datasets: [],
+  };
+
+  const getArrayofAvgByMonthForArea = (area) => {
+    const arr = [];
+    months.current.forEach((month, index) => {
+      if ((data[month] !== undefined) && (data[month][area] !== undefined)) {
+        arr.push(data[month][area].avg);
+      } else {
+        arr.push(0);
+      }
+    });
+    return arr;
+  }
+
+
+  thedata.datasets.push({
+    label: "All",
+    data: getArrayofAvgByMonthForArea("all"),
+    backgroundColor: "black"
   });
 
-  const thedata = {
-    labels: labels,
-    datasets: [
-      {
-        label: "Avg Temperature",
-        data: values,
-        backgroundColor: "black"
-      },
-    ],
-  };
+  areas.current.forEach((area, index) => {
+    thedata.datasets.push({
+      label: area,
+      data: getArrayofAvgByMonthForArea(area),
+      backgroundColor: colors[index], 
+    });
+  });
 
   return (
     <div className="Chart">
