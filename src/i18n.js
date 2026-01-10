@@ -37,6 +37,7 @@ const resources = {
       "deaths_by_cause":      "Deaths by Cause",
       "rainfall_by_month":    "Rainfall by Month",
       "temperature_by_month": "Average Temperature by Month",
+      "all":                  "All",
 
       // Screen Titles
       "births_title":      "Births",
@@ -141,6 +142,7 @@ const resources = {
       "deaths_by_cause":      "Mortes por Causa",
       "rainfall_by_month":    "Precipitação por Mês",
       "temperature_by_month": "Temperatura média por mês",
+      "all":                  "Todos",
 
       // Screen Titles
       "births_title":      "Nascimentos",

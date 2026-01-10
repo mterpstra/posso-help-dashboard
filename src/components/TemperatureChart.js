@@ -95,7 +95,7 @@ export const TemperatureChart = (props) => {
 
 
   thedata.datasets.push({
-    label: "All",
+    label: t("all"),
     data: getArrayofAvgByMonthForArea("all"),
     backgroundColor: "black"
   });
@@ -110,7 +110,7 @@ export const TemperatureChart = (props) => {
 
   return (
     <div className="Chart">
-      <h3>Average Temperature by Month</h3>
+      <h3>{t("temperature_by_month")}</h3>
       <Bar 
         data={thedata} 
         width={300}
