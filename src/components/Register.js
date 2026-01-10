@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GetPasswordRequirementsText, IsValidPassword } from "./Password.js";
+import { IsValidPassword } from "./Password.js";
 import { useTranslation } from 'react-i18next';
 import ErrorMessage from './ErrorMessage';
 import PhoneNumberInput from './PhoneNumberInput.js';
@@ -18,7 +18,7 @@ const Register = (props) => {
     const confirmPassword  = formData.get("confirm");
 
     if (!IsValidPassword(password)) {
-      setErrorMessage(GetPasswordRequirementsText());
+      setErrorMessage(t("password_requirements"));
       return;
     }
 
@@ -85,6 +85,11 @@ const Register = (props) => {
         language={language}
         onChange={setPhoneNumber}
         phoneNumber={phone_number}/>
+
+
+      <div>
+        {t("password_requirements")}
+      </div>
 
       <input name="password" type="password" 
              placeholder={t("password")} required/>
