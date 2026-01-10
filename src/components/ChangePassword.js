@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Fetch } from "./Utils.js";
-import { GetPasswordRequirementsText, IsValidPassword } from "./Password.js";
+import { IsValidPassword } from "./Password.js";
 import SuccessMessage from './SuccessMessage.js';
 import ErrorMessage from './ErrorMessage.js';
 
 export const ChangePassword = (props) => {
+  const { t } = useTranslation();
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const [current_pass, setCurrentPass] = useState("");
@@ -17,13 +19,12 @@ export const ChangePassword = (props) => {
     const confirm_password = formData.get("confirm");
 
     if (!IsValidPassword(new_password)) {
-      setError(GetPasswordRequirementsText());
+      setError(t("password_requirements"));
       setCurrentPass(current_password);
       setNewPass(new_password);
       return;
     }
 
-    return;
     if (new_password !== confirm_password) {
       setError("Passwords do not Match");
       setCurrentPass(current_password);
@@ -31,15 +32,14 @@ export const ChangePassword = (props) => {
       return;
     }
 
-
     const body = JSON.stringify({current_password, new_password});
     Fetch("api/auth/change-password", "put", body,
       () => {
-        setSuccess("Password changed successfully");
         setError("");
         setCurrentPass("");
         setNewPass("");
         setConfirmPass("");
+        setSuccess("Password changed successfully");
       },
       (err) => {
         setError(err);
@@ -51,6 +51,10 @@ export const ChangePassword = (props) => {
     <div>
       <h3>Change Password</h3>
       <form className="ChangePassword DataCollectionAdd" action={submit}>
+
+        <div>
+          {t("password_requirements")}
+        </div>
 
         <input type="password" 
           name="current" 
