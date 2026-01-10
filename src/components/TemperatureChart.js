@@ -28,22 +28,9 @@ export const TemperatureChart = (props) => {
   useEffect(() => {
     Fetch("/api/data/temperatures", "GET", null, 
       (data) => {
-        setData(data);
+        setData(aggregateData(data));
       })
   }, []);
-
-
-  const getLabels = (rawData) => {
-    var labels = [];
-    for(let i=0; i < rawData.length; i++) {
-      const yearMonth = rawData[i].date.slice(0, 7);
-      let index = labels.indexOf(yearMonth);
-      if (index < 0) {
-        labels.push(yearMonth);
-      } 
-    }
-    return labels;
-  }
 
   const aggregateData = (rawData) => {
     var agg = {};
@@ -51,53 +38,41 @@ export const TemperatureChart = (props) => {
       const yearMonth = rawData[i].date.slice(0, 7);
       const area = rawData[i]["area"];
       if (agg[yearMonth] === undefined) {
-        agg[yearMonth] = {};
+        agg[yearMonth] = {total:0, count:0, avg:0};
       }
-      if (agg[yearMonth]["all_areas"] === undefined) {
-        agg[yearMonth]["all_areas"] = {total:0, count:0};
-      }
-      if (agg[yearMonth][area] === undefined) {
-        agg[yearMonth][area] = {total:0, count:0};
-      }
-      agg[yearMonth]["all_areas"].total += rawData[i]["temperature"];
-      agg[yearMonth]["all_areas"].count++;
-      agg[yearMonth][area].total += rawData[i]["temperature"];
-      agg[yearMonth][area].count++;
+      agg[yearMonth].total += rawData[i]["temperature"];
+      agg[yearMonth].count++;
+      agg[yearMonth].avg = (agg[yearMonth].total / agg[yearMonth].count);
     }
     return agg;
   }
 
-
-
-  const graphData = aggregateData(data);
-  const labels = graphData.months;
+  let labels = [];
+  let values = [];
+  Object.keys(data).forEach(key => {
+    labels.push(key);
+    values.push(data[key].avg);
+  });
 
   const thedata = {
-    labels,
-    datasets: [],
-  };
-
-
-  for (const [key, value] of Object.entries(graphData)) {
-    console.log(`${key}: ${value}`);
-    thedata.datasets.push(
+    labels: labels,
+    datasets: [
       {
-        label: `Average Rainfall by ${key}`,
-        data: value.all_areas,
-        backgroundColor: "#BAA898",
-      }
-    )
-  }
-
-
-
-
-
+        label: "Avg Temperature",
+        data: values,
+        backgroundColor: "black"
+      },
+    ],
+  };
 
   return (
     <div className="Chart">
-      <h3>Average Rainfall by Month</h3>
-      <Bar data={thedata} />
+      <h3>Average Temperature by Month</h3>
+      <Bar 
+        data={thedata} 
+        width={300}
+        height={300}
+      />
     </div>
   );
 
