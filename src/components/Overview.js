@@ -9,12 +9,17 @@ export const Overview = (props) => {
   return (
     <div className="Overview">
       <h2>{t("overview_title")}</h2>
+
       <div className="container">
         <BirthChart/>
         <DeathChart/>
+      </div>
+
+      <div className="container">
         <RainfallChart/>
         <TemperatureChart/>
       </div>
+
     </div>
   );
 }
