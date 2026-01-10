@@ -16,6 +16,7 @@ const resources = {
       "password":         "Password",
       "username":         "Username",
       "confirm_password": "Confirm Password",
+      "password_requirements": "Password must be contain at least 8 characters, one uppercase letter, one lowercase letter, one number and one special character.",
 
       // Header Values
       "dashboard":     "Dashboard",
@@ -119,6 +120,7 @@ const resources = {
       "password":         "Senha",
       "username":         "Nome de usuário",
       "confirm_password": "Confirme sua senha",
+      "password_requirements": "A senha deve conter pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula, um número e um caractere especial.",
 
       // Header Values
       "dashboard":     "Painel Da Web",
@@ -213,21 +215,14 @@ const resources = {
 };
 
 export const getLang = () => {
-  console.log("getLang()", navigator.language);
-
   const user = localStorage.getItem('zapmanejo_user');
   if ((user === null) || (user === undefined)) {
-    console.log("no user, using browser default language");
     return navigator.language;
   }
-
   const juser = JSON.parse(user);
   if ((juser.lang === "en-US") || (juser.lang === "pt-BR")) {
-    console.log("user lang found, using", juser.lang);
     return juser.lang;
   }
-
-  console.log("using default browser language")
   return navigator.language;
 }
 
