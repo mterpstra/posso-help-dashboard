@@ -48,13 +48,20 @@ export const Fetch = (url, method, body, success, error) => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
+
+    const contentLength = response.headers.get("content-length");
+    if (contentLength && parseInt(contentLength) === 0) {
+      if (typeof success === "function") {
+        success();
+      }
+    }
+
     return response.json()
   })
   .then(json => {
     if (typeof success === "function") {
       success(json);
     }
-
   })
   .catch(error => {
     if (typeof error === "function") {
