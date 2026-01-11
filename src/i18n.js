@@ -159,7 +159,7 @@ const resources = {
       "team_add":          "Adicionar membro da Equipe",
 
       // Table Titles
-      "tag":          "Marcação",
+      "tag":          "Brinco",
       "breed":        "Raça",
       "cause":        "Causa",
       "sex":          "Sexo",
