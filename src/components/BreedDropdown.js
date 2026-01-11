@@ -15,7 +15,7 @@ export const BreedDropdown = (props) => {
       <Option value="nelore"    name="Nelore"    selected={props.selected}/>
       <Option value="brangus"   name="Brangus"   selected={props.selected}/>
       <Option value="sta_zelia" name="Sta Zelia" selected={props.selected}/>
-      <Option value="cruzado"   name="Cruzado"   selected={props.selected}/>
+      <Option value="cruzada"   name="Cruzada"   selected={props.selected}/>
     </select>
   );
 }
