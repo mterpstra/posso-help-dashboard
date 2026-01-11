@@ -23,7 +23,7 @@ const resources = {
 
       // Tab Buttons
       "overview":      "Overview",
-      "births":        "Births",
+      "births":        "Herd",
       "deaths":        "Deaths",
       "rain":          "Rain",
       "temperatures":  "Temperatures",
@@ -60,6 +60,7 @@ const resources = {
       "sex":          "Sex",
       "pure":         "Pure",
       "area":         "Area",
+      "birth_date":   "Date",
       "date":         "Date",
       "who":          "Who",
       "from":         "From",
@@ -128,7 +129,7 @@ const resources = {
 
       // Tab Buttons
       "overview":      "Visão Geral",
-      "births":        "Nascimentos",
+      "births":        "Rebanho",
       "deaths":        "Mortes",
       "rain":          "Chuvas",
       "temperatures":  "Temperaturas",
@@ -159,13 +160,14 @@ const resources = {
       "team_add":          "Adicionar membro da Equipe",
 
       // Table Titles
-      "tag":          "Marcação",
+      "tag":          "Brinco",
       "breed":        "Raça",
       "cause":        "Causa",
       "sex":          "Sexo",
       "pure":         "Pura",
       "area":         "Área",
       "date":         "Data",
+      "birth_date":   "Idade",
       "who":          "Quem",
       "from":         "De",
       "amount":       "Quantia",
