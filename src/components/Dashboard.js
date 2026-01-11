@@ -3,7 +3,6 @@ import './Dashboard.css';
 import Header from './Header.js';
 import Overview from './Overview.js';
 import Birth from './Birth.js';
-import Death from './Deaths.js';
 import Rain from './Rain.js';
 import Temperatures from './Temperatures.js';
 import Reproduction from './Reproduction.js';
@@ -20,25 +19,19 @@ const Dashboard = (props) => {
   const tabs = [
     "Overview", 
     "Births",
-    "Deaths",
     "Rain",
     "Temperatures",
     "Areas",
     "Team",
     "Reproduction"
-    //"Reproduction",
-    //"RebanhoTab",
   ];
   const getComponent = () => {
     if (activeTab === 1) return "births";
-    if (activeTab === 2) return "deaths";
-    if (activeTab === 3) return "rain";
-    if (activeTab === 4) return "temperatures";
-    if (activeTab === 5) return "areas";
-    if (activeTab === 6) return "teams";
-    if (activeTab === 7) return "reproductionV2";
-    //if (activeTab === 8) return "reproduction";
-    //if (activeTab === 9) return "rebanho";
+    if (activeTab === 2) return "rain";
+    if (activeTab === 3) return "temperatures";
+    if (activeTab === 4) return "areas";
+    if (activeTab === 5) return "teams";
+    if (activeTab === 6) return "reproductionV2";
 
     if (activeTab === 10) return "profile";
     return "overview";
@@ -64,15 +57,11 @@ const Dashboard = (props) => {
       <div className='white-container dashboard-content'>
         {(screen === "overview")        && <Overview/>}
         {(screen === "births")          && <Birth/>}
-        {(screen === "deaths")          && <Death/>}
         {(screen === "rain")            && <Rain/>}
         {(screen === "temperatures")    && <Temperatures/>}
         {(screen === "areas")           && <Areas/>}
         {(screen === "teams")           && <Teams/>}
         {(screen === "reproductionV2")  && <ReproductionV2/>}
-        {/*(screen === "reproduction")    && <Reproduction/>*/}
-        {/*(screen === "rebanho")         && <RebanhoTab/>*/}
-
         {(screen === "profile")         && <Profile/>}
       </div>
     </div>

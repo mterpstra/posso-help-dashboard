@@ -8,7 +8,7 @@ const Option = (props) => {
 export const DeathCauseDropdown = (props) => {
   return (
     <select name="cause" onChange={props.onChange}>
-      <Option value="alive"  name="Alive"  selected={props.selected}/>
+      <Option value="viva"  name="Viva"  selected={props.selected}/>
       <Option value="aborto" name="Aborto" selected={props.selected}/> 
       <Option value="morreu" name="Morreu" selected={props.selected}/>
       <Option value="morto"  name="Morto"  selected={props.selected}/>

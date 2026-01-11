@@ -23,7 +23,7 @@ const resources = {
 
       // Tab Buttons
       "overview":      "Overview",
-      "births":        "Births",
+      "births":        "Herd",
       "deaths":        "Deaths",
       "rain":          "Rain",
       "temperatures":  "Temperatures",
@@ -128,7 +128,7 @@ const resources = {
 
       // Tab Buttons
       "overview":      "Visão Geral",
-      "births":        "Nascimentos",
+      "births":        "Rebanho",
       "deaths":        "Mortes",
       "rain":          "Chuvas",
       "temperatures":  "Temperaturas",
