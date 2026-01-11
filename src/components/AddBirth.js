@@ -4,6 +4,7 @@ import TagNumberInput from './TagNumberInput.js';
 import SexDropdown from './SexDropdown.js';
 import BreedDropdown from './BreedDropdown.js';
 import DateInput from './DateInput.js';
+import DeathCauseDropdown from './DeathCauseDropdown.js';
 
 const AddBirthForm = (props) => {
   return (
@@ -12,6 +13,7 @@ const AddBirthForm = (props) => {
       <BreedDropdown/>
       <SexDropdown/>
       <AreaDropdown/>
+      <DeathCauseDropdown/>
       <DateInput/>
     </>
   );
@@ -23,7 +25,8 @@ const getBodyFromForm = (formData) => {
   const sex   = formData.get("sex");
   const area  = formData.get("area");
   const date  = formData.get("date");
-  return JSON.stringify({tag, breed, sex, area, date});
+  const cause = formData.get("cause");
+  return JSON.stringify({tag, breed, sex, area, cause, date});
 }
 
 export const AddBirth = (props) => {

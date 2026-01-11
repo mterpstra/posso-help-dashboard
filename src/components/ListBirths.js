@@ -4,6 +4,7 @@ import BreedDropdown from './BreedDropdown';
 import SexDropdown from './SexDropdown';
 import AreaDropdown from './AreaDropdown';
 import PureBreedDropdown from './PureBreedDropdown';
+import DeathCauseDropdown from './DeathCauseDropdown';
 import TagNumberInput from './TagNumberInput';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
@@ -85,6 +86,16 @@ export const ListBirths = () => {
       cell: row => <AreaDropdown
         selected={row.area}
         onChange={(e) => {onChange(e, "area", row._id)}}
+      />
+    },
+
+    {
+      name: t("cause"),  
+      sortable: true,
+      selector: row => row.cause,
+      cell: row => <DeathCauseDropdown
+        selected={row.cause}
+        onChange={(e) => {onChange(e, "cause", row._id)}}
       />
     },
 
