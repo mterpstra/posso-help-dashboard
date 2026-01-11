@@ -6,6 +6,7 @@ import AreaDropdown from './AreaDropdown';
 import PureBreedDropdown from './PureBreedDropdown';
 import DeathCauseDropdown from './DeathCauseDropdown';
 import TagNumberInput from './TagNumberInput';
+import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
 
@@ -99,7 +100,21 @@ export const ListBirths = () => {
       />
     },
 
-    {name: t("date"),  selector: row => row.date.substring(0,10), sortable: true},
+    {
+      name: t("birth_date"),  
+      selector: row => row.date.substring(0,10), 
+      sortable: true,
+      cell: row => <DateInput
+        date={row.date}
+        onChange={(value) => {
+          Patch("births", row._id, "date", value,
+            () => {console.log("success")},
+            () => {console.log("error")},
+          );
+        }}
+      />
+    },
+
     {name: t("who"),   selector: row => row.created_by, sortable: true},
     {name: t("from"),  selector: row => row.phone, sortable: true},
   ];
