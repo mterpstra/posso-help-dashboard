@@ -1,0 +1,13 @@
+.Profile {
+  max-width:400px;
+  margin:0 auto 20px auto;
+}
+
+.Profile span {
+  font-weight:bold;
+  margin-right:10px;
+}
+
+.Profile > div {
+  margin:2px auto;
+}

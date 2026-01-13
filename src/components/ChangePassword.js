@@ -49,7 +49,7 @@ export const ChangePassword = (props) => {
 
   return (
     <div>
-      <h3>Change Password</h3>
+      <h3>{t("change_password")}</h3>
       <form className="ChangePassword DataCollectionAdd" action={submit}>
 
         <div>
