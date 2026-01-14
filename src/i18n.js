@@ -93,7 +93,6 @@ const resources = {
       "proceedure": "Proceedure",
       "notes":      "Notes",
 
-
       // Breeds
       "angus":      "Angus",
       "brangus":    "Brangus",
@@ -108,7 +107,13 @@ const resources = {
       "nasceu-morto": "Nasceu Morto",
       "natimorto":    "Natimorto",
       "natimortos":   "Natimortos",
+      "viva":         "Viva",
       "other":        "Other",
+
+      // Profile
+      "profile":          "Profile",
+      "change_pref_lang": "Change your preferred language",
+      "change_password":  "Change your password",
     }
   },
   pt: {
@@ -213,7 +218,13 @@ const resources = {
       "nasceu-morto": "Nasceu Morto",
       "natimorto":    "Natimorto",
       "natimortos":   "Natimortos",
+      "viva":         "Viva",
       "other":        "Other",
+
+      // Profile
+      "profile":      "Perfil",
+      "change_pref_lang": "Altere seu idioma preferido",
+      "change_password":  "Altere sua senha",
     }
   }
 };

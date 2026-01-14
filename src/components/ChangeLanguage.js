@@ -4,9 +4,11 @@ import Patch from './Patch.js';
 import { Fetch } from './Utils.js';
 import SuccessMessage from './SuccessMessage.js';
 import ErrorMessage from './ErrorMessage.js';
+import { useTranslation } from 'react-i18next';
 
 export const ChangeLanguage = (props) => {
 
+  const { t } = useTranslation();
   const [profile, setProfile] = useState([]);
   const [success, setSuccess] = useState("");
   const [error,   setError] = useState("");
@@ -45,7 +47,7 @@ export const ChangeLanguage = (props) => {
 
   return (
     <form className="DataCollectionAdd">
-      <h3>Change your preferred language</h3>
+      <h3>{t("change_pref_lang")}</h3>
       <select name="lang" value={language} 
         onChange={handleLanguage}>
         <option value="en-US">English</option>

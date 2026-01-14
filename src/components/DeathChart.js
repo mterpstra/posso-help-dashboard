@@ -25,10 +25,10 @@ export const DeathChart = (props) => {
   }
   return (
     <DataCollectionPieChart
-      collection="deaths"
+      collection="births"
       aggregateData={aggregateData}
       title={t("deaths_by_cause")}
-      colors={["#37007F", "#7F0008", "#487F00", "#007F77"]}
+      colors={["#4E5166", "#7C90A0", "#B5AA9D", "#B9B7A7", "#747274"]}
     />
   );
 }
