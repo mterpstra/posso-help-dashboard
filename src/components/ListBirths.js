@@ -9,6 +9,22 @@ import TagNumberInput from './TagNumberInput';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
+import { daysSince } from './Utils.js';
+
+const DateToAgeCategory = (date) => {
+  // Roughly 30 days per month.
+  const months = Math.floor(daysSince(date)/30);
+  if (months >= 0 && months <= 12) {
+    return "0-12 months";
+  }
+  if (months >= 13 && months <= 24) {
+    return "13-24 months";
+  }
+  if (months >= 25 && months <= 36) {
+    return "25-36 months";
+  }
+  return "37+ months";
+}
 
 export const ListBirths = () => {
   const [refreshKey, setRefreshKey] = useState(0)
@@ -67,7 +83,12 @@ export const ListBirths = () => {
         selected={row.sex}
         onChange={(e) => {onChange(e, "sex", row._id)}}
       />
+    },
 
+    {
+      name: t("age"),
+      sortable: true,
+      selector: row => DateToAgeCategory(row.date),
     },
 
     {
