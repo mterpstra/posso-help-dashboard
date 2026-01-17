@@ -38,6 +38,11 @@ const resources = {
       "rainfall_by_month":    "Rainfall by Month",
       "temperature_by_month": "Average Temperature by Month",
       "all":                  "All",
+      "age_category":         "Animals by Age",
+      "seven_months":         "7 months",
+      "eight_months":         "8 months",
+      "nine_months":          "9 months",
+      "ten_twelve_months":    "10-12 months",
 
       // Screen Titles
       "births_title":      "Births",
@@ -150,6 +155,11 @@ const resources = {
       "rainfall_by_month":    "Precipitação por Mês",
       "temperature_by_month": "Temperatura média por mês",
       "all":                  "Todos",
+      "age_category":         "Animais por Idade",
+      "seven_months":         "7 meses",
+      "eight_months":         "8 meses",
+      "nine_months":          "9 meses",
+      "ten_twelve_months":    "10-12 meses",
 
       // Screen Titles
       "births_title":      "Nascimentos",
