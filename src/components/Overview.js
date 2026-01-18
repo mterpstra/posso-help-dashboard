@@ -4,7 +4,8 @@ import BirthChart from './BirthChart.js';
 import DeathChart from './DeathChart.js';
 import RainfallChart from './RainfallChart.js';
 import TemperatureChart from './TemperatureChart.js';
-import AgeCategoryChart from './AgeCategoryChart.js'
+import AgeCategoryChart from './AgeCategoryChart.js';
+import ReproductionRecentResults from './ReproductionRecentResults.js';
 
 export const Overview = (props) => {
   const { t } = useTranslation();
@@ -19,6 +20,7 @@ export const Overview = (props) => {
       <div className="container">
         <TemperatureChart/>
         <AgeCategoryChart/>
+        <ReproductionRecentResults/>
       </div>
     </div>
   );

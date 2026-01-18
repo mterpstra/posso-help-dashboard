@@ -93,6 +93,9 @@ const resources = {
       "hide-notes-view":    "Hide Notes View",
       "show-notes-view":    "Show Notes View",
 
+      "reproduction-results-for-month":"Inseminations for",
+
+
       "treatments": "Treatments",
       "medication": "Medication",
       "device":     "Device",
@@ -215,6 +218,8 @@ const resources = {
       "device":     "Dispositivo",
       "proceedure": "Procedimento",
       "notes":      "Notas",
+
+      "reproduction-results-for-month":"Inseminações",
 
       // Breeds
       "angus":      "Angus",
