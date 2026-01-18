@@ -46,6 +46,16 @@ export const ListReproductions = (props) => {
     return null;
   }
 
+  const GetTotalDaysForProtocol = (protocol) => {
+    let total_days = 0;
+    for (const timeline of protocol.timeline_days) {
+      if (timeline.end_day > total_days) {
+        total_days = timeline.end_day;
+      }
+    }
+    return total_days;
+  }
+
   const ExpandedComponent = ({ data }) => {
     const [showProtocol, setShowProtocol] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
@@ -121,17 +131,15 @@ export const ListReproductions = (props) => {
 
     {
       name: t("predicted_iatf"), 
-      selector: row => row.predicted_iatf, 
+      selector: row => { 
+        const protocol = GetProtocolFromId(row.protocol_id);
+        const days = GetTotalDaysForProtocol(protocol);
+        const dt = new Date(row.start_date + "T10:00:00Z");
+        dt.setDate(dt.getDate() + days);
+        const iatf_date = dt.toISOString().split('T')[0];
+        return iatf_date;
+      },
       sortable: true,
-      cell: row => <DateInput
-        date={row.predicted_iatf}
-        onChange={(value) => {
-          Patch("reproduction.active", row._id, "predicted_iatf", value,
-            () => {console.log("success")},
-            () => {console.log("error")},
-          );
-        }}
-      />
     },
 
     {
