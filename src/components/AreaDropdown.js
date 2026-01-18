@@ -1,31 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { Fetch } from './Utils.js';
 export const AreaDropdown = (props) => {
   const [areas, setAreaData] = useState([]);
   useEffect(() => {
-    const token = localStorage.getItem('zapmanejo_token');
-    const url = '/api/data/areas';
-    const fetchData = () => {
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          "Authorization":`Bearer ${token}`,
-          "Content-Type":"application/json"
-        }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setAreaData(data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    if (props.areas != null) {
+      console.log("AreaDropdown was passed areas", props.areas);
+      setAreaData(props.areas);
+      return;
     }
-    fetchData();
+    Fetch("api/data/areas", "get", null, 
+      (data) => {
+        setAreaData(data);
+      },
+      () => {console.log("error loading areas")}
+    );
   }, []);
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DataCollection from './DataCollection';
 import BreedDropdown from './BreedDropdown';
 import SexDropdown from './SexDropdown';
@@ -9,7 +9,7 @@ import TagNumberInput from './TagNumberInput';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
-import { daysSince } from './Utils.js';
+import { daysSince, Fetch } from './Utils.js';
 
 const DateToAgeCategory = (date) => {
   // Roughly 30 days per month.
@@ -28,6 +28,17 @@ const DateToAgeCategory = (date) => {
 
 export const ListBirths = () => {
   const [refreshKey, setRefreshKey] = useState(0)
+  const [areas, setAreas] = useState([])
+
+  useEffect(() => {
+    Fetch("api/data/areas", "get", null, 
+      (data) => {
+        setAreas(data);
+        setRefreshKey(refreshKey => refreshKey + 1);
+      },
+      () => {console.log("error loading areas")}
+    );
+  }, []);
 
   const onChange = (e, field, id) => {
     let value = e.target.value;
@@ -107,6 +118,7 @@ export const ListBirths = () => {
       selector: row => row.area,
       cell: row => <AreaDropdown
         selected={row.area}
+        areas={areas}
         onChange={(e) => {onChange(e, "area", row._id)}}
       />
     },
@@ -136,9 +148,19 @@ export const ListBirths = () => {
       />
     },
 
-    {name: t("who"),   selector: row => row.created_by, sortable: true},
-    {name: t("from"),  selector: row => row.phone, sortable: true},
+    {
+      name: t("who"),
+      selector: row => row.created_by,
+      sortable: true
+    },
+
+    {
+      name: t("from"),
+      selector: row => row.phone,
+      sortable: true
+    },
   ];
+
   return (
     <>
       <DataCollection 
