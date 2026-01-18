@@ -12,6 +12,7 @@ export const ReproductionResultDropdown = (props) => {
   return (
     <select name="cause" onChange={props.onChange} value={props.result}>
       <option value="" disabled selected hidden>-- Choose a Result --</option>
+      <Option value="in_progress"     name="In Progress"            selected={props.selected}/>
       <Option value="pregnancy_birth" name="Pregnancy and Birth"    selected={props.selected}/>
       <Option value="pregnancy_abort" name="Pregnancy and Abortion" selected={props.selected}/>
       <Option value="not_pregnant"    name="Not Pregnant"           selected={props.selected}/>
