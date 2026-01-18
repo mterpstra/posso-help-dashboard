@@ -28,7 +28,10 @@ export const DeathChart = (props) => {
       collection="births"
       aggregateData={aggregateData}
       title={t("deaths_by_cause")}
-      colors={["#4E5166", "#7C90A0", "#B5AA9D", "#B9B7A7", "#747274"]}
+      colors={[
+        "#4E5166", "#7C90A0", "#B5AA9D", "#B9B7A7", "#747274",
+        "#E7E6F7", "#E3D0D8", "#AEA3B0", "#827081", "#C6D2ED",
+      ]}
     />
   );
 }
