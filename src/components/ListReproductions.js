@@ -5,6 +5,7 @@ import DataCollection from './DataCollection';
 import AddReproductionNote from './AddReproductionNote.js';
 import ReproductionStatus from './ReproductionStatus.js';
 import AnimalsProtocolStatus from './AnimalsProtocolStatus.js';
+import ReproductionResultDropdown from './ReproductionResultDropdown.js';
 import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import Notes from "./Notes.js";
@@ -13,6 +14,7 @@ import { daysSince } from "./Utils.js";
 
 export const ListReproductions = (props) => {
 
+  const [refreshKey, setRefreshKey] = useState(0)
   const [protocols, setProtocols] = useState(null);
   const { t } = useTranslation();
   const collection = 'reproduction.active';
@@ -146,6 +148,21 @@ export const ListReproductions = (props) => {
       name: t("result"),         
       selector: row => row.result,         
       sortable: true,
+      cell: row => <ReproductionResultDropdown
+        result={row.result}
+        onChange={(value) => {
+          Patch("reproduction.active", row._id, 
+            "result", value.currentTarget.value,
+            () => {
+              console.log("setting refresh key")
+              setRefreshKey(refreshKey => refreshKey + 1);
+            },
+            () => {
+              console.log("error")
+            },
+          )
+        }}
+      />,
     },
   ];
 
@@ -163,6 +180,7 @@ export const ListReproductions = (props) => {
       <DataCollection 
         collection={collection} 
         columns={columns}
+        key={refreshKey}
         onSelection={props.onSelection}
         expandableRows 
         expandableRowsComponent={ExpandedComponent}
