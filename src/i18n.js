@@ -117,6 +117,9 @@ const resources = {
       "mediterrâneo":  "Mediterrâneo",
       "jafarabadi":    "Jafarabadi",
       "carabao":       "Carabao",
+      "marchigiana":   "Marchigiana",
+      "charolais":     "Charolais",
+      "sindi":         "Sindi",
 
       // Death Causes
       "aborto":       "Aborto",
@@ -245,6 +248,9 @@ const resources = {
       "mediterrâneo":  "Mediterrâneo",
       "jafarabadi":    "Jafarabadi",
       "carabao":       "Carabao",
+      "marchigiana":   "Marchigiana",
+      "charolais":     "Charolais",
+      "sindi":         "Sindi",
 
       // Death Causes
       "aborto":       "Aborto",

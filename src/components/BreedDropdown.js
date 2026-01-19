@@ -20,6 +20,9 @@ export const BreedDropdown = (props) => {
       <Option value="mediterrâneo" name="Mediterrâneo" selected={props.selected}/>
       <Option value="jafarabadi"   name="Jafarabadi"   selected={props.selected}/>
       <Option value="carabao"      name="Carabao"      selected={props.selected}/>
+      <Option value="marchigiana"  name="Marchigiana"  selected={props.selected}/>
+      <Option value="charolais"    name="Charolais"    selected={props.selected}/>
+      <Option value="sindi"        name="Sindi"        selected={props.selected}/>
     </select>
   );
 }
