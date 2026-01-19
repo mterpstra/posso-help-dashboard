@@ -1,7 +1,7 @@
 import './Overview.css';
 import { useTranslation } from 'react-i18next';
 import HerdByBreed from './charts/herd/HerdByBreed.js';
-import DeathChart from './DeathChart.js';
+import HerdByCauseOfDeath from './charts/herd/HerdByCauseOfDeath.js';
 import RainfallChart from './RainfallChart.js';
 import TemperatureChart from './TemperatureChart.js';
 import AgeCategoryChart from './AgeCategoryChart.js';
@@ -14,7 +14,7 @@ export const Overview = (props) => {
       <h2>{t("overview_title")}</h2>
       <div className="container">
         <HerdByBreed/>
-        <DeathChart/>
+        <HerdByCauseOfDeath/>
       </div>
       <div className="container">
         <RainfallChart/>

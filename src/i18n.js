@@ -34,7 +34,7 @@ const resources = {
       // Overview Screen
       "overview_title":       "Overview",
       "herd_by_breed":        "Herd by Breed",
-      "deaths_by_cause":      "Deaths by Cause",
+      "herd_by_cause_of_death":  "Deaths by Cause",
       "rainfall_by_month":    "Rainfall by Month",
       "temperature_by_month": "Average Temperature by Month",
       "all":                  "All",
@@ -158,7 +158,7 @@ const resources = {
       // Overview Screen
       "overview_title":       "Visão Geral",
       "herd_by_breed":        "Rebanho por raça",
-      "deaths_by_cause":      "Mortes por Causa",
+      "herd_by_cause_of_death": "Mortes por Causa",
       "rainfall_by_month":    "Precipitação por Mês",
       "temperature_by_month": "Temperatura média por mês",
       "all":                  "Todos",
