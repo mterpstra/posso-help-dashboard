@@ -58,8 +58,26 @@ const HerdByCauseOfDeath= (props) => {
         labels: {
           filter: (legendItem, chart) => {
             // Show only the first 5 labels
-            console.log(legendItem, chart);
             return legendItem.index < 5;
+          }
+        }
+      },
+      tooltip: {
+        enabled: true, // Show or hide tooltips
+        callbacks: {
+          label: function(context) {
+            console.log("context", context.dataset.suffix);
+            let label = context.label || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed !== null) {
+              label += context.parsed;
+            }
+            if (context.dataset.suffix !== undefined) {
+              label += context.dataset.suffix;
+            }
+            return label;
           }
         }
       }
@@ -81,6 +99,7 @@ const HerdByCauseOfDeath= (props) => {
         data: percentages,
         backgroundColor: inner_colors,
         borderWidth: 0,
+        suffix: "%",
       }],
   };
 

@@ -4,7 +4,6 @@ export const AreaDropdown = (props) => {
   const [areas, setAreaData] = useState([]);
   useEffect(() => {
     if (props.areas != null) {
-      console.log("AreaDropdown was passed areas", props.areas);
       setAreaData(props.areas);
       return;
     }

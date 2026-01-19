@@ -43,6 +43,11 @@ const resources = {
       "eight_months":         "8 months",
       "nine_months":          "9 months",
       "ten_twelve_months":    "10-12 months",
+      "not_started":          "Not Started",
+      "in_progress":          "In Progress",
+      "not_pregnant":         "Not Pregnant",
+      "pregnancy_abort":      "Pregnancy and Abortion",
+      "pregnancy_birth":      "Pregnancy and Birth",
 
       // Screen Titles
       "births_title":      "Births",
@@ -167,6 +172,11 @@ const resources = {
       "eight_months":         "8 meses",
       "nine_months":          "9 meses",
       "ten_twelve_months":    "10-12 meses",
+      "not_started":          "Não iniciado",
+      "in_progress":          "Em andamento",
+      "not_pregnant":         "Não está grávida",
+      "pregnancy_abort":      "Gravidez e Aborto",
+      "pregnancy_birth":      "Gravidez e Parto",
 
       // Screen Titles
       "births_title":      "Nascimentos",
