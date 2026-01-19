@@ -42,7 +42,7 @@ const HerdByCauseOfDeath= (props) => {
 
     // Convert the totals to percentage
     for(let i=0; i < percentages.length; i++) {
-      percentages[i] = (totals[i] / rawData.length) * 100;
+      percentages[i] = Math.round((totals[i] / rawData.length) * 100);
     }
 
     // Convert the code names to language
@@ -66,7 +66,6 @@ const HerdByCauseOfDeath= (props) => {
         enabled: true, // Show or hide tooltips
         callbacks: {
           label: function(context) {
-            console.log("context", context.dataset.suffix);
             let label = context.label || '';
             if (label) {
               label += ': ';

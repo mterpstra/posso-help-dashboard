@@ -42,7 +42,7 @@ const HerdByBreed = (props) => {
 
     // Convert the totals to percentage
     for(let i=0; i < percentages.length; i++) {
-      percentages[i] = (totals[i] / rawData.length) * 100;
+      percentages[i] = Math.round((totals[i] / rawData.length) * 100);
     }
 
     // Convert the code names to language
@@ -51,6 +51,37 @@ const HerdByBreed = (props) => {
       labels[i] = t(labels[i]);
     }
   }
+
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          filter: (legendItem, chart) => {
+            // Show only the first 5 labels
+            return legendItem.index < 5;
+          }
+        }
+      },
+      tooltip: {
+        enabled: true, // Show or hide tooltips
+        callbacks: {
+          label: function(context) {
+            let label = context.label || '';
+            if (label) {
+              label += ': ';
+            }
+            if (context.parsed !== null) {
+              label += context.parsed;
+            }
+            if (context.dataset.suffix !== undefined) {
+              label += context.dataset.suffix;
+            }
+            return label;
+          }
+        }
+      }
+    }
+  };
 
   const graphData = aggregateData(data);
   const chartData = {
@@ -67,6 +98,7 @@ const HerdByBreed = (props) => {
       data: percentages,
       backgroundColor: inner_colors,
       borderWidth: 0,
+      suffix:"%",
     }],
   };
 
@@ -74,7 +106,7 @@ const HerdByBreed = (props) => {
   return (
     <div className="Chart">
       <h3>{t("herd_by_breed")}</h3>
-      <Pie data={chartData} />
+      <Pie data={chartData} options={options}/>
     </div>
   );
 }
