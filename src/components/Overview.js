@@ -1,6 +1,6 @@
 import './Overview.css';
 import { useTranslation } from 'react-i18next';
-import BirthChart from './BirthChart.js';
+import HerdByBreed from './charts/herd/HerdByBreed.js';
 import DeathChart from './DeathChart.js';
 import RainfallChart from './RainfallChart.js';
 import TemperatureChart from './TemperatureChart.js';
@@ -13,12 +13,14 @@ export const Overview = (props) => {
     <div className="Overview">
       <h2>{t("overview_title")}</h2>
       <div className="container">
-        <BirthChart/>
+        <HerdByBreed/>
         <DeathChart/>
-        <RainfallChart/>
       </div>
       <div className="container">
+        <RainfallChart/>
         <TemperatureChart/>
+      </div>
+      <div className="container">
         <AgeCategoryChart/>
         <ReproductionRecentResults/>
       </div>

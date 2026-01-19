@@ -33,7 +33,7 @@ const resources = {
 
       // Overview Screen
       "overview_title":       "Overview",
-      "births_by_breed":      "Births by Breed",
+      "herd_by_breed":        "Herd by Breed",
       "deaths_by_cause":      "Deaths by Cause",
       "rainfall_by_month":    "Rainfall by Month",
       "temperature_by_month": "Average Temperature by Month",
@@ -103,11 +103,15 @@ const resources = {
       "notes":      "Notes",
 
       // Breeds
-      "angus":      "Angus",
-      "brangus":    "Brangus",
-      "cruzado":    "Cruzado",
-      "nelore":     "Nelore",
-      "sta_zelia":  "Sta. Zelia",
+      "angus":         "Angus",
+      "brangus":       "Brangus",
+      "cruzada":       "Cruzada",
+      "nelore":        "Nelore",
+      "sta_zelia":     "Sta. Zelia",
+      "murrah":        "Murrah",
+      "mediterrâneo":  "Mediterrâneo",
+      "jafarabadi":    "Jafarabadi",
+      "carabao":       "Carabao",
 
       // Death Causes
       "aborto":       "Aborto",
@@ -153,7 +157,7 @@ const resources = {
 
       // Overview Screen
       "overview_title":       "Visão Geral",
-      "births_by_breed":      "Nascimentos por Raça",
+      "herd_by_breed":        "Rebanho por raça",
       "deaths_by_cause":      "Mortes por Causa",
       "rainfall_by_month":    "Precipitação por Mês",
       "temperature_by_month": "Temperatura média por mês",
@@ -222,11 +226,15 @@ const resources = {
       "reproduction-results-for-month":"Inseminações",
 
       // Breeds
-      "angus":      "Angus",
-      "brangus":    "Brangus",
-      "cruzado":    "Cruzado",
-      "nelore":     "Nelore",
-      "sta_zelia":  "Sta. Zelia",
+      "angus":         "Angus",
+      "brangus":       "Brangus",
+      "cruzada":       "Cruzada",
+      "nelore":        "Nelore",
+      "sta_zelia":     "Sta. Zelia",
+      "murrah":        "Murrah",
+      "mediterrâneo":  "Mediterrâneo",
+      "jafarabadi":    "Jafarabadi",
+      "carabao":       "Carabao",
 
       // Death Causes
       "aborto":       "Aborto",
