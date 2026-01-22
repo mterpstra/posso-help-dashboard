@@ -1,4 +1,4 @@
-import DataCollectionPieChart from './DataCollectionPieChart.js';
+import DataCollectionPieChart from '../../DataCollectionPieChart.js';
 import { useTranslation } from 'react-i18next';
 const ReproductionRecentResults= (props) => {
   const { t } = useTranslation();

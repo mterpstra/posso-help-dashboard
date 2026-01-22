@@ -97,8 +97,9 @@ const resources = {
       "show-protocol-view": "Show Protocol View",
       "hide-notes-view":    "Hide Notes View",
       "show-notes-view":    "Show Notes View",
-
       "reproduction-results-for-month":"Inseminations for",
+      "iatf-success-rate-by-group":"IATF Success by Group",
+      "birth-rate-percentage":"Birth Rate Percentage",
 
 
       "treatments": "Treatments",
@@ -237,6 +238,8 @@ const resources = {
       "notes":      "Notas",
 
       "reproduction-results-for-month":"Inseminações",
+      "iatf-success-rate-by-group":"Sucesso da IATF por grupo",
+      "birth-rate-percentage":"Porcentagem da taxa de natalidade",
 
       // Breeds
       "angus":         "Angus",
