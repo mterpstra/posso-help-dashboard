@@ -54,6 +54,7 @@ export const DataCollection = (props) => {
     <div>
       <h2>{props.title}</h2>
       <DataTable
+        pagination
         defaultSortFieldId={1}
         data={data}
         columns={props.columns}

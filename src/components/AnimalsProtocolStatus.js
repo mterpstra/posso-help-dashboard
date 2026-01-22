@@ -44,12 +44,14 @@ export const AnimalsProtocolStatus = (props) => {
   }
 
   const isComplete = (animal, dayIndex, treatmentIndex) => {
-    if (animal.protocol == undefined) {
-      return false;
-    }
-    if (animal.protocol == null) {
-      return false;
-    }
+    if (animal.protocol == undefined) { return false }
+    if (animal.protocol == null) { return false }
+    if (animal.protocol.timeline_days == undefined) { return false }
+    if (animal.protocol.timeline_days == null) { return false }
+    if (animal.protocol.timeline_days[dayIndex] == undefined) { return false }
+    if (animal.protocol.timeline_days[dayIndex] == null) { return false }
+    if (animal.protocol.timeline_days[dayIndex].completed == undefined) { return false }
+    if (animal.protocol.timeline_days[dayIndex].completed == null) { return false }
     const completed = animal.protocol.timeline_days[dayIndex].completed;
     return animal.protocol.timeline_days[dayIndex].completed;
   }

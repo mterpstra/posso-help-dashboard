@@ -37,6 +37,12 @@ export const ReproductionStatus = (props) => {
     <div className="status">
       {
         props.protocol.timeline_days.map((day, index) => {
+          if (props.animal.protocol === undefined) { return }
+          if (props.animal.protocol === null) { return }
+          if (props.animal.protocol.timeline_days === undefined) { return }
+          if (props.animal.protocol.timeline_days === null) { return }
+          if (props.animal.protocol.timeline_days[index] === undefined) { return }
+          if (props.animal.protocol.timeline_days[index] === null) { return }
           return (
             <>
               <DayStatus

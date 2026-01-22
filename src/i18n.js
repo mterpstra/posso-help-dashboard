@@ -33,8 +33,8 @@ const resources = {
 
       // Overview Screen
       "overview_title":       "Overview",
-      "births_by_breed":      "Births by Breed",
-      "deaths_by_cause":      "Deaths by Cause",
+      "herd_by_breed":        "Herd by Breed",
+      "herd_by_cause_of_death":  "Deaths by Cause",
       "rainfall_by_month":    "Rainfall by Month",
       "temperature_by_month": "Average Temperature by Month",
       "all":                  "All",
@@ -43,6 +43,11 @@ const resources = {
       "eight_months":         "8 months",
       "nine_months":          "9 months",
       "ten_twelve_months":    "10-12 months",
+      "not_started":          "Not Started",
+      "in_progress":          "In Progress",
+      "not_pregnant":         "Not Pregnant",
+      "pregnancy_abort":      "Pregnancy and Abortion",
+      "pregnancy_birth":      "Pregnancy and Birth",
 
       // Screen Titles
       "births_title":      "Births",
@@ -92,6 +97,10 @@ const resources = {
       "show-protocol-view": "Show Protocol View",
       "hide-notes-view":    "Hide Notes View",
       "show-notes-view":    "Show Notes View",
+      "reproduction-results-for-month":"Inseminations for",
+      "iatf-success-rate-by-group":"IATF Success by Group",
+      "birth-rate-percentage":"Birth Rate Percentage",
+
 
       "treatments": "Treatments",
       "medication": "Medication",
@@ -100,11 +109,18 @@ const resources = {
       "notes":      "Notes",
 
       // Breeds
-      "angus":      "Angus",
-      "brangus":    "Brangus",
-      "cruzado":    "Cruzado",
-      "nelore":     "Nelore",
-      "sta_zelia":  "Sta. Zelia",
+      "angus":         "Angus",
+      "brangus":       "Brangus",
+      "cruzada":       "Cruzada",
+      "nelore":        "Nelore",
+      "sta_zelia":     "Sta. Zelia",
+      "murrah":        "Murrah",
+      "mediterrâneo":  "Mediterrâneo",
+      "jafarabadi":    "Jafarabadi",
+      "carabao":       "Carabao",
+      "marchigiana":   "Marchigiana",
+      "charolais":     "Charolais",
+      "sindi":         "Sindi",
 
       // Death Causes
       "aborto":       "Aborto",
@@ -150,8 +166,8 @@ const resources = {
 
       // Overview Screen
       "overview_title":       "Visão Geral",
-      "births_by_breed":      "Nascimentos por Raça",
-      "deaths_by_cause":      "Mortes por Causa",
+      "herd_by_breed":        "Rebanho por raça",
+      "herd_by_cause_of_death": "Mortes por Causa",
       "rainfall_by_month":    "Precipitação por Mês",
       "temperature_by_month": "Temperatura média por mês",
       "all":                  "Todos",
@@ -160,6 +176,11 @@ const resources = {
       "eight_months":         "8 meses",
       "nine_months":          "9 meses",
       "ten_twelve_months":    "10-12 meses",
+      "not_started":          "Não iniciado",
+      "in_progress":          "Em andamento",
+      "not_pregnant":         "Não está grávida",
+      "pregnancy_abort":      "Gravidez e Aborto",
+      "pregnancy_birth":      "Gravidez e Parto",
 
       // Screen Titles
       "births_title":      "Nascimentos",
@@ -216,12 +237,23 @@ const resources = {
       "proceedure": "Procedimento",
       "notes":      "Notas",
 
+      "reproduction-results-for-month":"Inseminações",
+      "iatf-success-rate-by-group":"Sucesso da IATF por grupo",
+      "birth-rate-percentage":"Porcentagem da taxa de natalidade",
+
       // Breeds
-      "angus":      "Angus",
-      "brangus":    "Brangus",
-      "cruzado":    "Cruzado",
-      "nelore":     "Nelore",
-      "sta_zelia":  "Sta. Zelia",
+      "angus":         "Angus",
+      "brangus":       "Brangus",
+      "cruzada":       "Cruzada",
+      "nelore":        "Nelore",
+      "sta_zelia":     "Sta. Zelia",
+      "murrah":        "Murrah",
+      "mediterrâneo":  "Mediterrâneo",
+      "jafarabadi":    "Jafarabadi",
+      "carabao":       "Carabao",
+      "marchigiana":   "Marchigiana",
+      "charolais":     "Charolais",
+      "sindi":         "Sindi",
 
       // Death Causes
       "aborto":       "Aborto",

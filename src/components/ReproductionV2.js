@@ -12,18 +12,16 @@ import DateInput from './DateInput.js';
 export const ReproductionV2 = () => {
 
   const getBodyFromForm = (formData, row) => {
-    console.log("reproduction row edit", row);
+    console.log("reproduction row add", row);
     const tag = Number(formData.get("tag"));
     const nickname = formData.get("nickname");
     
     const protocol_both = formData.get("protocol").split("::", 2);
     const protocol_id = protocol_both[0];
     const protocol_name = protocol_both[1];
-
     const start_date  = formData.get("start_date");
-    const predicted_iatf = formData.get("predicted_iatf");
 
-    const result = "pending";
+    const result = "not_started";
 
     const notes = [];
     const protocol = {
@@ -43,8 +41,7 @@ export const ReproductionV2 = () => {
 
     return JSON.stringify({
       tag, nickname, protocol_id, protocol_name,
-      start_date, predicted_iatf, result,
-      notes, protocol,
+      start_date, result, notes, protocol,
     });
   }
 

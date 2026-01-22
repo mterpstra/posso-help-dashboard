@@ -1,10 +1,12 @@
 import './Overview.css';
 import { useTranslation } from 'react-i18next';
-import BirthChart from './BirthChart.js';
-import DeathChart from './DeathChart.js';
-import RainfallChart from './RainfallChart.js';
+import HerdByBreed               from './charts/herd/HerdByBreed.js';
+import HerdByCauseOfDeath        from './charts/herd/HerdByCauseOfDeath.js';
+import ReproductionRecentResults from './charts/reproduction/ReproductionRecentResults.js';
+import ReproductionSuccessByMonthAndGroup from './charts/reproduction/ReproductionSuccessByMonthAndGroup.js';
+import RainfallChart    from './RainfallChart.js';
 import TemperatureChart from './TemperatureChart.js';
-import AgeCategoryChart from './AgeCategoryChart.js'
+import AgeCategoryChart from './AgeCategoryChart.js';
 
 export const Overview = (props) => {
   const { t } = useTranslation();
@@ -12,13 +14,19 @@ export const Overview = (props) => {
     <div className="Overview">
       <h2>{t("overview_title")}</h2>
       <div className="container">
-        <BirthChart/>
-        <DeathChart/>
-        <RainfallChart/>
+        <HerdByBreed/>
+        <HerdByCauseOfDeath/>
       </div>
       <div className="container">
+        <RainfallChart/>
         <TemperatureChart/>
+      </div>
+      <div className="container">
         <AgeCategoryChart/>
+      </div>
+      <div className="container">
+        <ReproductionRecentResults/>
+        <ReproductionSuccessByMonthAndGroup/>
       </div>
     </div>
   );
