@@ -7,7 +7,6 @@ import './Register.css';
 const Register = (props) => {
   const { t } = useTranslation();
   const [errorMessage, setErrorMessage] = useState("");
-  const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone_number, setPhoneNumber] = useState("");
@@ -31,7 +30,7 @@ const Register = (props) => {
 
     fetch('/api/auth/register', {
       method: 'POST',
-      body: JSON.stringify({username, name, email, phone_number, password})
+      body: JSON.stringify({name, email, phone_number, password})
     })
     .then(response => {
       if (!response.ok) {
@@ -68,10 +67,6 @@ const Register = (props) => {
     {fetching ? <Overlay/>:""}
     <form className="RegisterForm" action={submit}>
       <h2>{t("register")}</h2>
-
-      <input name="username" type="text" required
-             placeholder={t("username")} value={username}
-             onChange={(e) => setUsername(e.target.value)}/>
 
       <input name="name" type="text" required
              placeholder={t("name")} value={name}

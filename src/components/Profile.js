@@ -20,14 +20,6 @@ export const Profile = (props) => {
         }
 
         {
-          user.username &&
-          <div>
-            <span>{t("username")}:</span>
-            {user.username}
-          </div>
-        }
-
-        {
           user.email && 
           <div>
             <span>{t("email")}:</span>
