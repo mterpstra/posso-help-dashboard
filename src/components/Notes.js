@@ -19,9 +19,6 @@ const Notes = (props) => {
   const handleNewNote = (e) => {
     const user = JSON.parse(localStorage.getItem('zapmanejo_user'));
     let name = user.email;
-    if (user.username !== "") {
-      name = user.username;
-    }
     if (user.name !== "") {
       name = user.name;
     }
