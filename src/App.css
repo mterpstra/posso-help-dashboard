@@ -85,3 +85,8 @@ input[type=number] {
 .rdt_TableCell input {
   border:0;
 }
+
+/* Used when datatable has row that cannot be edited. */
+input:disabled {
+  display:none;
+}
