@@ -1,0 +1,4 @@
+.ReproductionProtocols .rdt_TableCol, 
+.ReproductionProtocols .rdt_TableCell {
+  max-width:300px;
+}

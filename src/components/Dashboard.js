@@ -8,6 +8,7 @@ import Temperatures from './Temperatures.js';
 import Reproduction from './Reproduction.js';
 import RebanhoTab from './RebanhoTab.js';
 import ReproductionV2 from './ReproductionV2.js';
+import Protocols from './reproduction/protocols/Protocols.js';
 
 
 import Areas from './Areas.js';
@@ -23,7 +24,8 @@ const Dashboard = (props) => {
     "Temperatures",
     "Areas",
     "Team",
-    "Reproduction"
+    "Reproduction",
+    "Protocols"
   ];
   const getComponent = () => {
     if (activeTab === 1) return "births";
@@ -32,6 +34,7 @@ const Dashboard = (props) => {
     if (activeTab === 4) return "areas";
     if (activeTab === 5) return "teams";
     if (activeTab === 6) return "reproductionV2";
+    if (activeTab === 7) return "protocols";
 
     if (activeTab === 10) return "profile";
     return "overview";
@@ -62,6 +65,7 @@ const Dashboard = (props) => {
         {(screen === "areas")           && <Areas/>}
         {(screen === "teams")           && <Teams/>}
         {(screen === "reproductionV2")  && <ReproductionV2/>}
+        {(screen === "protocols")       && <Protocols/>}
         {(screen === "profile")         && <Profile/>}
       </div>
     </div>
