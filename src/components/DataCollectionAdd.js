@@ -9,6 +9,7 @@ export const AddDataCollection = (props) => {
   const url = `/api/data/${props.collection}`;
   const submit = (formData) => {
     const body = props.getBodyFromForm(formData);
+    return;
     fetch(url, {
       method: 'POST',
       headers: {
