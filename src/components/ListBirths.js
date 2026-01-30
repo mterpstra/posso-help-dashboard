@@ -127,7 +127,7 @@ export const ListBirths = () => {
       selector: row => row.date.substring(0,10), 
       sortable: true,
       cell: row => <DateInput
-        date={row.date}
+        date={row.date.substring(0,10)}
         onChange={(value) => {
           Patch("births", row._id, "date", value,
             () => {console.log("success")},
