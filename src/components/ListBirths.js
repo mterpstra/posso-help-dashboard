@@ -3,7 +3,6 @@ import DataCollection from './DataCollection';
 import BreedDropdown from './BreedDropdown';
 import SexDropdown from './SexDropdown';
 import AreaDropdown from './AreaDropdown';
-import PureBreedDropdown from './PureBreedDropdown';
 import DeathCauseDropdown from './DeathCauseDropdown';
 import TagNumberInput from './TagNumberInput';
 import DateInput from './DateInput.js';
@@ -102,17 +101,7 @@ export const ListBirths = () => {
       selector: row => DateToAgeCategory(row.date),
     },
 
-    {
-      name: t("pure"),  
-      sortable: true,
-      selector: row => (row.pure_bread) ? "true" : "false",
-      cell: row => <PureBreedDropdown
-        selected={row.pure_bread}
-        onChange={(e) => {onChange(e, "pure_bread", row._id)}}
-      />
-    },
-
-    {
+{
       name: t("area"),  
       sortable: true,
       selector: row => row.area,
