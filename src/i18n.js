@@ -66,7 +66,7 @@ const resources = {
       // Table Titles
       "tag":          "Tag",
       "breed":        "Breed",
-      "cause":        "Cause",
+      "cause":        "Situation",
       "sex":          "Sex",
       "age":          "Age",
       "area":         "Area",
@@ -198,7 +198,7 @@ const resources = {
       // Table Titles
       "tag":          "Brinco",
       "breed":        "Raça",
-      "cause":        "Causa",
+      "cause":        "Situação",
       "sex":          "Sexo",
       "age":          "Idade",
       "area":         "Área",
