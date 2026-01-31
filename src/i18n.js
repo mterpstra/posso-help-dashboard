@@ -68,6 +68,7 @@ const resources = {
       "all_breeds":   "All Breeds",
       "all_areas":    "All Areas",
       "all_situations":"All Situations",
+      "all_sexes":    "All Sexes",
       "all_ages":     "All Ages",
       "months":       "months",
 
@@ -208,6 +209,7 @@ const resources = {
       "all_breeds":   "Todas as Raças",
       "all_areas":    "Todas as Áreas",
       "all_situations":"Todas as Situações",
+      "all_sexes":    "Todos os Sexos",
       "all_ages":     "Todas as Idades",
       "months":       "meses",
 

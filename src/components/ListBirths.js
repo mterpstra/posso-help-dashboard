@@ -223,6 +223,19 @@ export const ListBirths = () => {
     });
   };
 
+  const onSearchSex = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.sex = value;
+      } else {
+        delete next.sex;
+      }
+      return next;
+    });
+  };
+
   const onSearchAge = (e) => {
     const value = e.target.value;
     setSearchFields(prev => {
@@ -250,6 +263,11 @@ export const ListBirths = () => {
       <BreedDropdown
         showAll={true}
         onChange={onSearchBreed}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
+      />
+      <SexDropdown
+        showAll={true}
+        onChange={onSearchSex}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
       <select
