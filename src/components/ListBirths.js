@@ -34,7 +34,7 @@ const ageCategoryToDateRegex = (category) => {
 const DateToAgeCategory = (date) => {
   // Roughly 30 days per month.
   const months = Math.floor(daysSince(date)/30);
-  if (months >= 0 && months <= 12) {
+  if (months <= 12) {
     return "0-12 months";
   }
   if (months >= 13 && months <= 24) {
