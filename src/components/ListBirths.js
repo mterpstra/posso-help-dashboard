@@ -9,6 +9,7 @@ import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
 import { daysSince, Fetch } from './Utils.js';
+import './ListHerd.css';
 
 const ageCategoryToDateRegex = (category) => {
   const now = new Date();
@@ -81,7 +82,7 @@ export const ListBirths = () => {
       () => { console.log("error")},
     );
   }
-   
+
   const { t } = useTranslation();
   const collection = 'births';
   const columns = [
@@ -253,51 +254,47 @@ export const ListBirths = () => {
   };
 
   return (
-    <>
-      <input
-        type="number"
-        placeholder={t("find_tag")}
-        onChange={onSearchTag}
-        style={{marginBottom: '10px', padding: '8px'}}
-      />
-      <BreedDropdown
-        showAll={true}
-        onChange={onSearchBreed}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      />
-      <SexDropdown
-        showAll={true}
-        onChange={onSearchSex}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      />
-      <select
-        onChange={onSearchAge}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      >
-        <option value="">{t("all_ages")}</option>
-        <option value="0-12">0-12 {t("months")}</option>
-        <option value="13-24">13-24 {t("months")}</option>
-        <option value="25-36">25-36 {t("months")}</option>
-        <option value="37+">37+ {t("months")}</option>
-      </select>
-      <AreaDropdown
-        showAll={true}
-        areas={areas}
-        selected={searchFields.area || ""}
-        onChange={onSearchArea}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      />
-      <DeathCauseDropdown
-        showAll={true}
-        onChange={onSearchCause}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      />
+    <div className="ListHerd">
+      <div className="filters">
+        <input
+          type="number"
+          placeholder={t("find_tag")}
+          onChange={onSearchTag}
+        />
+        <BreedDropdown
+          showAll={true}
+          onChange={onSearchBreed}
+        />
+        <SexDropdown
+          showAll={true}
+          onChange={onSearchSex}
+        />
+        <select
+          onChange={onSearchAge}
+        >
+          <option value="">{t("all_ages")}</option>
+          <option value="0-12">0-12 {t("months")}</option>
+          <option value="13-24">13-24 {t("months")}</option>
+          <option value="25-36">25-36 {t("months")}</option>
+          <option value="37+">37+ {t("months")}</option>
+        </select>
+        <AreaDropdown
+          showAll={true}
+          areas={areas}
+          selected={searchFields.area || ""}
+          onChange={onSearchArea}
+        />
+        <DeathCauseDropdown
+          showAll={true}
+          onChange={onSearchCause}
+        />
+      </div>
       <DataCollection
         key={refreshKey}
         collection={collection}
         columns={columns}
         searchFields={searchFields}/>
-    </>
+    </div>
   );
 }
 export default ListBirths;

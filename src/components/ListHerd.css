@@ -1,0 +1,20 @@
+.ListHerd {
+}
+
+.ListHerd .filters {
+}
+
+.ListHerd .filters input, .ListHerd .filters select {
+  color:gray;
+  border:1px solid gray;
+  padding:0 2px;
+}
+
+.ListHerd .filters input {
+  height:30px;
+}
+
+.ListHerd .filters select {
+  height:34px;
+  margin-left:10px;
+}
