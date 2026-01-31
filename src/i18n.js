@@ -68,6 +68,8 @@ const resources = {
       "all_breeds":   "All Breeds",
       "all_areas":    "All Areas",
       "all_situations":"All Situations",
+      "all_ages":     "All Ages",
+      "months":       "months",
 
       // Table Titles
       "tag":          "Tag",
@@ -206,6 +208,8 @@ const resources = {
       "all_breeds":   "Todas as Raças",
       "all_areas":    "Todas as Áreas",
       "all_situations":"Todas as Situações",
+      "all_ages":     "Todas as Idades",
+      "months":       "meses",
 
       // Table Titles
       "tag":          "Brinco",

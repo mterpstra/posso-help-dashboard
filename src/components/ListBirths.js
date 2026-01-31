@@ -10,6 +10,26 @@ import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
 import { daysSince, Fetch } from './Utils.js';
 
+const ageCategoryToDateRegex = (category) => {
+  const now = new Date();
+  let startMonths, endMonths;
+  switch (category) {
+    case "0-12":   startMonths = 0;  endMonths = 12; break;
+    case "13-24":  startMonths = 13; endMonths = 24; break;
+    case "25-36":  startMonths = 25; endMonths = 36; break;
+    case "37+":    startMonths = 37; endMonths = 72; break;
+    default: return null;
+  }
+  const parts = [];
+  for (let m = startMonths; m <= endMonths; m++) {
+    const d = new Date(now.getFullYear(), now.getMonth() - m, 1);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    parts.push(`${yyyy}-${mm}`);
+  }
+  return `^(${parts.join('|')})`;
+};
+
 const DateToAgeCategory = (date) => {
   // Roughly 30 days per month.
   const months = Math.floor(daysSince(date)/30);
@@ -102,7 +122,7 @@ export const ListBirths = () => {
       selector: row => DateToAgeCategory(row.date),
     },
 
-{
+    {
       name: t("area"),  
       sortable: true,
       selector: row => row.area,
@@ -203,6 +223,22 @@ export const ListBirths = () => {
     });
   };
 
+  const onSearchAge = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        const regex = ageCategoryToDateRegex(value);
+        if (regex) {
+          next.date = regex;
+        }
+      } else {
+        delete next.date;
+      }
+      return next;
+    });
+  };
+
   return (
     <>
       <input
@@ -228,6 +264,16 @@ export const ListBirths = () => {
         onChange={onSearchCause}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
+      <select
+        onChange={onSearchAge}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
+      >
+        <option value="">{t("all_ages")}</option>
+        <option value="0-12">0-12 {t("months")}</option>
+        <option value="13-24">13-24 {t("months")}</option>
+        <option value="25-36">25-36 {t("months")}</option>
+        <option value="37+">37+ {t("months")}</option>
+      </select>
       <DataCollection
         key={refreshKey}
         collection={collection}
