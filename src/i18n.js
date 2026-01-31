@@ -67,6 +67,7 @@ const resources = {
       "find_tag":     "Find tag...",
       "all_breeds":   "All Breeds",
       "all_areas":    "All Areas",
+      "all_situations":"All Situations",
 
       // Table Titles
       "tag":          "Tag",
@@ -204,6 +205,7 @@ const resources = {
       "find_tag":     "Buscar brinco...",
       "all_breeds":   "Todas as Raças",
       "all_areas":    "Todas as Áreas",
+      "all_situations":"Todas as Situações",
 
       // Table Titles
       "tag":          "Brinco",

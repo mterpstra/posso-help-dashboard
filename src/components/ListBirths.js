@@ -190,6 +190,19 @@ export const ListBirths = () => {
     });
   };
 
+  const onSearchCause = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.cause = value;
+      } else {
+        delete next.cause;
+      }
+      return next;
+    });
+  };
+
   return (
     <>
       <input
@@ -208,6 +221,11 @@ export const ListBirths = () => {
         areas={areas}
         selected={searchFields.area || ""}
         onChange={onSearchArea}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
+      />
+      <DeathCauseDropdown
+        showAll={true}
+        onChange={onSearchCause}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
       <DataCollection
