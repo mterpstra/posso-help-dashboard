@@ -252,6 +252,16 @@ export const ListBirths = () => {
         onChange={onSearchBreed}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
+      <select
+        onChange={onSearchAge}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
+      >
+        <option value="">{t("all_ages")}</option>
+        <option value="0-12">0-12 {t("months")}</option>
+        <option value="13-24">13-24 {t("months")}</option>
+        <option value="25-36">25-36 {t("months")}</option>
+        <option value="37+">37+ {t("months")}</option>
+      </select>
       <AreaDropdown
         showAll={true}
         areas={areas}
@@ -264,16 +274,6 @@ export const ListBirths = () => {
         onChange={onSearchCause}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
-      <select
-        onChange={onSearchAge}
-        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
-      >
-        <option value="">{t("all_ages")}</option>
-        <option value="0-12">0-12 {t("months")}</option>
-        <option value="13-24">13-24 {t("months")}</option>
-        <option value="25-36">25-36 {t("months")}</option>
-        <option value="37+">37+ {t("months")}</option>
-      </select>
       <DataCollection
         key={refreshKey}
         collection={collection}
