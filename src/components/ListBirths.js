@@ -28,6 +28,7 @@ const DateToAgeCategory = (date) => {
 export const ListBirths = () => {
   const [refreshKey, setRefreshKey] = useState(0)
   const [areas, setAreas] = useState([])
+  const [searchFields, setSearchFields] = useState({})
 
   useEffect(() => {
     Fetch("api/data/areas", "get", null, 
@@ -150,13 +151,28 @@ export const ListBirths = () => {
     },
   ];
 
+  const onSearchTag = (e) => {
+    const value = e.target.value;
+    if (value) {
+      setSearchFields({tag: value});
+    } else {
+      setSearchFields({});
+    }
+  };
+
   return (
     <>
-      <DataCollection 
-        // Forces refresh of child component (DataCollection)
+      <input
+        type="number"
+        placeholder={t("find_tag")}
+        onChange={onSearchTag}
+        style={{marginBottom: '10px', padding: '8px'}}
+      />
+      <DataCollection
         key={refreshKey}
-        collection={collection} 
-        columns={columns}/>
+        collection={collection}
+        columns={columns}
+        searchFields={searchFields}/>
     </>
   );
 }

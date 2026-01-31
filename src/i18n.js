@@ -63,6 +63,9 @@ const resources = {
       "team_title":        "Team",
       "team_add":          "Add Team Member",
 
+      // Search
+      "find_tag":     "Find tag...",
+
       // Table Titles
       "tag":          "Tag",
       "breed":        "Breed",
@@ -194,6 +197,9 @@ const resources = {
       "area_add":          "Adicionar Área",
       "team_title":        "Equipe",
       "team_add":          "Adicionar membro da Equipe",
+
+      // Search
+      "find_tag":     "Buscar brinco...",
 
       // Table Titles
       "tag":          "Brinco",
