@@ -177,6 +177,19 @@ export const ListBirths = () => {
     });
   };
 
+  const onSearchArea = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.area = value;
+      } else {
+        delete next.area;
+      }
+      return next;
+    });
+  };
+
   return (
     <>
       <input
@@ -188,6 +201,13 @@ export const ListBirths = () => {
       <BreedDropdown
         showAll={true}
         onChange={onSearchBreed}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
+      />
+      <AreaDropdown
+        showAll={true}
+        areas={areas}
+        selected={searchFields.area || ""}
+        onChange={onSearchArea}
         style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
       <DataCollection
