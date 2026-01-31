@@ -20,7 +20,12 @@ export const DataCollection = (props) => {
 
   useEffect(() => {
     const token = localStorage.getItem('zapmanejo_token');
-    const url = `/api/data/${props.collection}`;
+    let url = `/api/data/${props.collection}`;
+    if (props.searchFields && Object.keys(props.searchFields).length > 0) {
+      const fields = Object.keys(props.searchFields).join(',');
+      const values = Object.values(props.searchFields).join(',');
+      url += `?search_fields=${encodeURIComponent(fields)}&search_values=${encodeURIComponent(values)}`;
+    }
     const fetchData = () => {
       fetch(url, {
         method: 'GET',
@@ -48,7 +53,7 @@ export const DataCollection = (props) => {
       });
     }
     fetchData();
-  }, [refresh,props.collection]);
+  }, [refresh,props.collection,props.searchFields]);
 
   return (
     <div>

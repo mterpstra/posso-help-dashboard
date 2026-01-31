@@ -63,6 +63,15 @@ const resources = {
       "team_title":        "Team",
       "team_add":          "Add Team Member",
 
+      // Search
+      "find_tag":     "Find tag...",
+      "all_breeds":   "All Breeds",
+      "all_areas":    "All Areas",
+      "all_situations":"All Situations",
+      "all_sexes":    "All Sexes",
+      "all_ages":     "All Ages",
+      "months":       "months",
+
       // Table Titles
       "tag":          "Tag",
       "breed":        "Breed",
@@ -194,6 +203,15 @@ const resources = {
       "area_add":          "Adicionar Área",
       "team_title":        "Equipe",
       "team_add":          "Adicionar membro da Equipe",
+
+      // Search
+      "find_tag":     "Buscar brinco...",
+      "all_breeds":   "Todas as Raças",
+      "all_areas":    "Todas as Áreas",
+      "all_situations":"Todas as Situações",
+      "all_sexes":    "Todos os Sexos",
+      "all_ages":     "Todas as Idades",
+      "months":       "meses",
 
       // Table Titles
       "tag":          "Brinco",

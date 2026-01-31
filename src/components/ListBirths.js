@@ -9,6 +9,27 @@ import DateInput from './DateInput.js';
 import Patch from "./Patch.js";
 import { useTranslation } from 'react-i18next';
 import { daysSince, Fetch } from './Utils.js';
+import './ListHerd.css';
+
+const ageCategoryToDateRegex = (category) => {
+  const now = new Date();
+  let startMonths, endMonths;
+  switch (category) {
+    case "0-12":   startMonths = 0;  endMonths = 12; break;
+    case "13-24":  startMonths = 13; endMonths = 24; break;
+    case "25-36":  startMonths = 25; endMonths = 36; break;
+    case "37+":    startMonths = 37; endMonths = 72; break;
+    default: return null;
+  }
+  const parts = [];
+  for (let m = startMonths; m <= endMonths; m++) {
+    const d = new Date(now.getFullYear(), now.getMonth() - m, 1);
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    parts.push(`${yyyy}-${mm}`);
+  }
+  return `^(${parts.join('|')})`;
+};
 
 const DateToAgeCategory = (date) => {
   // Roughly 30 days per month.
@@ -28,6 +49,7 @@ const DateToAgeCategory = (date) => {
 export const ListBirths = () => {
   const [refreshKey, setRefreshKey] = useState(0)
   const [areas, setAreas] = useState([])
+  const [searchFields, setSearchFields] = useState({})
 
   useEffect(() => {
     Fetch("api/data/areas", "get", null, 
@@ -60,7 +82,7 @@ export const ListBirths = () => {
       () => { console.log("error")},
     );
   }
-   
+
   const { t } = useTranslation();
   const collection = 'births';
   const columns = [
@@ -101,7 +123,7 @@ export const ListBirths = () => {
       selector: row => DateToAgeCategory(row.date),
     },
 
-{
+    {
       name: t("area"),  
       sortable: true,
       selector: row => row.area,
@@ -150,14 +172,129 @@ export const ListBirths = () => {
     },
   ];
 
+  const onSearchTag = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.tag = value;
+      } else {
+        delete next.tag;
+      }
+      return next;
+    });
+  };
+
+  const onSearchBreed = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.breed = value;
+      } else {
+        delete next.breed;
+      }
+      return next;
+    });
+  };
+
+  const onSearchArea = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.area = value;
+      } else {
+        delete next.area;
+      }
+      return next;
+    });
+  };
+
+  const onSearchCause = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.cause = value;
+      } else {
+        delete next.cause;
+      }
+      return next;
+    });
+  };
+
+  const onSearchSex = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.sex = value;
+      } else {
+        delete next.sex;
+      }
+      return next;
+    });
+  };
+
+  const onSearchAge = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        const regex = ageCategoryToDateRegex(value);
+        if (regex) {
+          next.date = regex;
+        }
+      } else {
+        delete next.date;
+      }
+      return next;
+    });
+  };
+
   return (
-    <>
-      <DataCollection 
-        // Forces refresh of child component (DataCollection)
+    <div className="ListHerd">
+      <div className="filters">
+        <input
+          type="number"
+          placeholder={t("find_tag")}
+          onChange={onSearchTag}
+        />
+        <BreedDropdown
+          showAll={true}
+          onChange={onSearchBreed}
+        />
+        <SexDropdown
+          showAll={true}
+          onChange={onSearchSex}
+        />
+        <select
+          onChange={onSearchAge}
+        >
+          <option value="">{t("all_ages")}</option>
+          <option value="0-12">0-12 {t("months")}</option>
+          <option value="13-24">13-24 {t("months")}</option>
+          <option value="25-36">25-36 {t("months")}</option>
+          <option value="37+">37+ {t("months")}</option>
+        </select>
+        <AreaDropdown
+          showAll={true}
+          areas={areas}
+          selected={searchFields.area || ""}
+          onChange={onSearchArea}
+        />
+        <DeathCauseDropdown
+          showAll={true}
+          onChange={onSearchCause}
+        />
+      </div>
+      <DataCollection
         key={refreshKey}
-        collection={collection} 
-        columns={columns}/>
-    </>
+        collection={collection}
+        columns={columns}
+        searchFields={searchFields}/>
+    </div>
   );
 }
 export default ListBirths;

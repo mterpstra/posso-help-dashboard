@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Fetch } from './Utils.js';
 export const AreaDropdown = (props) => {
+  const { t } = useTranslation();
   const [areas, setAreaData] = useState([]);
   useEffect(() => {
     if (props.areas != null) {
@@ -13,7 +15,7 @@ export const AreaDropdown = (props) => {
       },
       () => {console.log("error loading areas")}
     );
-  }, []);
+  }, [props.areas]);
 
 
   const Option = (props) => {
@@ -24,7 +26,10 @@ export const AreaDropdown = (props) => {
   }
 
   return (
-    <select name="area" onChange={props.onChange}>
+    <select name="area" onChange={props.onChange} style={props.style} value={props.selected || ""}>
+      {props.showAll &&
+       <option value="">{t("all_areas")}</option>
+      }
       {areas.map((area) => (
         <Option key={area.name} 
           value={area.name} 
