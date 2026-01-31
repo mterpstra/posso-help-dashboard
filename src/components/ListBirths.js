@@ -153,11 +153,28 @@ export const ListBirths = () => {
 
   const onSearchTag = (e) => {
     const value = e.target.value;
-    if (value) {
-      setSearchFields({tag: value});
-    } else {
-      setSearchFields({});
-    }
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.tag = value;
+      } else {
+        delete next.tag;
+      }
+      return next;
+    });
+  };
+
+  const onSearchBreed = (e) => {
+    const value = e.target.value;
+    setSearchFields(prev => {
+      const next = {...prev};
+      if (value) {
+        next.breed = value;
+      } else {
+        delete next.breed;
+      }
+      return next;
+    });
   };
 
   return (
@@ -167,6 +184,11 @@ export const ListBirths = () => {
         placeholder={t("find_tag")}
         onChange={onSearchTag}
         style={{marginBottom: '10px', padding: '8px'}}
+      />
+      <BreedDropdown
+        showAll={true}
+        onChange={onSearchBreed}
+        style={{marginBottom: '10px', marginLeft: '10px', padding: '8px', height:'48px', color:'gray'}}
       />
       <DataCollection
         key={refreshKey}

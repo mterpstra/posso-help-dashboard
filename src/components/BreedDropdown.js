@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 const Option = (props) => {
   if (props.selected === props.value) {
     return <option value={props.value} selected="selected">{props.name}</option>
@@ -6,9 +8,13 @@ const Option = (props) => {
 }
 
 export const BreedDropdown = (props) => {
+  const { t } = useTranslation();
   return (
-    <select name="breed" onChange={props.onChange}>
-      {!props.selected && 
+    <select name="breed" onChange={props.onChange} style={props.style}>
+      {props.showAll &&
+       <option value="">{t("all_breeds")}</option>
+      }
+      {!props.selected && !props.showAll &&
        <option value="" disabled selected hidden>-- Choose an Breed --</option>
       }
       <Option value="angus"        name="Angus"        selected={props.selected}/>

@@ -65,6 +65,7 @@ const resources = {
 
       // Search
       "find_tag":     "Find tag...",
+      "all_breeds":   "All Breeds",
 
       // Table Titles
       "tag":          "Tag",
@@ -200,6 +201,7 @@ const resources = {
 
       // Search
       "find_tag":     "Buscar brinco...",
+      "all_breeds":   "Todas as Raças",
 
       // Table Titles
       "tag":          "Brinco",
