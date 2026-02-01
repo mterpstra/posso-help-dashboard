@@ -28,6 +28,7 @@ const resources = {
       "rain":          "Rain",
       "temperatures":  "Temperatures",
       "areas":         "Areas",
+      "unknown":       "Unknown",
       "reproduction":  "Reproduction",
       "team":          "Team",
 
@@ -169,6 +170,7 @@ const resources = {
       "rain":          "Chuvas",
       "temperatures":  "Temperaturas",
       "areas":         "Áreas",
+      "unknown":       "Desconhecida",
       "reproduction":  "Reprodução",
       "team":          "Equipe",
 

@@ -130,6 +130,7 @@ export const ListBirths = () => {
       cell: row => <AreaDropdown
         selected={row.area}
         areas={areas}
+        showUnknown={true}
         onChange={(e) => {onChange(e, "area", row._id)}}
       />
     },

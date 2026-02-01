@@ -20,15 +20,20 @@ export const AreaDropdown = (props) => {
 
   const Option = (props) => {
     if (props.selected === props.value) {
-      return <option value={props.value} selected="selected">{props.name}</option>
-    } 
+      return <option value={props.value}
+                     selected="selected">{props.name}</option>
+    }
     return <option value={props.value}>{props.name}</option>
   }
 
   return (
-    <select name="area" onChange={props.onChange} style={props.style} value={props.selected || ""}>
+    <select name="area" onChange={props.onChange} 
+            style={props.style} value={props.selected || ""}>
       {props.showAll &&
        <option value="">{t("all_areas")}</option>
+      }
+      {props.showUnknown &&
+        <option value="unknown">{t("unknown")}</option>
       }
       {areas.map((area) => (
         <Option key={area.name} 
